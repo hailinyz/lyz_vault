@@ -55,8 +55,15 @@
   "pandocPath": {
     "win32": "\"D:\\项目学习Java\\note\\pandoc-3.8.2.1-windows-x86_64\\pandoc-3.8.2.1\\pandoc.exe\""
   },
-  "defaultExportDirectoryMode": "Auto",
+  "defaultExportDirectoryMode": "Custom",
   "openExportedFile": true,
   "env": {},
-  "showExportProgressBar": true
+  "showExportProgressBar": true,
+  "customDefaultExportDirectory": {
+    "win32": "C:\\Users\\liangyuanzhang\\Documents"
+  },
+  "lastExportDirectory": {
+    "win32": "C:\\Users\\liangyuanzhang\\Documents"
+  },
+  "lastExportType": "Word (.docx)"
 }
