@@ -60,10 +60,10 @@
   "env": {},
   "showExportProgressBar": true,
   "customDefaultExportDirectory": {
-    "win32": "D:\\software\\note_export"
+    "win32": "D:\\software\\noteexport"
   },
   "lastExportDirectory": {
-    "win32": "C:\\Users\\liangyuanzhang\\Documents"
+    "win32": "D:\\software\\noteexport"
   },
   "lastExportType": "Word (.docx)"
 }
