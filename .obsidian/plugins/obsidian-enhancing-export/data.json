@@ -60,7 +60,7 @@
   "env": {},
   "showExportProgressBar": true,
   "customDefaultExportDirectory": {
-    "win32": "C:\\Users\\liangyuanzhang\\Documents"
+    "win32": "D:\\software\\note_export"
   },
   "lastExportDirectory": {
     "win32": "C:\\Users\\liangyuanzhang\\Documents"
