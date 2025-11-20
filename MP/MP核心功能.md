@@ -79,7 +79,7 @@ userMapper.updateBalanceByIds(wrapper, amount);
 </update>
 ```
 
-## 3.Service接口
+## 3.IService接口
 
 **Service提供的增删改查**
 ![](assets/MP核心功能/file-20251120111658281.png)
@@ -92,7 +92,7 @@ userMapper.updateBalanceByIds(wrapper, amount);
 
 ## 4.IService的Lambda查询
 
-**未使用Lambda之前写的SQL**
+**未使用Lambda之前写的SQL,这种复杂查询就可以用到Lambda**
 ```xml
 <select id="queryUsers" resultType="com.itheima.mp.domain.po.User">
     SELECT *
@@ -147,3 +147,4 @@ public void deductBalance(Long id, Integer money) {
             .update();  
 }
 ```
+5.I
