@@ -1,19 +1,21 @@
 ## 1.分页插件
 首先，要在配置类中注册MyBatisPlus的核心插件，同时添加分页插件：
 ```java
-@Configuration
-public class MybatisConfig {
-
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        // 1.初始化核心插件
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        // 2.添加分页插件
-        PaginationInnerInterceptor pageInterceptor = new PaginationInnerInterceptor(DbType.MYSQL);
-        pageInterceptor.setMaxLimit(1000L); // 设置分页上限
-        interceptor.addInnerInterceptor(pageInterceptor);
-        return interceptor;
-    }
+@Configuration  
+public class MyBatisConfig {  
+      
+    @Bean  
+    public MybatisPlusInterceptor mybatisPlusInterceptor(){  
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();  
+        //1.创建分页插件  
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor(DbType.MYSQL);  
+        paginationInnerInterceptor.setMaxLimit(1000L); // 设置单页最大数量  
+        //2.添加分页插件  
+        interceptor.addInnerInterceptor(paginationInnerInterceptor);  
+  
+        return interceptor;  
+    }  
+      
 }
 ```
 
