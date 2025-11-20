@@ -120,3 +120,4 @@ mybatis-plus:
       id-type: assign_id # id为雪花算法生成
       update-strategy: not_null # 更新策略：只更新非空字段
 ```
+具体可参考官方文档：[使用配置 | MyBatis-Plus (baomidou.com)](https://baomidou.com)
