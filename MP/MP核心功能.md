@@ -150,7 +150,7 @@ public void deductBalance(Long id, Integer money) {
 
 ## 5.IService的批量新增
 
-**方式一：首先是一个一个新增,耗时将近20万ms**
+**方式一：首先是普通for循环一个一个新增,耗时将近20万ms（不推荐）**
 ```java
 @Test
 void testSaveOneByOne() {
@@ -167,7 +167,7 @@ void testSaveOneByOne() {
 > [!NOTE] 解释
 > 我们有10万条数据，每一条数据都会分别去提交，每次往数据库去提交，都是一次网络请求，然后提交到MySQL之后，MySQL去执行，所以每次网络请求都需要耗时，所以这种方式是最慢的。
 
-**方式二：批处理新增,耗时2万ms**
+**方式二：默认批处理新增,耗时2万ms**
 ```java
 @Test
 void testSaveBatch() {
@@ -202,4 +202,7 @@ VALUES
 ('user_4', 123, 18688190004, '', 2000, 2023-07-01, 2023-07-01);
 ```
 
-**方式三：开启==rewriteBatchedStatements=true参数==**
+**方式三：开启==rewriteBatchedStatements=true参数==的批处理（性能最好），耗时只有6秒钟**
+
+在yaml文件中：
+![](assets/MP核心功能/file-20251120131313262.png)
