@@ -147,4 +147,59 @@ public void deductBalance(Long id, Integer money) {
             .update();  
 }
 ```
-5.I
+
+## 5.IService的批量新增
+
+**方式一：首先是一个一个新增,耗时将近20万ms**
+```java
+@Test
+void testSaveOneByOne() {
+    long b = System.currentTimeMillis();
+    for (int i = 1; i <= 100000; i++) {
+        userService.save(buildUser(i));
+    }
+    long e = System.currentTimeMillis();
+    System.out.println("耗时：" + (e - b));
+}
+```
+==为什么这么慢？==
+
+> [!NOTE] 解释
+> 我们有10万条数据，每一条数据都会分别去提交，每次往数据库去提交，都是一次网络请求，然后提交到MySQL之后，MySQL去执行，所以每次网络请求都需要耗时，所以这种方式是最慢的。
+
+**方式二：批处理新增,耗时2万ms**
+```java
+@Test
+void testSaveBatch() {
+    // 我们每次批量插入1000条，插入100次即10万条数据
+    // 1.准备一个容量为1000的集合
+    List<User> list = new ArrayList<>(1000);
+    long b = System.currentTimeMillis();
+    for (int i = 1; i <= 100000; i++) {
+        // 2.添加一个user
+        list.add(buildUser(i));
+        // 3.每1000条批量插入一次
+        if (i % 1000 == 0) {
+            userService.saveBatch(list);
+            // 4.清空集合，准备下一批数据
+            list.clear();
+        }
+    }
+    long e = System.currentTimeMillis();
+    System.out.println("耗时：" + (e - b));
+}
+```
+**MP采用的是JDBC底层的预编译方案，这种方案他会在便利的过程中把你提交的这个user数据不是直接提交到数据库，而是先对他进行一个编译变成SQL语句。这里每1000条数据才用发了一次网络请求，，相当于只发了100次网络请求，所以性能得以提高。**
+==但是==**这个方案因为打包了他是逐条执行的SQL，所以对性能也是有一定的影响
+
+所以要打包成一条SQL语句就能新增的这样的形式：
+```sql
+INSERT INTO tb_user ( username, password, phone, info, balance, create_time, update_time )
+VALUES
+('user_1', 123, 18688190001, '', 2000, 2023-07-01, 2023-07-01),
+('user_2', 123, 18688190002, '', 2000, 2023-07-01, 2023-07-01),
+('user_3', 123, 18688190003, '', 2000, 2023-07-01, 2023-07-01),
+('user_4', 123, 18688190004, '', 2000, 2023-07-01, 2023-07-01);
+```
+
+**方式三：开启==rewriteBatchedStatements=true参数==**
