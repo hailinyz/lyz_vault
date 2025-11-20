@@ -60,7 +60,7 @@
   "env": {},
   "showExportProgressBar": true,
   "customDefaultExportDirectory": {
-    "win32": "D:\\software\\noteexport"
+    "win32": "D:\\Hexo-Blog\\blog-demo\\source\\_posts"
   },
   "lastExportDirectory": {
     "win32": "D:\\software\\noteexport"
