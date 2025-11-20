@@ -21,3 +21,26 @@ void testUpdateWrapper() {
     userMapper.update(null, wrapper);
 }
 ```
+**使用Lambda的形式，用对应的get函数避免字符串硬编码**
+```java
+@Test
+void testLambdaQueryWrapper() {
+    // 1.构建查询条件
+    LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>()
+            .select(User::getId, User::getUsername, User::getInfo, User::getBalance)
+            .like(User::getUsername, "o")
+            .ge(User::getBalance, 1000);
+    // 2.查询
+    List<User> users = userMapper.selectList(wrapper);
+    users.forEach(System.out::println);
+}
+```
+**条件构造器的用法小结**
+ - QueryWrapper和LambdaQueryWrapper通常用来构建select、delete、update的where条件部分 
+ - UpdateWrapper和LambdaUpdateWrapper通常只有在set语句比较特殊才使用
+ - 尽量使用LambdaQueryWrapper和LambdaUpdateWrapper，避免硬编码
+
+## 2.自定义SQL
+
+**我们可以利用MyBatisPlus的Wrapper来构建复杂的Where条件，然后自己定义SQL语句中剩下的部分。**
+
