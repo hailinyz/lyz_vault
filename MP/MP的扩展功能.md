@@ -159,3 +159,13 @@ public class UserVO {
 ```
 
 ## 5.JSON处理器
+1. 使用@TableField注解开启
+```java
+@TableField(typeHandler = JacksonTypeHandler.class)  
+private UserInfo info;
+```
+2. 开启自动的结果集映射
+```java
+@TableName(value = "user", autoResultMap = true)  
+public class User {
+```
