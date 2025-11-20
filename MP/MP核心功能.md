@@ -87,3 +87,8 @@ userMapper.updateBalanceByIds(wrapper, amount);
 ①我们Service接口需要去继承他的Service接口
 ②我们的实现类需要去继承他的实现类
 ![700](assets/MP核心功能/file-20251120112314564.png)
+**实际上对于一些简单的增删改查，我们都可以直接在Controller当中调MP里面提供的方法，无需写任何的自定义Service或者Mapper，非常的方便；
+只有在我们的业务逻辑相对复杂，需要自己写一些业务，MP只有增删改查没有业务，因此在这种情境下我们就需要去自定义Service方法，并且在里边编写我们的业务逻辑，当我们的BaseMapper不足以满足，就要自定义Mapper
+
+## 4.IService的Lambda查询
+
