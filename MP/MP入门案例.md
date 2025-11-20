@@ -75,3 +75,9 @@ public class User {
 + @TableName：用来指定表名 
 + @TableId：用来指定表中的主键字段信息 
 + @TableField：用来指定表中的普通字段信息
+注意：
+1. 一定要有主键，不然将来MP找不到主键，无法进行增删改查操作
+2. 主键自增长
+   + AUTO：数据库自增长
+   + INPUT:通过set方法自行输入
+   + ASSIGN_ID：分配ID 接口IdentifierGenerator的方法nextId来生成id，默认实现类为DefaultIdentifierGenerator雪花算法
