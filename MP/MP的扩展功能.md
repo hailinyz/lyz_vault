@@ -88,7 +88,23 @@ mybatis-plus:
 
 分两步走
 1. 给枚举的属性加上对应注解
-2. 在yml中配置全局枚举处理器
+```java
+@Getter  
+public enum UserStatus {  
+    NORMAL(1, "正常"),  
+    FROZEN(2, "冻结");  
+  
+    @EnumValue  
+    private final int value;  
+    private final String desc;  
+  
+    UserStatus(int value, String desc) {  
+        this.value = value;  
+        this.desc = desc;  
+    }  
+}
+```
+1. 在yml中配置全局枚举处理器
 ```yml
 mybatis-plus:
   configuration:
