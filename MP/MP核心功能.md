@@ -72,4 +72,9 @@ userMapper.updateBalanceByIds(wrapper, amount);
  ```java
  void updateBalanceByIds(@Param("ew") LambdaQueryWrapper<User> wrapper, @Param("amount") int amount);
  ```
- 
+③ 自定义 SQL，并使用 Wrapper 条件
+```xml
+<update id="updateBalanceByIds">
+    UPDATE tb_user SET balance = balance - #{amount} ${ew.customSqlSegment}
+</update>
+```
