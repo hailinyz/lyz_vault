@@ -72,3 +72,12 @@ public List<UserVO> queryUserAndAddressByIds(List<Long> ids) {
 - 当删除数据时把标记置为1 
 - 查询时只查询标记为0的数据
 
+**MybatisPlus提供了逻辑删除功能，无需改变方法调用的方式，而是在底层帮我们自动修改CRUD的语句。我们要做的就是在application.yaml文件中配置逻辑删除的字段名称和值即可:**
+```yaml
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: flag # 全局逻辑删除的实体字段名，字段类型可以是boolean、integer
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+```
