@@ -57,3 +57,19 @@ void testLambdaQueryWrapper() {
     </foreach>
 </update>
 ```
+我们可以利用MyBatisPlus的Wrapper来构建复杂的Where条件，然后自己定义SQL语句中剩下的部分。
+![](assets/MP核心功能/file-20251120110748164.png)
+ ① 基于Wrapper构建where条件
+ ```java
+ List<Long> ids = List.of(1L, 2L, 4L);
+int amount = 200;
+// 1.构建条件
+LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>().in(User::getId, ids);
+// 2.自定义SQL方法调用
+userMapper.updateBalanceByIds(wrapper, amount);
+ ```
+ ② 在 mapper 方法参数中用 Param 注解声明 wrapper 变量名称，必须是 ew
+ ```java
+ void updateBalanceByIds(@Param("ew") LambdaQueryWrapper<User> wrapper, @Param("amount") int amount);
+ ```
+ 
