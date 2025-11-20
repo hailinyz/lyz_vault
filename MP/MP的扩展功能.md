@@ -87,7 +87,7 @@ mybatis-plus:
 ## 4.枚举处理器
 
 分两步走
-1. 给枚举的属性加上对应注解
+1. 给枚举对应的成员变量加上对应注解
 ```java
 @Getter  
 public enum UserStatus {  
@@ -110,3 +110,52 @@ mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
 ```
+案例：
+```java
+//枚举
+
+@Getter  
+public enum UserStatus {  
+    NORMAL(1, "正常"),  
+    FROZEN(2, "冻结");  
+  
+    @EnumValue  
+    private final int value;  
+    @JsonValue  给前端返回的是什么类型自己定义就行
+    private final String desc;  
+  
+    UserStatus(int value, String desc) {  
+        this.value = value;  
+        this.desc = desc;  
+    }  
+}
+```
+
+```java
+//对应的VO
+
+@Data  
+@ApiModel(description = "用户VO实体")  
+public class UserVO {  
+  
+    @ApiModelProperty("用户id")  
+    private Long id;  
+  
+    @ApiModelProperty("用户名")  
+    private String username;  
+  
+    @ApiModelProperty("详细信息")  
+    private String info;  
+  
+    @ApiModelProperty("使用状态（1正常 2冻结）")  
+    private UserStatus status;  
+  
+    @ApiModelProperty("账户余额")  
+    private Integer balance;  
+  
+    @ApiModelProperty("用户的收获地址")  
+    private List<AddressVO> addresses;  
+}
+```
+
+## 5.JSON处理器
