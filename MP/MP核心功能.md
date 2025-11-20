@@ -81,5 +81,5 @@ userMapper.updateBalanceByIds(wrapper, amount);
 
 ## 3.Service接口
 
-**增删改查变多了**
+**Service提供的增删改查**
 ![](assets/MP核心功能/file-20251120111658281.png)
