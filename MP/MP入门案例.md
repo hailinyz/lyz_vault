@@ -106,3 +106,17 @@ public class User implements Serializable {
     private String address;
 }
 ```
+
+## MP常见配置
+```yaml
+mybatis-plus:
+  type-aliases-package: com.it.mp.domain.po # 别名扫描包
+  mapper-locations: "classpath*:/mapper/**/*.xml" # Mapper.xml文件地址，默认值
+  configuration:
+    map-underscore-to-camel-case: true # 是否开启下划线和驼峰的映射
+    cache-enabled: false # 是否开启二级缓存
+  global-config:
+    db-config:
+      id-type: assign_id # id为雪花算法生成
+      update-strategy: not_null # 更新策略：只更新非空字段
+```
