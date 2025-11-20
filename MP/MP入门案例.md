@@ -81,3 +81,28 @@ public class User {
    + AUTO：数据库自增长
    + INPUT:通过set方法自行输入
    + ASSIGN_ID：分配ID 接口IdentifierGenerator的方法nextId来生成id，默认实现类为DefaultIdentifierGenerator雪花算法
+### 使用@TableField的常见场景：
+- 成员变量名与数据库字段名不一致 
+- 成员变量名以is开头，且是布尔值
+- 成员变量名与数据库关键字冲突
+- 成员变量不是数据库字段
+```java
+@TableName("tb_user")
+public class User implements Serializable {
+
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
+    @TableField("username")
+    private String name;
+
+    @TableField("is_married")
+    private Boolean isMarried;
+
+    @TableField("`order`")
+    private Integer order;
+
+    @TableField(exist = false)
+    private String address;
+}
+```
