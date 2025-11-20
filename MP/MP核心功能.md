@@ -78,3 +78,8 @@ userMapper.updateBalanceByIds(wrapper, amount);
     UPDATE tb_user SET balance = balance - #{amount} ${ew.customSqlSegment}
 </update>
 ```
+
+## 3.Service接口
+
+**增删改查变多了**
+![](assets/MP核心功能/file-20251120111658281.png)
