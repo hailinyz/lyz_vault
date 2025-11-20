@@ -44,4 +44,15 @@ docker compose version  # 验证 docker-compose 插件
 
 + 点击[容器镜像服务 ACR - 云原生制品全生命周期管理 - 阿里云 (aliyun.com)](https://www.aliyun.com/product/acr?spm=5176.30371578.J_XmGx2FZCDAeIy2ZCWL7sW.24.77bf154a7RIKFp&scm=20140722.S_product@@%E4%BA%91%E4%BA%A7%E5%93%81@@88099._.RL_%E5%AE%B9%E5%99%A8-LOC_2024NSProductLink-OR_ser-PAR1_213e019517636573596663026eef97-V_4-RE_productNew-P0_1-P1_0-PAR2_descAbNew)
 ![](assets/Docker快速入门/file-20251121005337906.png)
-+ 按照
++ 执行以下命令即可完成镜像加速
+![](assets/Docker快速入门/file-20251121005619614.png)
+### 用Docker部署MySQL
++ 先停掉虚拟机中的MySQL，确保你的虚拟机安装好了Docker，且网络开通情况下，执行下面命令即可安装MySQL
+```linux
+docker run -d \
+--name mysql \
+-p 3306:3306 \
+-e TZ=Asia/Shanghai \
+-e MYSQL_ROOT_PASSWORD=123 \
+mysql
+```
