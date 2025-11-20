@@ -56,7 +56,7 @@
     "win32": "\"D:\\项目学习Java\\note\\pandoc-3.8.2.1-windows-x86_64\\pandoc-3.8.2.1\\pandoc.exe\""
   },
   "defaultExportDirectoryMode": "Custom",
-  "openExportedFile": true,
+  "openExportedFile": false,
   "env": {},
   "showExportProgressBar": true,
   "customDefaultExportDirectory": {
