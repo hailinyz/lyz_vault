@@ -92,3 +92,34 @@ userMapper.updateBalanceByIds(wrapper, amount);
 
 ## 4.IService的Lambda查询
 
+**未使用Lambda之前写的SQL**
+```xml
+<select id="queryUsers" resultType="com.itheima.mp.domain.po.User">
+    SELECT *
+    FROM tb_user
+    <where>
+        <if test="name != null">
+            AND username LIKE #{name}
+        </if>
+        <if test="status != null">
+            AND `status` = #{status}
+        </if>
+        <if test="minBalance != null and maxBalance != null">
+            AND balance BETWEEN #{minBalance} AND #{maxBalance}
+        </if>
+    </where>
+</select>
+```
+**用了之后**
+```java
+@Override  
+public List<User> queryUsers(String name, Integer status, Integer minBalance, Integer maxBalance) {  
+    return lambdaQuery()  
+            .like(name != null, User::getUsername, name)  
+            .eq(status != null, User::getStatus, status)  
+            .ge(minBalance != null, User::getBalance, minBalance)  
+            .le(maxBalance != null, User::getBalance, maxBalance)  
+            .list();  
+}
+```
+对比对比是不是==超级方便==
