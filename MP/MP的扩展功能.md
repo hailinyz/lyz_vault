@@ -85,3 +85,12 @@ mybatis-plus:
 比如:会导致数据库表垃圾数据越来越多，==影响查询效率==SQL中全都需要对逻辑删除字段做判断，影响查询效率因此，我不太推荐采用逻辑删除功能，如果数据不能删除，可以采用把数据迁移到其它表的办法。
 
 ## 4.枚举处理器
+
+分两步走
+1. 给枚举的属性加上对应注解
+2. 在yml中配置全局枚举处理器
+```yml
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+```
