@@ -83,3 +83,7 @@ userMapper.updateBalanceByIds(wrapper, amount);
 
 **Service提供的增删改查**
 ![](assets/MP核心功能/file-20251120111658281.png)
+
+①我们Service接口需要去继承他的Service接口
+②我们的实现类需要去继承他的实现类
+![700](assets/MP核心功能/file-20251120112314564.png)
