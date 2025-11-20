@@ -18,14 +18,3 @@ public class MybatisConfig {
 ```
 
 接着，就可以使用分页的API了：
-```java
-// 翻页查询
-default <E extends IPage<T>> E page(E page, Wrapper<T> queryWrapper) {
-    return getBaseMapper().selectPage(page, queryWrapper);
-}
-
-// 无条件翻页查询
-default <E extends IPage<T>> E page(E page) {
-    return page(page, Wrappers.emptyWrapper());
-}
-```
