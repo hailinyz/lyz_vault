@@ -44,3 +44,16 @@ void testLambdaQueryWrapper() {
 
 **我们可以利用MyBatisPlus的Wrapper来构建复杂的Where条件，然后自己定义SQL语句中剩下的部分。**
 
+下面我们通过这个需求展开：将id在指定范围的用户（例如1、2、4）的余额扣减指定值
+
+这是完全手写这个需求的SQL语句
+```sql
+<update id="updateBalanceByIds">
+    UPDATE user
+    SET balance = balance - #{amount}
+    WHERE id IN
+    <foreach collection="ids" separator="," item="id" open="(" close=")">
+        #{id}
+    </foreach>
+</update>
+```
