@@ -23,20 +23,23 @@ public class MyBatisConfig {
 ```java
 @Test
 void testPageQuery() {
-    // 1.查询
-    int pageNo = 1, pageSize = 5;
-    // 1.1.分页参数
+    int pageNo = 1, pageSize = 2;
+    // 1.准备分页条件
+    // 1.1.分页条件
     Page<User> page = Page.of(pageNo, pageSize);
-    // 1.2.排序参数，通过OrderItem来指定
-    page.addOrder(new OrderItem("balance", false));
-    // 1.3.分页查询
+    // 1.2.排序条件
+    page.addOrder(new OrderItem("balance", true));
+    page.addOrder(new OrderItem("id", true));
+
+    // 2.分页查询
     Page<User> p = userService.page(page);
-    // 2.总条数
-    System.out.println("total = " + p.getTotal());
-    // 3.总页数
-    System.out.println("pages = " + p.getPages());
-    // 4.分页数据
-    List<User> records = p.getRecords();
-    records.forEach(System.out::println);
+
+    // 3.解析
+    long total = p.getTotal();
+    System.out.println("total = " + total);
+    long pages = p.getPages();
+    System.out.println("pages = " + pages);
+    List<User> users = p.getRecords();
+    users.forEach(System.out::println);
 }
 ```
