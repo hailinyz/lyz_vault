@@ -169,3 +169,28 @@ private UserInfo info;
 @TableName(value = "user", autoResultMap = true)  
 public class User {
 ```
+3. 我们把PO改了，VO是不是也要改
+```java
+@Data  
+@ApiModel(description = "用户VO实体")  
+public class UserVO {  
+  
+    @ApiModelProperty("用户id")  
+    private Long id;  
+  
+    @ApiModelProperty("用户名")  
+    private String username;  
+  
+    @ApiModelProperty("详细信息")  
+    private UserInfo info;  //改成UserInfo的类型
+  
+    @ApiModelProperty("使用状态（1正常 2冻结）")  
+    private UserStatus status;  
+  
+    @ApiModelProperty("账户余额")  
+    private Integer balance;  
+  
+    @ApiModelProperty("用户的收获地址")  
+    private List<AddressVO> addresses;  
+}
+```
