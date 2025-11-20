@@ -10,3 +10,14 @@ UPDATE user
 	SET balance = balance - 200 
 	WHERE id in (1, 2, 4)
 ```
+
+```java
+@Test
+void testUpdateWrapper() {
+    List<Long> ids = List.of(1L, 2L, 4L);
+    UpdateWrapper<User> wrapper = new UpdateWrapper<User>()
+            .setSql("balance = balance - 200")
+            .in("id", ids);
+    userMapper.update(null, wrapper);
+}
+```
