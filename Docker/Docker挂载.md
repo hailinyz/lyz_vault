@@ -26,3 +26,4 @@ docker run -v 本地目录:容器内目录
 > [!NOTE] 注意
 > -v mysql:/var/lib/mysql 会被识别为一个数据卷叫mysql
 > -v ./mysql:/var/lib/mysql 会被识别为当前目录下的mysql目录
+
