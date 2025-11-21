@@ -10,3 +10,8 @@
 | docker volume rm      | 删除指定数据卷    | [docker volume rm ](https://docs.docker.com/reference/cli/docker/volume/rm/)          |
 | docker volume inspect | 查看某个数据卷的详情 | [docker volume inspect](https://docs.docker.com/reference/cli/docker/volume/inspect/) |
 | docker volume prune   | 清除数据卷      | [docker volume prune](https://docs.docker.com/reference/cli/docker/volume/prune/)     |
++ 创建完宿主机目录之后
++ 挂载容器目录(做挂载就会自动创建了)
+```powershell
+docker run -v # 数据卷:容器内目录
+```
