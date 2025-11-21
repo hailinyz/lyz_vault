@@ -12,7 +12,7 @@ Docker最常见的命令就是操作镜像、容器的命令，详见官方文�
 
 查看当前容器的运行状态： 
 ```powershell
-docker ps
+docker ps -a
 ```
 删除容器：
 ```powershell
@@ -26,4 +26,7 @@ docker logs
 ```powershell
 docker exec
 ```
-
+简化查看容器状态
+```powershell
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"
+```
