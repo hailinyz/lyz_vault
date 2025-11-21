@@ -2,7 +2,7 @@
 
 **简单来说，就是帮助我们部署项目以及项目所依赖的各种各样的组件，就是一个简单的运维工具**
 
-### Linux（Centos 7）下安装Docker
+## 2. Linux（Centos 7）下安装Docker
 ```powershell
 # 1. 卸载旧版本 Docker（若有）
 yum remove -y docker \
@@ -46,7 +46,8 @@ docker compose version  # 验证 docker-compose 插件
 ![](assets/Docker快速入门/file-20251121005337906.png)
 + 执行以下命令即可完成镜像加速
 ![](assets/Docker快速入门/file-20251121005619614.png)
-### 用Docker部署MySQL
+
+## 3. 用Docker部署MySQL
 + 先停掉虚拟机中的MySQL，确保你的虚拟机安装好了Docker，且网络开通情况下，执行下面命令即可安装MySQL
 ```powershell
 docker run -d \
@@ -60,7 +61,10 @@ mysql
 **Docker的镜像能够忽略操作系统的环境，忽略系统本身的差异而去直接部署
 Docker会在运行镜像时创建一个隔离环境，称为==容器(container)==**
 
-## 镜像和镜像仓库
+## 4.镜像和镜像仓库
 
 **镜像：就是包含应用运行所需要的环境、配置、系统函数库。
 镜像仓库:存储和管理镜像的平台，Docker官方维护了一个公共仓库:[Docker Hub](https://hub.docker.com/)**
+![](assets/Docker快速入门/file-20251121101158338.png)
+
+## 5.命令解读
