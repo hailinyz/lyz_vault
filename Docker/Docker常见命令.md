@@ -31,6 +31,15 @@ docker exec
 docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"
 ```
 命令别名--简化一些长命令
-```poweshell
+```powershell
 vi ~/.bashrc
+
+# 为查看容器状态添加别名 dps（格式化显示 ID、镜像、端口、状态、名称）
+alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"'
+
+# 为查看镜像列表添加别名 dis（简化 docker images 命令）
+alias dis='docker images'
+
+# 简化完成后要想让其生效
+source ~/.bashrc
 ```
