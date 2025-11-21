@@ -68,3 +68,15 @@ Docker会在运行镜像时创建一个隔离环境，称为==容器(container)=
 ![](assets/Docker快速入门/file-20251121101158338.png)
 
 ## 5.命令解读
+
+```powershell
+docker run -d \
+  --name mysql \
+  -p 3306:3306 \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=123 \
+  mysql
+```
++ docker run : 创建并运行一个容器，-d 是让容器在后台运行
++ --name mysql : 给容器起名字，唯一
++ -p 
