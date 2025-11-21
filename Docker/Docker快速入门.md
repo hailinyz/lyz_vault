@@ -3,7 +3,7 @@
 **简单来说，就是帮助我们部署项目以及项目所依赖的各种各样的组件，就是一个简单的运维工具**
 
 ### Linux（Centos 7）下安装Docker
-```linux
+```powershell
 # 1. 卸载旧版本 Docker（若有）
 yum remove -y docker \
   docker-client \
@@ -48,7 +48,7 @@ docker compose version  # 验证 docker-compose 插件
 ![](assets/Docker快速入门/file-20251121005619614.png)
 ### 用Docker部署MySQL
 + 先停掉虚拟机中的MySQL，确保你的虚拟机安装好了Docker，且网络开通情况下，执行下面命令即可安装MySQL
-```linux
+```powershell
 docker run -d \
 --name mysql \
 -p 3306:3306 \
