@@ -42,7 +42,7 @@ docker compose version  # 验证 docker-compose 插件
 ```
 ### 配置阿里镜像加速
 
-+ 点击[容器镜像服务 ACR - 云原生制品全生命周期管理 - 阿里云 (aliyun.com)](https://www.aliyun.com/product/acr?spm=5176.30371578.J_XmGx2FZCDAeIy2ZCWL7sW.24.77bf154a7RIKFp&scm=20140722.S_product@@%E4%BA%91%E4%BA%A7%E5%93%81@@88099._.RL_%E5%AE%B9%E5%99%A8-LOC_2024NSProductLink-OR_ser-PAR1_213e019517636573596663026eef97-V_4-RE_productNew-P0_1-P1_0-PAR2_descAbNew)
++ **点击[容器镜像服务 ACR - 云原生制品全生命周期管理 - 阿里云 (aliyun.com)](https://www.aliyun.com/product/acr?spm=5176.30371578.J_XmGx2FZCDAeIy2ZCWL7sW.24.77bf154a7RIKFp&scm=20140722.S_product@@%E4%BA%91%E4%BA%A7%E5%93%81@@88099._.RL_%E5%AE%B9%E5%99%A8-LOC_2024NSProductLink-OR_ser-PAR1_213e019517636573596663026eef97-V_4-RE_productNew-P0_1-P1_0-PAR2_descAbNew)**
 ![](assets/Docker快速入门/file-20251121005337906.png)
 + 执行以下命令即可完成镜像加速
 ![](assets/Docker快速入门/file-20251121005619614.png)
@@ -60,6 +60,7 @@ mysql
 **Docker的镜像能够忽略操作系统的环境，忽略系统本身的差异而去直接部署
 Docker会在运行镜像时创建一个隔离环境，称为==容器(container)==**
 
-## 镜像仓库
+## 镜像和镜像仓库
 
-镜像仓库:存储和管理镜像的平台，Docker官方维护了一个公共仓库:[Docker Hub](https://hub.docker.com/)
+**镜像：就是包含应用运行所需要的环境、配置、系统函数库。
+镜像仓库:存储和管理镜像的平台，Docker官方维护了一个公共仓库:[Docker Hub](https://hub.docker.com/)**
