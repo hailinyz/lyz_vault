@@ -30,3 +30,7 @@ docker exec
 ```powershell
 docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"
 ```
+命令别名--简化一些长命令
+```poweshell
+vi ~/.bashrc
+```
