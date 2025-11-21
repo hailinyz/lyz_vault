@@ -62,4 +62,4 @@ Docker会在运行镜像时创建一个隔离环境，称为==容器(container)=
 
 ## 镜像仓库
 
-镜像仓库:存储和管理镜像的平台，Docker官方维护了一个公共仓库:Docker Hub。
+镜像仓库:存储和管理镜像的平台，Docker官方维护了一个公共仓库:[Docker Hub](https://hub.docker.com/)
