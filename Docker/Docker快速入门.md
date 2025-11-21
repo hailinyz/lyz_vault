@@ -56,3 +56,6 @@ docker run -d \
 -e MYSQL_ROOT_PASSWORD=123 \
 mysql
 ```
+
+**Docker的镜像能够忽略操作系统的环境，忽略系统本身的差异而去直接部署
+Docker会在运行镜像时创建一个隔离环境，称为==容器(container)==**
