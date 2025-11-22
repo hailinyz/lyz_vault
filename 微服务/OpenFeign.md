@@ -27,7 +27,7 @@ OpenFeign已经被SpringCloud自动装配，实现起来非常简单
 @FeignClient(value = "item-service")
 public interface ItemClient {
     @GetMapping("/items")
-    List<ItemDTO> queryItemByIds(@RequestParam("ids") Collection<Long> ids);
+    List<ItemDTO> queryItemByIds(@RequestParam("ids") List<Long> ids);
 }
 ```
 3. 使用FeignClient，实现远程调用
