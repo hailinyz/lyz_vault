@@ -57,3 +57,4 @@ feign:
   okhttp:
     enabled: true #开启OKHttp连接池支持
 ```
+这样配置之后，就可以**提高性能**。
