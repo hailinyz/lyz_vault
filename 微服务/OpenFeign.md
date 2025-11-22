@@ -22,6 +22,15 @@
 public class CartApplication { // ... 略 }
 ```
 OpenFeign已经被SpringCloud自动装配，实现起来非常简单
-3. 编写FeignClient
-
-4. 使用FeignClient，实现远程调用
+3. 编写FeignClient(这其实是一个接口)
+```java
+@FeignClient(value = "item-service")
+public interface ItemClient {
+    @GetMapping("/items")
+    List<ItemDTO> queryItemByIds(@RequestParam("ids") Collection<Long> ids);
+}
+```
+3. 使用FeignClient，实现远程调用
+```java
+List<ItemDTO> items = itemClient.queryItemByIds(List.of(1,2,3));
+```
