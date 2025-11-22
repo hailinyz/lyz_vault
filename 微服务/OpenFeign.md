@@ -30,7 +30,7 @@ public interface ItemClient {
     List<ItemDTO> queryItemByIds(@RequestParam("ids") Collection<Long> ids);
 }
 ```
-3. 使用FeignClient，实现远程调用
+4. 使用FeignClient，实现远程调用
 ```java
 List<ItemDTO> items = itemClient.queryItemByIds(List.of(1,2,3));
 ```
