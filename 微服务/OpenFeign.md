@@ -34,3 +34,26 @@ public interface ItemClient {
 ```java
 List<ItemDTO> items = itemClient.queryItemByIds(List.of(1,2,3));
 ```
+
+OpenFegn固然方便快捷丝滑，但是：
+底层发起http请求用的是jdk默认的HttpURLConnection，每次请求都会重新创建连接，慢，所以可以依赖其他的框架：
++ HttpURLConnection： 默认，不支持连接池
++ Apache HttpClient 支持连接池
++ OKHttp: 支持连接池
+这里我选泽的是OKHttp
+
+步骤如下：
+1. 引入依赖
+```xml
+<!--ok-http-->
+<dependency>
+    <groupId>io.github.openfeign</groupId>
+    <artifactId>feign-okhttp</artifactId>
+</dependency>
+```
+1. 开启连接池功能
+```ymal
+feign:
+  okhttp:
+    enabled: true #开启OKHttp连接池支持
+```
