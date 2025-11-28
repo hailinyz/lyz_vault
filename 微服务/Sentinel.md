@@ -59,4 +59,5 @@ spring:
 **所以用到了线程隔离 -- 线程隔离也属于流量控制的一部分**
 
 如图操作即可
-![](assets/Sentinel/file-20251128084315785.png)
+![](assets/Sentinel/file-20251128084440723.png)
+
