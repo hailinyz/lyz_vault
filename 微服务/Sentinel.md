@@ -67,3 +67,15 @@ spring:
 ## Fallback
 
 ![](assets/Sentinel/file-20251128091246951.png)
+1. 将FeignClient作为Sentinel的簇点资源
+
+```YAML
+feign:
+  sentinel:
+    enabled: true # 开启feign对sentinel的支持
+```
+2. FeignClient 的 Fallback有两种配置方式：
+方式一：
++ FallbackFactory，可以对远程调用的异常做处理，永昌都会选择这种
+方式二：
++ FallbackClass，无法对远程调用的异常做处理
