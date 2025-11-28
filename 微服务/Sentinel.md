@@ -26,3 +26,7 @@ spring:
       transport:
         dashboard: localhost:8090
 ```
+
+### 簇点链路
+
+簇点链路就是单机调用链路。是一次请求进入服务后经过的每一个被Sentinel监控的资源链。默认Sentinel会监控SpringMVC的每一个Endpoint（http接口）。限流、熔断等都是针对簇点链路中的**资源**设置的。而资源名默认就是接口的请求路径。
