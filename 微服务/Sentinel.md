@@ -40,3 +40,8 @@ spring:
         dashboard: localhost:8090
       http-method-specify: true # 开启请求方式前缀
 ```
+
+## 请求限流
+
+如图操作即可
+![](assets/Sentinel/file-20251128081322904.png)
