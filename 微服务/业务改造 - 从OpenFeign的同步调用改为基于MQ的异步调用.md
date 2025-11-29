@@ -78,3 +78,4 @@ public class PayStatusListener {
 5. 重启消费者服务
 
 6. 然后就可以去编写pay-service消息发送者的代码
+发消息我们需要用到 RabbitTemplate ,因此在PayOrderServiceImpl里面需要注入RabbitTemplate。
