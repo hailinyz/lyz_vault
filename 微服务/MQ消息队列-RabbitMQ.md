@@ -61,7 +61,7 @@ Queue与Exchange指定BindingKey时可以使用通配符：
 + * 指代一个单词
 ![](assets/MQ消息队列-RabbitMQ/file-20251129102404595.png)
 
-## 通过代码生命队列和交换机
+## 通过代码声明队列和交换机BindingKey
 
 SpeingAMQP提供了几个类，用来声明队列、交换机及其绑定关系：
 + Queue：用于声明队列，可以用工厂类QueueBuilder构建
@@ -118,3 +118,26 @@ public class FanoutConfig {
 ```
 
 基于JavaBean的方式来实现绑定最大的问题就是代码太臃肿了
+
+## 基于注解声明队列和交换机BindingKey
+
+```Java
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = "direct.queue1"),
+    exchange = @Exchange(name = "hmall.direct", type = ExchangeTypes.DIRECT),
+    key = {"red", "blue"}
+))
+public void listenDirectQueue1(String msg){
+    System.out.println("消费者1接收到direct.queue1的消息：【" + msg + "】");
+}
+
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = "direct.queue2"),
+    exchange = @Exchange(name = "hmall.direct", type = ExchangeTypes.DIRECT),
+    key = {"red", "yellow"}
+))
+public void listenDirectQueue2(String msg){
+    System.out.println("消费者2接收到direct.queue2的消息：【" + msg + "】");
+}
+```
+
