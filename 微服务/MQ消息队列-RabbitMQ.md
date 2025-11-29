@@ -51,6 +51,11 @@ Direct Exchange 会将接收到的消息根据规则路由到指定的Queue，�
 + 发布者发送消息时，指定消息的RoutingKey
 + Exchange将消息路由到BindingKey与消息RoutingKey一致的队列
 
-## Topic交换机
+## Topic交换机 - 扩展性更强
 
+因为涉及到通配符的匹配，所以性能可能没有Direct好，但应该可以忽略不计。
 也是基于RoutingKey做消息路由，但是routingKey通常是多个单词的组合，并且以 . 分割。
+
+Queue与Exchange指定BindingKey时可以使用通配符：
++  # 指代0个或多个单词
++ * 指代一个单词
