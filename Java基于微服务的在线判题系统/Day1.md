@@ -24,13 +24,13 @@
 
 Windows - 10/11
 后端：
-+ idea
++ idea 社区版 20
 + JDK17
-+ SpringBoot 3
++ SpringBoot 3 （3.0.1）
 + SpringCloud
 + docker
 前端：
-+ Node.js
++ Node.js 18 以上
 部署环境：
 + 开发完成后再说
 
