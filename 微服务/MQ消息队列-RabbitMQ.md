@@ -117,3 +117,4 @@ public class FanoutConfig {
 }
 ```
 
+基于JavaBean的方式来实现绑定最大的问题就是代码太臃肿了
