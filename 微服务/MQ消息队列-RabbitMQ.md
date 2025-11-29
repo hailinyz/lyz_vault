@@ -150,7 +150,25 @@ Spring的消息对象处理是由MessageConverter来处理的。默认实现是S
 + JDK序列化的消息可读性差
 
 ### 推荐使用JSON序列化代替JDK序列化
+推荐使用JSON的消息转换器
 
 1. 引入jackson依赖
+```XML
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.9.10</version>
+</dependency>
+```
 
-2. 在publisher和consumer中都要配置MessageConverter
+1. 在publisher和consumer中都要配置MessageConverter
+```Java
+@Bean
+public MessageConverter messageConverter(){
+    // 1.定义消息转换器
+    Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
+    // 2.配置自动创建消息id，用于识别不同消息，也可以在业务中基于ID判断是否是重复消息
+    jackson2JsonMessageConverter.setCreateMessageIds(true);
+    return jackson2JsonMessageConverter;
+}
+```
