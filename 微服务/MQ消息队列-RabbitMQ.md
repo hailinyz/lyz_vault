@@ -59,3 +59,4 @@ Direct Exchange 会将接收到的消息根据规则路由到指定的Queue，�
 Queue与Exchange指定BindingKey时可以使用通配符：
 +  # 指代0个或多个单词
 + * 指代一个单词
+![](assets/MQ消息队列-RabbitMQ/file-20251129102404595.png)
