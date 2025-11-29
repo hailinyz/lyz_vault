@@ -15,5 +15,13 @@
     <artifactId>spring-boot-starter-amqp</artifactId>  
 </dependency>
 ```
-2. MQ地址配置，配置在trade-service 的 application.yaml就行
-
+2. MQ地址配置，配置在trade-service 和 pay-service 的 application.yaml就行
+```yaml
+spring:  
+  rabbitmq:  
+    host: 192.168.100.128  
+    port: 5672  
+    virtual-host: /hmall  
+    username: hmall  
+    password: 123
+```
