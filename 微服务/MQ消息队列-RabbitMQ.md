@@ -44,7 +44,7 @@ spring:
 + Topic：话题
 ![](assets/MQ消息队列-RabbitMQ/file-20251129100841192.png)
 
-## Direct交换机
+## Direct交换机 -- 既可以定向也可以雨露均沾
 
 Direct Exchange 会将接收到的消息根据规则路由到指定的Queue，因此称为**定向路由**
 + 每个Queue都与Exchange设置一个BindingKey
