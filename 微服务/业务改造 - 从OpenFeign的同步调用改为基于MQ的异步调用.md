@@ -4,6 +4,8 @@
 
 ![](assets/业务改造%20-%20从OpenFeign的同步调用改为基于MQ的异步调用/file-20251129113618989.png)
 先声明队列交换机（在消费者那里去写）
-这里的pay-service
+这里的pay-service是支付服务，他是发送者
+消费者是trade-service，也就是交易微服务
+
 
 
