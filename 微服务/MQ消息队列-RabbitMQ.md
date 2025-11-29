@@ -143,3 +143,8 @@ public void listenDirectQueue2(String msg){
 
 ## 消息转换器
 
+Spring的消息对象处理是由MessageConverter来处理的。默认实现是SimpleMessageConverter，基于JDK的ObjectOutputStream完成序列化。
+存在下列问题：
++ JDK的序列化又安全风险，容易被代码注入
++ JDK序列化的消息太大
++ JDK序列化的消息可读性差
