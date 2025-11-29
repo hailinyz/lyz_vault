@@ -42,3 +42,11 @@ spring:
 + Fanout：广播，会将接收的消息路由到每一个跟其绑定的queue
 + Direct：定向
 + Topic：话题
+
+
+## Direct交换机
+
+Direct Exchange 会将接收到的消息根据规则路由到指定的Queue，因此称为**定向路由**
++ 每个Queue都与Exchange设置一个BindingKey
++ 发布者发送消息时，指定消息的RoutingKey
++ Exchange将消息路由到BindingKey与消息RoutingKey一致的队列
