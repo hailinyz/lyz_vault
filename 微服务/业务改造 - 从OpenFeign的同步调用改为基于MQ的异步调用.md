@@ -51,7 +51,30 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 ```
 这种方式让jspringboot能够扫描到它，从而让他生效。
 
-4. 接着我们就可以去编写消息的消费者了
+4. 接着我们就可以去编写消息的消费者代码了
 注解部分不仅要指定队列，还要指定交换机以及绑定关系
 
 方法部分是具体的业务代码，就是pay-service发消息，我们在这收消息，收到消息以后去吧这个订单状态标记成”已支付“
+
+```java
+@Component  
+@RequiredArgsConstructor  
+public class PayStatusListener {  
+  
+    private final IOrderService orderService;  
+  
+    @RabbitListener(bindings = @QueueBinding(  
+            value = @Queue(name = "trade.pay.success.queue",durable = "true"),  
+            exchange = @Exchange(name = "pay.direct"),  
+            key = "pay.success"  
+    ))  
+    public void listenPaySuccess(Long orderId) {  
+        orderService.markOrderPaySuccess(orderId);  
+    }  
+  
+}
+```
+
+5. 重启消费者服务
+
+6. 然后就可以去编写pay-service消息发送者的代码
