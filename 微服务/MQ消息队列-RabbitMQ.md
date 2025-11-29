@@ -148,3 +148,9 @@ Spring的消息对象处理是由MessageConverter来处理的。默认实现是S
 + JDK的序列化又安全风险，容易被代码注入
 + JDK序列化的消息太大
 + JDK序列化的消息可读性差
+
+### 推荐使用JSON序列化代替JDK序列化
+
+1. 引入jackson依赖
+
+2. 在publisher和consumer中都要配置MessageConverter
