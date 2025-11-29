@@ -154,10 +154,10 @@ Spring的消息对象处理是由MessageConverter来处理的。默认实现是S
 
 1. 引入jackson依赖
 ```XML
+<!-- jackson -->
 <dependency>
-    <groupId>com.fasterxml.jackson.dataformat</groupId>
-    <artifactId>jackson-dataformat-xml</artifactId>
-    <version>2.9.10</version>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
 </dependency>
 ```
 
