@@ -30,3 +30,25 @@ spring:
 3. 配置消息转换器
 因为消息转换器不仅仅是发送方需要，消费方也需要，所以我们就不分别写在每个微服务里了，直接卸载common里面，之后每个微服务引入common就行了
 
+在config包下创建一个配置类,注意MessageConverter要是amqp包下的
+```java
+@Configuration  
+public class MqConfig {  
+  
+    @Bean  
+    public MessageConverter messageConverter() {  
+        return new Jackson2JsonMessageConverter();  
+    }  
+  
+}
+```
+现在这个配置类是没有生效的，想要使它生效，就得被扫描包扫描到，但是他是在common模块下的，我们是在trade模块或者pay模块下的，他们的包名都不一样，所以根本不可能被扫描到。
+
+因此我们采用springboot自动装配的原理：在common模块下的 spring.factories这个文件下添加MQ的这个config。
+```factories
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\  
+  com.hmall.common.config.MyBatisConfig,\  com.hmall.common.config.MvcConfig,\  com.hmall.common.config.MqConfig,\  com.hmall.common.config.JsonConfig
+```
+这种方式让jspringboot能够扫描到它，从而让他生效。
+
+4. 接着我们就可以去编写消息的消费者了
