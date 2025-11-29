@@ -79,3 +79,15 @@ public class PayStatusListener {
 
 6. 然后就可以去编写pay-service消息发送者的代码
 发消息我们需要用到 RabbitTemplate ,因此在PayOrderServiceImpl里面需要注入RabbitTemplate。
+```java
+// TODO 5.修改订单状态  
+// 不再是同步的OpenFeign，改为异步调用的MQ  
+//tradeClient.markOrderPaySuccess(po.getBizOrderNo());  
+rabbitTemplate.convertAndSend("pay.direct","pay.success",po.getBizOrderNo());
+```
+现在已经可以进行消息发送了
+
+这里注意一点，作为 这种异步通知，最好不要对原有业务进行影响，最简单的方案就是把它给try起来，
+```java
+
+```
