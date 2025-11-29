@@ -61,7 +61,7 @@ Queue与Exchange指定BindingKey时可以使用通配符：
 + * 指代一个单词
 ![](assets/MQ消息队列-RabbitMQ/file-20251129102404595.png)
 
-## 通过代码声明队列和交换机BindingKey
+## 通过配置类代码声明队列和交换机BindingKey
 
 SpeingAMQP提供了几个类，用来声明队列、交换机及其绑定关系：
 + Queue：用于声明队列，可以用工厂类QueueBuilder构建
@@ -140,4 +140,6 @@ public void listenDirectQueue2(String msg){
     System.out.println("消费者2接收到direct.queue2的消息：【" + msg + "】");
 }
 ```
+
+## 消息转换器
 
