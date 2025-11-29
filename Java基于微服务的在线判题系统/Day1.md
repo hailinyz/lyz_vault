@@ -28,6 +28,7 @@ Windows - 10/11
 + JDK17
 + SpringBoot 3
 + SpringCloud
++ docker
 前端：
 + Node.js
 部署环境：
