@@ -89,5 +89,13 @@ rabbitTemplate.convertAndSend("pay.direct","pay.success",po.getBizOrderNo());
 
 这里注意一点，作为 这种异步通知，最好不要对原有业务进行影响，最简单的方案就是把它给try起来，
 ```java
-
+// TODO 5.修改订单状态  
+// 不再是同步的OpenFeign，改为异步调用的MQ  
+//tradeClient.markOrderPaySuccess(po.getBizOrderNo());  
+try {  
+    rabbitTemplate.convertAndSend("pay.direct","pay.success",po.getBizOrderNo());  
+}catch (Exception e){  
+    log.error("发送支付状态通知失败，订单id:{}",po.getBizOrderNo(),e);  
+}
 ```
+那要是核心业务成功了，消息没成功怎么办，未来会有一些兜底方案，现在先这么用着，够用了。
