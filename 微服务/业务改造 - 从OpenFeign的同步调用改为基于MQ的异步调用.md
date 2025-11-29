@@ -7,5 +7,13 @@
 这里的pay-service是支付服务，他是发送者
 消费者是trade-service，也就是交易微服务
 
-
+1. 首先为用到MQ的异步调用的两个服务引入相应依赖
+```xml
+<!--amqp-->  
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-amqp</artifactId>  
+</dependency>
+```
+2. MQ地址配置，配置在trade-service 的 application.yaml就行
 
