@@ -60,3 +60,15 @@ Queue与Exchange指定BindingKey时可以使用通配符：
 +  # 指代0个或多个单词
 + * 指代一个单词
 ![](assets/MQ消息队列-RabbitMQ/file-20251129102404595.png)
+
+## 通过代码生命队列和交换机
+
+SpeingAMQP提供了几个类，用来声明队列、交换机及其绑定关系：
++ Queue：用于声明队列，可以用工厂类QueueBuilder构建
++ Exchange：用于声明交换机，可以用工厂类ExchangeBuilder构建
++ Binding：用于声明队列和交换机的绑定关系，可以用工厂类BindingBuilder构建
+
+我们知道Exchange有好几个类，有上面提到的**Fanout、Direct、Topic等等**
+
+
+
