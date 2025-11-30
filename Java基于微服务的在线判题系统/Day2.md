@@ -120,10 +120,47 @@ C端用户登录：手机验证码
 这些用户信息肯定是要持久化的----------> 数据库（MySQL）
 ![](assets/Day2/file-20251130125202448.png)
 再根据查询结果进行登录校验。
-这时候就要引入MySQL这个组件到咱们的项目当中了
+## 这时候就要引入MySQL这个组件到咱们的项目当中了
 
 先启动docker，然后直接在”在线判题系统“文件夹下拉去并且启动mysql
 ```powershell
 docker run -d --name oj-mysql -p 3307:3306 -e "TZ=Asia/Shanghai" -e "MYSQL_ROOT_PASSWORD=123456" mysql:5.7
 ```
 因为我的主机3306端口已经被占用了，所以用3307，然后docker容器内部还是3306
+
+进入到mysql容器中：
+```powershell
+docker exec -it 914748ac42e3 bash
+```
+
+因为直接用root连接的话不是很安全，所以创建一个oj项目用户
+```powershell
+CREATE USER 'ojtest'@'%' IDENTIFIED BY '123456';
+```
+
+然后建库建表
+```powershell
+CREATE database if NOT EXISTS `bitoj_dev` ；
+```
+
+赋予⽤⼾操作权限,只限定在我们创建的这个bitoj_dev库就行了
+```powershell
+GRANT CREATE,DROP,SELECT, INSERT, UPDATE, DELETE ON bitoj_dev.* TO 'ojtest'@'%';
+```
+
+然后通过刚才创建的oj项目用户进入mysql进行建表
+```powershell
+CREATE TABLE `tb_test` (
+ `test_id` bigint unsigned NOT NULL,
+ `title` text NOT NULL,
+ `content` text NOT NULL,
+ PRIMARY KEY (`test_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO tb_test values(1,'test','test');
+select * from tb_test;
+update tb_test set title = 'test_update' where test_id = 1;
+delete from tb_test;
+
+```
