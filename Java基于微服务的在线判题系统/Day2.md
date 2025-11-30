@@ -121,3 +121,8 @@ C端用户登录：手机验证码
 ![](assets/Day2/file-20251130125202448.png)
 再根据查询结果进行登录校验。
 这时候就要引入MySQL这个组件到咱们的项目当中了
+
+先启动docker，然后直接在”在线判题系统“文件夹下拉去并且启动mysql
+```powershell
+docker run -d --name oj-mysql -p 3306:3306 -e "TZ=Asia/Shanghai" -e "MYSQL_ROOT_PASSWORD=123456" mysql:5.7
+```
