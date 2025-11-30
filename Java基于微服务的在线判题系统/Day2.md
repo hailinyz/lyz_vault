@@ -409,3 +409,22 @@ public enum ResultCode {
 }
 ```
 
+### 请求路径和参数(body、pathparameters、query pathparameters、headers)
+
+这里参数用body，请求方式用post
+```java
+@PostMapping("/login") //登录安全考虑，使用Post  
+public LoginResult login(@RequestBody LoginDTO loginDTO){  
+    return sysUserService.login(loginDTO.getUserAccount(), loginDTO.getUserAccount());  
+}
+```
+创建一个LoginDTP存放用户名和密码
+```java
+@Getter  
+@Setter  
+public class LoginDTO {  
+    private String userAccount;  
+    private String password;  
+}
+```
+
