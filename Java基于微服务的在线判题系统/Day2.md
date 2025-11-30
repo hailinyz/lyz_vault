@@ -327,4 +327,8 @@ spring:
 ### 后端
 ![](assets/Day2/file-20251130161029013.png)
 请求先由controller处理，完了之后给service处理具体的业务逻辑
+我相信以我的记忆能力以及实操能力，看图就能回忆起当初那个意气风发的自己是怎么操作的
+![](assets/Day2/file-20251130161352631.png)
+![](assets/Day2/file-20251130161403029.png)
+![](assets/Day2/file-20251130161409635.png)
 
