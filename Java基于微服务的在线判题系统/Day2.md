@@ -290,3 +290,19 @@ spring:
 
 这样配置就能确保主键生成用的是雪花算法
 ![](assets/Day2/file-20251130153126738.png)
+
+### 使用Lombok实体类的get、set方法太多了，不太优雅
+
+1. 安装插件
+![](assets/Day2/file-20251130154707103.png)
+
+2. 导入Lombok依赖
+```pom
+<dependency>
+ <groupId>org.projectlombok</groupId>
+ <artifactId>lombok</artifactId>
+</dependency>
+```
+
+那么这个依赖放在哪个pom里面呢？----------> 可以直接放在最外层pom文件里
+![](assets/Day2/file-20251130155008814.png)
