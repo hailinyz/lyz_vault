@@ -414,7 +414,7 @@ public enum ResultCode {
 这里参数用body，请求方式用post
 ```java
 @PostMapping("/login") //登录安全考虑，使用Post  
-public LoginResult login(@RequestBody LoginDTO loginDTO){  
+public R<Void> login(@RequestBody LoginDTO loginDTO){  
     return sysUserService.login(loginDTO.getUserAccount(), loginDTO.getUserAccount());  
 }
 ```
@@ -428,3 +428,6 @@ public class LoginDTO {
 }
 ```
 
+注意，上面返回值已经是一个R<T>，记得把原始代码改一下。
+
+但是这样写接口文档太low了，**可以用swagger 生成接口文档**
