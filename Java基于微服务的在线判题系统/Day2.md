@@ -332,3 +332,5 @@ spring:
 ![](assets/Day2/file-20251130161403029.png)
 ![](assets/Day2/file-20251130161409635.png)
 
+这里的返回值应该是什么呢？至少要返回一个Message提示登录成功/失败把，失败原因
+![](assets/Day2/file-20251130161539910.png)
