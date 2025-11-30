@@ -164,3 +164,6 @@ update tb_test set title = 'test_update' where test_id = 1;
 delete from tb_test;
 
 ```
+
+注意用图形化界面工具的时候要用3307，因为我上面改成3307了
+![](assets/Day2/file-20251130132103242.png)
