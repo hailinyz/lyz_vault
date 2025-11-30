@@ -197,5 +197,5 @@ delete from tb_test;
 + 配置灵活
 + 与Spring Boot集成良好
 
-## 集成MyBatisPlus与数据库连接池
+## 集成MyBatisPlus与数据库连接池（HikariCP已经是springboot默认连接池）
 
