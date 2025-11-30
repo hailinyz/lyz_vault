@@ -368,3 +368,20 @@ MyBatisPlus的语法是这样的：
 ### 响应数据定义
 
 响应数据格式：往common里面定义一个R类
+```java
+@Getter  
+@Setter  
+public class R<T> {  
+  
+    private int code; //定义一些固定（常量集合维护用枚举）的code，前后端商量好的 0 成功 1 失败 2 权限不足 3 参数错误 4 账号不存在 5 账号已存在 6 密码错误 等等  
+  
+    private String msg; // 通常是code的辅助说明 一个code对应一个msg  
+  
+    private T data; //请求某个接口返回的数据，类型可能是不同一的，所以用泛型  
+  
+}
+```
+然后有一个枚举,为了不暴露我们的一个状态，使用自定义状态码和msg
+```java
+
+```
