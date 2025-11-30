@@ -120,7 +120,7 @@ C端用户登录：手机验证码
 这些用户信息肯定是要持久化的----------> 数据库（MySQL）
 ![](assets/Day2/file-20251130125202448.png)
 再根据查询结果进行登录校验。
-## 这时候就要引入MySQL这个组件到咱们的项目当中了
+### 这时候就要引入MySQL这个组件到咱们的项目当中了
 
 先启动docker，然后直接在”在线判题系统“文件夹下拉去并且启动mysql
 ```powershell
@@ -197,5 +197,69 @@ delete from tb_test;
 + 配置灵活
 + 与Spring Boot集成良好
 
-## 集成MyBatisPlus与数据库连接池（HikariCP已经是springboot默认连接池）
+### 集成MyBatisPlus与数据库连接池（HikariCP已经是springboot默认连接池）
+
+先在oj-system引入pom依赖
+```pom
+<dependencies>  
+    <!-- mybatis-plus -->  
+    <dependency>  
+        <groupId>com.baomidou</groupId>  
+        <artifactId>mybatis-plus-spring-boot3-starter</artifactId>  
+        <version>${mybatis-plus.version}</version>  
+    </dependency>  
+  
+    <dependency>  
+        <groupId>com.mysql</groupId>  
+        <artifactId>mysql-connector-j</artifactId>  
+    </dependency>  
+</dependencies>
+```
+
+然后测试以下即将用到的MyBatisPlus与数据库连接池
+在com.bite.system下创建一个test包
+![](assets/Day2/file-20251130141542846.png)
+
+实体TestDomain要有对应的MyBatisPlus的注解
+![](assets/Day2/file-20251130141625256.png)
+
+Mapper不仅要extends BaseMapper，还要指定要操作的泛型是我们对应的实体
+```java
+public interface TestMapper extends BaseMapper<TestDomain> {  
+}
+```
+
+ 记得在启动类上加上扫描注解
+ ```java
+@SpringBootApplication  
+@MapperScan("com.bite.**.mapper")  
+public class OjSystemApplication {  
+    public static void main(String[] args) {  
+        SpringApplication.run(OjSystemApplication.class, args);  
+    }  
+}
+ ```
+最后在bootstrap.yml下配置数据库连接，注意端口!!
+```yml
+server:  
+  port: 9201  
+# Spring  
+spring:  
+  application:  
+    # 应⽤名称  
+    name: oj-system  
+  datasource:  
+   url: jdbc:mysql://localhost:3307/bitoj_dev?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8  
+   username: ojtest  
+   password: 123456  
+   hikari:  
+    minimum-idle: 5 # 最⼩空闲连接数  
+    maximum-pool-size: 20 # 最⼤连接数  
+    idle-timeout: 30000 # 空闲连接存活时间（毫秒）  
+    connection-timeout: 30000 # 连接超时时间（毫秒
+```
+
+### 表结构设计：满足需求，避免冗余设计、考虑今后发展
+
+
 
