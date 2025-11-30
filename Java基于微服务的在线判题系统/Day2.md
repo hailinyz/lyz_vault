@@ -324,3 +324,7 @@ spring:
 最外层的pom
 ![](assets/Day2/file-20251130160746540.png)
 
+### 后端
+![](assets/Day2/file-20251130161029013.png)
+请求先由controller处理，完了之后给service处理具体的业务逻辑
+
