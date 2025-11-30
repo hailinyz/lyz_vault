@@ -306,3 +306,8 @@ spring:
 
 那么这个依赖放在哪个pom里面呢？----------> 可以直接放在最外层pom文件里
 ![](assets/Day2/file-20251130155008814.png)
+
+这时候之前写的get、set方法都可以去掉了，直接用注解
+@Getter  
+@Setter  
+@ToString
