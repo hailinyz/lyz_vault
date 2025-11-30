@@ -311,3 +311,6 @@ spring:
 @Getter  
 @Setter  
 @ToString
+
+我们发现这几个字段会有很大的复用，可以提取出来，放在一个公共的类里面，然后让这个继承那个公共类 BaseEntity 就行
+![](assets/Day2/file-20251130155410517.png)
