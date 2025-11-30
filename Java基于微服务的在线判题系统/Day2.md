@@ -124,5 +124,6 @@ C端用户登录：手机验证码
 
 先启动docker，然后直接在”在线判题系统“文件夹下拉去并且启动mysql
 ```powershell
-docker run -d --name oj-mysql -p 3306:3306 -e "TZ=Asia/Shanghai" -e "MYSQL_ROOT_PASSWORD=123456" mysql:5.7
+docker run -d --name oj-mysql -p 3307:3306 -e "TZ=Asia/Shanghai" -e "MYSQL_ROOT_PASSWORD=123456" mysql:5.7
 ```
+因为我的主机3306端口已经被占用了，所以用3307，然后docker容器内部还是3306
