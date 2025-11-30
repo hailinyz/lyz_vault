@@ -316,4 +316,4 @@ spring:
 ![](assets/Day2/file-20251130155410517.png)
 
 但是现在有个问题，这个公共类之后能在oj-system包底下用，其他包用不了怎么办
-这时候可以new一个公共的模块common就行了
+这时候可以new一个公共的模块common就行了，common存放一些公共的东西
