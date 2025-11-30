@@ -345,3 +345,13 @@ MyBatisPlus的语法是这样的：
         // select password from tb_sys_user where user_account = #{userAccount}
         SysUser sysUser = sysUserMapper.selectOne(queryWrapper.select(SysUser::getPassword).eq(SysUser::getUserAccount, userAccount));
 ```
+
+
+## 有了接口文档才能更好的进行开发
+
+一般是由后端写的，和前端讨论才最终决定，包含了接口地址、参数以及输出内容的说明
+### 作用
++ 简化前后端开发
++ 已于错误处理
++ 代码可维护性
++ 文档化
