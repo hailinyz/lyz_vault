@@ -334,3 +334,6 @@ spring:
 
 这里的返回值应该是什么呢？至少要返回一个Message提示登录成功/失败把，失败原因
 ![](assets/Day2/file-20251130161539910.png)
+
+//至少要返回一个Message提示登录成功/失败把， bool true false || int code 1 成功 0 失败  
+// 失败原因     String msg//因为返回两个字段，是不是一个对象啊，所以要定义一个对象
