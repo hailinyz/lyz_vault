@@ -98,3 +98,11 @@ create database bitoj_nacos_local;
 ```
 创建表sql[nacos/distribution/conf/mysql-schema.sql at master · alibaba/nacos (github.com)](https://github.com/alibaba/nacos/blob/master/distribution/conf/mysql-schema.sql)
 现在root下创建库表，再赋予用户权限
+```sql
+GRANT CREATE, DROP, SELECT, INSERT, UPDATE, DELETE ON bitoj_nacos_dev.* TO 'ojtest'@'%';
+```
+3. 启动nacos容器
+将以单例模式启动开放
+```powershell
+docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=${mysql_ip} -e MYSQL_SERVICE_PORT=${mysql_port} -e MYSQL_SERVICE_DB_NAME=${nacos_db_name} -e MYSQL_SERVICE_USER=${mysql_user} -e MYSQL_SERVICE_PASSWORD=${mysql_password} nacos/nacos-server:v2.2.3
+```
