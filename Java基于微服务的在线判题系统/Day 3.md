@@ -421,3 +421,10 @@ spring:
         file-extension: yaml
 ```
 然后测试能不能通过路由转发访问[localhost:19090/system/test/list](http://localhost:19090/system/test/list)
+
+## 用户认证方式
+
++ Session，首次登录，服务器
++ OAuth，授权
++ Token
++ JWT
