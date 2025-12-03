@@ -97,3 +97,4 @@ docker pull nacos/nacos-server:v2.2.3
 create database bitoj_nacos_local;
 ```
 创建表sql[nacos/distribution/conf/mysql-schema.sql at master · alibaba/nacos (github.com)](https://github.com/alibaba/nacos/blob/master/distribution/conf/mysql-schema.sql)
+现在root下创建库表，再赋予用户权限
