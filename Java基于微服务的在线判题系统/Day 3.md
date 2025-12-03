@@ -106,3 +106,10 @@ GRANT CREATE, DROP, SELECT, INSERT, UPDATE, DELETE ON bitoj_nacos_dev.* TO 'ojte
 ```powershell
 docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=${mysql_ip} -e MYSQL_SERVICE_PORT=${mysql_port} -e MYSQL_SERVICE_DB_NAME=${nacos_db_name} -e MYSQL_SERVICE_USER=${mysql_user} -e MYSQL_SERVICE_PASSWORD=${mysql_password} nacos/nacos-server:v2.2.3
 ```
+找到IPAddress：docker inspect oj-mysql
+![](assets/Day%203/file-20251203210024777.png)
+172.17.0.2
+然后替换上面信息
+```powershell
+
+```
