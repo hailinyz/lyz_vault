@@ -385,3 +385,39 @@ spring:
 </dependency>
 
 ```
+2. 启动类配置
+3. 添加配置oj-gateway-local.yaml
+```yaml
+server:
+  port: 19090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: oj-system
+          uri: lb://oj-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+
+```
+配置gateway微服务的yml文件
+```yml
+spring:  
+  application:  
+    # 应⽤名称  
+    name: oj-gateway  
+  profiles:  
+    active: local  
+  cloud:  
+    nacos:  
+      discovery: # nacos注册中心  
+        namespace: bebc7274-6a9a-4c8b-84e8-461d7d385346  
+        server-addr: http://localhost:8848  
+      config: # nacos配置中心  
+        namespace: bebc7274-6a9a-4c8b-84e8-461d7d385346  
+        server-addr: http://localhost:8848  
+        file-extension: yaml
+```
+然后测试能不能通过路由转发访问[localhost:19090/system/test/list](http://localhost:19090/system/test/list)
