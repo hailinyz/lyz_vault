@@ -75,3 +75,5 @@
     </root>
 </configuration>
 ```
+启动项目之后配置就能生效
+![](assets/Day%203/file-20251203152616694.png)
