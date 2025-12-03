@@ -306,4 +306,6 @@ INSERT INTO roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
 ```
 
 http://localhost:8848/nacos/
-随随便便就进来了，不安全，到服务器上部署再提zhe'ge
+随随便便就进来了，不安全，到服务器上部署再提这个安全
+
+既然nacos已经配置好了，直接将bootstrap.yml文件往nacos移动
