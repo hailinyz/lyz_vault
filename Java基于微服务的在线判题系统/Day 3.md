@@ -426,5 +426,4 @@ spring:
 
 + Session，首次登录，服务器将用户信息存入session，生成唯一seesion id，返回客户端，此后请求中客户端会携带session id，服务器通过session id验证用户身份
 + OAuth，授权
-+ Token，登录成功会返回token给
-+ JWT
++ Token，登录成功会返回token给客户端，客户端每次请求资源都要在请求头中携带token，服务器验证token有效性判断用户身份，如使用jwt进行身份认证
