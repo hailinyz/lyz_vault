@@ -309,3 +309,50 @@ http://localhost:8848/nacos/
 随随便便就进来了，不安全，到服务器上部署再提这个安全
 
 既然nacos已经配置好了，直接将bootstrap.yml文件往nacos移动
+1. yml文件配置
+```yml
+spring:  
+  application:  
+    # 应⽤名称  
+    name: oj-system  
+  profiles:  
+    active: local  
+  cloud:  
+    nacos:  
+      discovery: # nacos注册中心  
+        namespace: bebc7274-6a9a-4c8b-84e8-461d7d385346  
+        server-addr: http://localhost:8848  
+      config: # nacos配置中心  
+        namespace: bebc7274-6a9a-4c8b-84e8-461d7d385346  
+        server-addr: http://localhost:8848  
+        file-extension: yaml
+```
+2. 在自己创建的命名空间下创建一条这个微服务的配置oj-system-local.yaml
+```yaml
+server:
+  port: 9201
+# Spring
+spring:
+  datasource:
+   url: jdbc:mysql://localhost:3307/bitoj_dev?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+   username: ojtest
+   password: 123456
+   hikari:
+    minimum-idle: 5 # 最⼩空闲连接数
+    maximum-pool-size: 20 # 最⼤连接数
+    idle-timeout: 30000 # 空闲连接存活时间（毫秒）
+    connection-timeout: 30000 # 连接超时时间（毫秒
+
+```
+这样nacos的外置数据库就配置好了
+3. 对了，记得引入nacos的相关依赖(注册中心和配置依赖)
+```xml
+<dependency>  
+    <groupId>com.alibaba.cloud</groupId>  
+    <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>  
+</dependency>  
+<dependency>  
+    <groupId>com.alibaba.cloud</groupId>  
+    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>  
+</dependency>
+```
