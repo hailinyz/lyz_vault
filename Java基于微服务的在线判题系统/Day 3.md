@@ -111,5 +111,5 @@ docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JV
 172.17.0.2
 然后替换上面信息
 ```powershell
-docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=oj-mysql -e MYSQL_SERVICE_PORT=3307:3306 -e MYSQL_SERVICE_DB_NAME=bitoj_nacos_local -e MYSQL_SERVICE_USER=ojtest -e MYSQL_SERVICE_PASSWORD=123456 nacos/nacos-server:v2.2.3
+docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=oj-mysql -e MYSQL_SERVICE_PORT=3306 -e MYSQL_SERVICE_DB_NAME=bitoj_nacos_local -e MYSQL_SERVICE_USER=ojtest -e MYSQL_SERVICE_PASSWORD=123456 nacos/nacos-server:v2.2.3
 ```
