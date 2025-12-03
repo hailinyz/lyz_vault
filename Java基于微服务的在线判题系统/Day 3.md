@@ -111,11 +111,7 @@ docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JV
 ```powershell
 docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=172.17.0.2 -e MYSQL_SERVICE_PORT=3306 -e MYSQL_SERVICE_DB_NAME=bitoj_nacos_local -e MYSQL_SERVICE_USER=ojtest -e MYSQL_SERVICE_PASSWORD=123456 nacos/nacos-server:v2.2.3
 ```
-172.17.0.2
-
-
-
-
+172.17.0.2为什么用这个后面会说
 
 
 ```sql
@@ -308,3 +304,6 @@ INSERT INTO users (username, password, enabled) VALUES ('nacos',
 '$2a$10$EuWPZHzz32dJN7jexM34MOeYirDdFAZm2kuWj7VEOJhhZkDrxfvUu', TRUE);  
 INSERT INTO roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
 ```
+
+http://localhost:8848/nacos/
+随随便便就进来了，不安全，到服务器上部署再提zhe'ge
