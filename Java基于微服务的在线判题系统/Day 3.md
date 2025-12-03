@@ -360,3 +360,28 @@ spring:
 
 ## spring gateway
 
+1. 引入依赖
+
+```xml
+<!-- SpringCloud Gateway -->
+<dependency>
+ <groupId>org.springframework.cloud</groupId>
+ <artifactId>spring-cloud-starter-gateway</artifactId>
+</dependency>
+<!-- SpringCloud Loadbalancer -->
+<dependency>
+ <groupId>org.springframework.cloud</groupId>
+ <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+</dependency>
+<!-- SpringCloud Alibaba Nacos -->
+<dependency>
+ <groupId>com.alibaba.cloud</groupId>
+ <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+</dependency>
+<!-- SpringCloud Alibaba Nacos Config -->
+<dependency>
+ <groupId>com.alibaba.cloud</groupId>
+ <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+</dependency>
+
+```
