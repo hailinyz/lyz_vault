@@ -356,3 +356,7 @@ spring:
     <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>  
 </dependency>
 ```
+
+
+## spring gateway
+
