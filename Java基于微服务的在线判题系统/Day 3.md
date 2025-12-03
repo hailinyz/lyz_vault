@@ -85,3 +85,15 @@
 ### Nacos解决这个问题
 微服务项目得要服务发现、注册中心，又可以当注册中心，所以用它
 1. 拉取镜像
+```powershell
+docker pull nacos/nacos-server:v2.2.3
+```
+2. 配置外部数据库
++ 数据持久性
++ 高可用，支持集群部署
++ 性能优化，易于管理
+创建库
+```sql
+create database bitoj_nacos_local;
+```
+创建表sql[nacos/distribution/conf/mysql-schema.sql at master · alibaba/nacos (github.com)](https://github.com/alibaba/nacos/blob/master/distribution/conf/mysql-schema.sql)
