@@ -54,5 +54,54 @@ docker run --name oj-redis -d -p 6379:6379 redis --requirepass "123456"
 4. 对redis进行相应的配置
 + 写一个关于json序列化工具
 自定义序列化器 JsonRedisSerializer类，序列化和反序列化
+```java
+public class JsonRedisSerializer<T> implements RedisSerializer<T> {  
+    public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");  
+    private Class<T> clazz;  
+    public JsonRedisSerializer(Class<T> clazz) {  
+        super();  
+        this.clazz = clazz;  
+    }  
+    @Override  
+    public byte[] serialize(T t) throws SerializationException {  
+        if (t == null) {  
+            return new byte[0];  
+        }  
+        return JSON.toJSONString(t).getBytes(DEFAULT_CHARSET);  
+    }  
+    @Override  
+    public T deserialize(byte[] bytes) throws SerializationException {  
+        if (bytes == null || bytes.length <= 0) {  
+            return null;  
+        }  
+        String str = new String(bytes, DEFAULT_CHARSET);  
+        return JSON.parseObject(str, clazz);  
+    }  
+}
+```
 
-加redis配置
+加redis配置RedisConfig
+```java
+/**  
+* redis配置  
+ */  
+@Configuration  
+public class RedisConfig extends CachingConfigurerSupport {  
+    @Bean  
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory  
+                                                               connectionFactory) {  
+        RedisTemplate<Object, Object> template = new RedisTemplate<>();  
+        template.setConnectionFactory(connectionFactory);  
+        JsonRedisSerializer serializer = new JsonRedisSerializer(Object.class);  
+        // 使⽤StringRedisSerializer来序列化和反序列化redis的key值  
+        template.setKeySerializer(new StringRedisSerializer());  
+        template.setValueSerializer(serializer);  
+        // Hash的key也采⽤StringRedisSerializer的序列化⽅式  
+        template.setHashKeySerializer(new StringRedisSerializer());  
+        template.setHashValueSerializer(serializer);  
+        template.afterPropertiesSet();  
+        return template;  
+    }  
+}
+```
+
