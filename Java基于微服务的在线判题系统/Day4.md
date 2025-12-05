@@ -106,4 +106,3 @@ public class RedisConfig extends CachingConfigurerSupport {
 ```
 
 封装RedisService
-抽象解耦，统一接口
