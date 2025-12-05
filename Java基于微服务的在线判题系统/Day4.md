@@ -307,3 +307,40 @@ spring:
 ## 身份认证机制-功能实现
 
 ### 引入jwt
+```xml
+<dependency>
+ <groupId>io.jsonwebtoken</groupId>
+ <artifactId>jjwt</artifactId>
+ <version>0.9.1</version>
+</dependency>
+```
+### 创建jwt工具类
+```java
+public class JwtUtils {  
+    /**  
+     * ⽣成令牌  
+     *  
+     * @param claims 数据  
+     * @param secret 密钥  
+     * @return 令牌  
+     */  
+    public static String createToken(Map<String, Object> claims, String secret)  
+    {  
+        String token =  
+                Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512,  
+                        secret).compact();  
+        return token;  
+    }  
+    /**  
+     * 从令牌中获取数据  
+     *  
+     * @param token 令牌  
+     * @param secret 密钥  
+     * @return 数据  
+     */  
+    public static Claims parseToken(String token, String secret) {  
+        return  
+                Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();  
+    }  
+}
+```
