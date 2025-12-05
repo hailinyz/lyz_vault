@@ -26,3 +26,9 @@
 
 所以综上所述，记录jwt过期时间，并且支持过期时间的修改，最好还能有存储功能，那必然用的是**Redis**+JWT 实现身份认证机制
 
+## 安装Redis
+
+1. 拉取镜像
+```powershell
+docker pull redis
+```
