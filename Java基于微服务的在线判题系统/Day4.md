@@ -326,6 +326,9 @@ spring:
 
 ```
 ### 创建jwt工具类
+
+在common的security的util包下创建
+![](assets/Day4/file-20251205215050307.png)
 ```java
 public class JwtUtils {  
     /**  
