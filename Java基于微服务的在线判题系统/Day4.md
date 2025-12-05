@@ -313,6 +313,17 @@ spring:
  <artifactId>jjwt</artifactId>
  <version>0.9.1</version>
 </dependency>
+<dependency>
+ <groupId>javax.xml.bind</groupId>
+ <artifactId>jaxb-api</artifactId>
+ <version>2.4.0-b180830.0359</version>
+</dependency>
+<dependency>
+ <groupId>cn.hutool</groupId>
+ <artifactId>hutool-all</artifactId>
+ <version>5.8.22</version>
+</dependency>
+
 ```
 ### 创建jwt工具类
 ```java
