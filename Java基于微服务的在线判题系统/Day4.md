@@ -53,4 +53,6 @@ docker run --name oj-redis -d -p 6379:6379 redis --requirepass "123456"
 也要进行版本的管理
 4. 对redis进行相应的配置
 + 写一个关于json序列化工具
-JsonRedisSerializer类，序列化和反序列化
+自定义序列化器 JsonRedisSerializer类，序列化和反序列化
+
+加redis配置
