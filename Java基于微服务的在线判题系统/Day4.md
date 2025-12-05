@@ -277,3 +277,26 @@ public class RedisService {
 ![](assets/Day4/file-20251205204752987.png)
 为了让其他微服务能扫描到要完成下图操作在resource下创建
 ![](assets/Day4/file-20251205205614316.png)
+
+别忘了配置redis的连接配置，密码地址等
+```yaml
+server:
+  port: 9201
+# Spring
+spring:
+  data:
+    redis:
+      host: localhost
+      password: 123456
+
+  datasource:
+   url: jdbc:mysql://localhost:3307/bitoj_dev?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+   username: ojtest
+   password: 123456
+   hikari:
+    minimum-idle: 5 # 最⼩空闲连接数
+    maximum-pool-size: 20 # 最⼤连接数
+    idle-timeout: 30000 # 空闲连接存活时间（毫秒）
+    connection-timeout: 30000 # 连接超时时间（毫秒
+ 
+```
