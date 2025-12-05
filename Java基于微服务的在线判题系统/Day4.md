@@ -275,3 +275,5 @@ public class RedisService {
 ```
 存放文件如图
 ![](assets/Day4/file-20251205204752987.png)
+为了让其他微服务能扫描到要完成下图操作在resource下创建
+![](assets/Day4/file-20251205205614316.png)
