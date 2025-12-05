@@ -36,3 +36,18 @@ docker pull redis
 ```powershell
 docker run --name oj-redis -d -p 6379:6379 redis --requirepass "123456"
 ```
+3. 在oj-common创建相应的redis工程，引入依赖
+```xml
+<!-- SpringBoot Boot Redis -->
+ <dependency>
+ <groupId>org.springframework.boot</groupId>
+ <artifactId>spring-boot-starter-data-redis</artifactId>
+ </dependency>
+ <!-- Alibaba Fastjson -->
+ <dependency>
+ <groupId>com.alibaba.fastjson2</groupId>
+ <artifactId>fastjson2</artifactId>
+ <version>2.0.43</version>
+ </dependency>
+```
+也要进行版本的管理
