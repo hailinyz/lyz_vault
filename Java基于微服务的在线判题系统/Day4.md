@@ -51,3 +51,5 @@ docker run --name oj-redis -d -p 6379:6379 redis --requirepass "123456"
  </dependency>
 ```
 也要进行版本的管理
+4. 对redis进行相应的配置
++ 写一个关于json序列化工具
