@@ -273,3 +273,5 @@ public class RedisService {
     }  
 }
 ```
+存放文件如图
+![](assets/Day4/file-20251205204752987.png)
