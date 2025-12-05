@@ -32,3 +32,7 @@
 ```powershell
 docker pull redis
 ```
+2. 启动redis容器
+```powershell
+docker run --name oj-redis -d -p 6379:6379 redis --requirepass "123456"
+```
