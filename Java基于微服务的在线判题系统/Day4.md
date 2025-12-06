@@ -459,9 +459,9 @@ public class AuthFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain  
             chain) {  
         ServerHttpRequest request = exchange.getRequest();  
-        String url = request.getURI().getPath();  
+        String url = request.getURI().getPath(); //请求接口地址  
         // 跳过不需要验证的路径  
-        if (matches(url, ignoreWhite.getWhites())) {  
+        if (matches(url, ignoreWhite.getWhites())) { //拿到nacos上的白名单  
             return chain.filter(exchange);  
         }  
         //从http请求头中获取token  
@@ -483,10 +483,12 @@ public class AuthFilter implements GlobalFilter, Ordered {
         if (!isLogin) {  
             return unauthorizedResponse(exchange, "登录状态已过期");  
         }  
-        String userid = JwtUtils.getUserId(claims); //判断jwt中的信息是否完整  
-        if (StrUtil.isEmpty(userid)) {  
+        String userId = JwtUtils.getUserId(claims); //判断jwt中的信息是否完整  
+        if (StrUtil.isEmpty(userId)) {  
             return unauthorizedResponse(exchange, "令牌验证失败");  
         }  
+  
+        //到这里就判断redis中存储的关于用户身份认证的信息是否是对的  
         LoginUser user = redisService.getCacheObject(getTokenKey(userKey),  
                 LoginUser.class);  
         if (url.contains(HttpConstants.SYSTEM_URL_PREFIX) &&  
@@ -509,6 +511,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
     private boolean matches(String url, List<String> patternList) {  
         if (StrUtil.isEmpty(url) || CollectionUtils.isEmpty(patternList)) {  
             return false;}  
+        //接口地址如果和白名单其中一个匹配，则返回true，否则返回false  
         for (String pattern : patternList) {  
             if (isMatch(pattern, url)) {  
                 return true;  
