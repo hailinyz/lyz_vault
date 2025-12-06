@@ -362,6 +362,7 @@ public class JwtUtils {
 ### 捋一下逻辑，完成用户身份认证的三大步骤
 
 1. 用户登录成功后，调用createToken 生成令牌 并 发送给客户端
+
 **放在nacos上就能满足secret的保密、随机、不硬编码、定期更换**
 + 在实现类里面声明注解@Value("${jwt.secret}")，并在实现类上面声明@RefreshScope，实现动态刷新，当更新配置文件时，会自动更新无需重启
 ```yaml
@@ -370,9 +371,48 @@ jwt:
   secret: sdfghuijasxdjkawskuigy
 ```
 
-1. 后续的所有请求，在调用具体接口前，都要先通过token进行身份认证
++ 封装生成token的方法TokenService
+```java
+//操作用户登录token的方法  
+@Service  
+public class TokenService {  
+  
+    @Autowired  
+    private RedisService redisService;  
+  
+  
+    public String createToken(Long userId, String secret,Integer identity){  
+  
+        Map<String, Object> claims = new HashMap<>();  
+        String userKey = UUID.fastUUID().toString();  
+        claims.put(JwtConstants.LOGIN_USER_ID, userId);  
+        claims.put(JwtConstants.LOGIN_USER_KRY, userKey);  
+        String token = JwtUtils.createToken(claims, secret);  
+  
+        //第三方中存放敏感信息  
+        //身份认证具体存储的信息，redis 表明用户身份字段 identity 1:用户 2:管理员 对象好扩展一点LoginUser  
+        // 使用啥样的数据结构 String hash list set zset        // key必须唯一，便于维护  统一前缀：logintoken:userId 是通过雪花生成所以唯一  
+        //也可以用糊涂工具生成UUID作为唯一标识，跟前缀拼接实现唯一  
+        // ，过期时间咋记录，定多长  720分钟  
+        String key = CacheConstants.LOGIN_TOKEN_KET + userKey;  
+        LoginUser loginUser = new LoginUser();  
+        loginUser.setIdentity(identity);  
+        redisService.setCacheObject(key, loginUser,CacheConstants.EXP, TimeUnit.MINUTES);  
+  
+        return token;  
+  
+    }  
+  
+}
+```
+
+然后完成一系列封装，比如枚举、LoginUser类的封装、还有模块的相关依赖
 
 
 
-2. 用户使用系统的过程中进行适当的延长jwt过期时间（防止用户在编码过程中过期）
+2. 后续的所有请求，在调用具体接口前，都要先通过token进行身份认证
+
+
+
+3. 用户使用系统的过程中进行适当的延长jwt过期时间（防止用户在编码过程中过期）
 
