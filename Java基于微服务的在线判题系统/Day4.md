@@ -645,12 +645,12 @@ public class IgnoreWhiteProperties
     }  
 }
 ```
-在nacos配置白名单
+在nacos配置**白名单**
 ```yaml
 security:
   ignore:
     whites:
-      - /system/sysUser/login
+      - /**/login
 ```
 
 3. 用户使用系统的过程中进行适当的延长jwt过期时间（防止用户在编码过程中过期）
