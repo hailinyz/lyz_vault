@@ -656,6 +656,41 @@ security:
       - /**/login
 ```
 
+注意springboot自动装配了一个RedisAutoConfiguration，我们要加上一个注解使自己的bean优先级更高 **@AutoConfigureBefore(RedisAutoConfiguration.class)**
+```java
+/**  
+* redis配置  
+ */  
+@Configuration  
+@AutoConfigureBefore(RedisAutoConfiguration.class)// 优先配置RedisAutoConfiguration 
+public class RedisConfig extends CachingConfigurerSupport {  
+ //.......
+}
+```
+
+然后记得配置网关在注册中心的配置jwt
+```yaml
+server:
+  port: 19090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: oj-system
+          uri: lb://oj-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+jwt:
+  secret: sdfghuijasxdjkawskuigy
+  
+security:
+  ignore:
+    whites:
+      - /**/login
+```
+
 
 3. 用户使用系统的过程中进行适当的延长jwt过期时间（防止用户在编码过程中过期）
 
