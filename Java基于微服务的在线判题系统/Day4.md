@@ -598,9 +598,53 @@ public class AuthFilter implements GlobalFilter, Ordered {
  }  
 }
 ```
+
+```java
+package com.bite.common.core.constants;  
+  
+public class HttpConstants {  
+    /**  
+     * 服务端url标识  
+     */  
+    public static final String SYSTEM_URL_PREFIX = "system";  
+    /**  
+     * 用户端url标识  
+     */  
+    public static final String FRIEND_URL_PREFIX = "friend";  
+    /**  
+     * 令牌自定义标识  
+     */  
+    public static final String AUTHENTICATION = "Authorization";  
+    /**  
+     * 令牌前缀  
+     */  
+    public static final String PREFIX = "Bearer ";  
+}
+```
 + 登录的时候是不需要进行身份认证的，跳过不需要验证的路径，接口白名单中接口均不需认证
 + 一些列判断，判断redis中存储的关于用户身份认证的信息是否是对的，我觉得好麻烦
 + C端用户和管理端用户判断
+创建IgnoreWhiteProperties配置类
+```java
+@Configuration  
+@RefreshScope  
+@ConfigurationProperties(prefix = "security.ignore") //从nacos读取所有前缀为：security.ignore  
+public class IgnoreWhiteProperties  
+{  
+    /**  
+     * 放行白名单配置，网关不校验此处的白名单  
+     */  
+    private List<String> whites = new ArrayList<>();  
+    public List<String> getWhites()  
+    {  
+        return whites;  
+    }  
+    public void setWhites(List<String> whites)  
+    {  
+        this.whites = whites;  
+    }  
+}
+```
 
 
 3. 用户使用系统的过程中进行适当的延长jwt过期时间（防止用户在编码过程中过期）
