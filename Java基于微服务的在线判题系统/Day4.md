@@ -599,7 +599,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
 }
 ```
 + 登录的时候是不需要进行身份认证的，跳过不需要验证的路径，接口白名单中接口均不需认证
-+ 
++ 一些列判断，判断redis中存储的关于用户身份认证的信息是否是对的，我觉得好麻烦
 
 
 
