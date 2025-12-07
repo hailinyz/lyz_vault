@@ -11,5 +11,11 @@ VO：后端返回给前端的数据
 
 ## 对参数的要求
 
-
+引入依赖
+```xml
+<dependency>
+ <groupId>org.springframework.boot</groupId>
+ <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
 
