@@ -81,3 +81,12 @@ private <E> String join(Collection<E> collection, Function<E, String>
 
 ## 前端项目创建oj-fe-b
 
+安装element-plus
+```powershell
+npm install element-plus --save
+```
+
+按需导入element-plus，减小项目体积
+```powershell
+npm install -D unplugin-vue-components unplugin-auto-import
+```
