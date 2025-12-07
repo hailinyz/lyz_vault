@@ -60,7 +60,7 @@ public String validation(@Validated ValidationDTO validationDTO){
 }
 ```
 
-在全局异常处理加上具体参数失败处理方法
+在全局异常处理加上具体参数失败处理方法，让其DTO配置的信息显示出来
 ```java
 @ExceptionHandler(BindException.class)  
 public R<Void> handleBindException(BindException e) {  
