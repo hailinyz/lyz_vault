@@ -44,3 +44,11 @@ public class ValidationDTO {
     private LocalDate endDate;  
 }
 ```
+
+注意加上这个配置才会对规则进行合法性判断
+```java
+@GetMapping("/validation")  
+public String validation(@Validated ValidationDTO validationDTO){  
+    return "参数测试";  
+}
+```
