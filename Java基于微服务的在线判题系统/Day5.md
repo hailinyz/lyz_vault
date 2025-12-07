@@ -11,7 +11,7 @@ VO：后端返回给前端的数据
 
 ## 对参数的校验
 
-引入依赖
+引入依赖validation
 ```xml
 <dependency>
  <groupId>org.springframework.boot</groupId>
@@ -77,3 +77,7 @@ private <E> String join(Collection<E> collection, Function<E, String>
     return collection.stream().map(function).filter(Objects::nonNull).collect(Collectors.joining(delimiter));  
 }
 ```
+
+
+## 前端项目创建
+
