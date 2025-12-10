@@ -341,4 +341,8 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 用户点击退出登录，并且确认退出，将退出的请求(携带token)，发送给后端
 后端先验证用户是否处于登录状态，并且验证是否是管理员 
 
-后端处理退出登录逻辑
+处理退出登录逻辑（将token失效即可）：后端接收到请求后将redis中用户数据删除掉
+
+返回结果：
+如果失败，继续保持登录状态，停留在当前页面
+如果成功，前端清除存储的token，返回登录页面
