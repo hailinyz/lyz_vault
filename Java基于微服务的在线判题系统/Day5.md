@@ -232,3 +232,35 @@ vite.config
 npm install js-cookie
 ```
 将token存到浏览器cookie中
+```js
+import Cookies from "js-cookie";
+const TokenKey = "Admin-Oj-b-Token";
+
+export function getToken() {
+ return Cookies.get(TokenKey);
+}
+
+export function setToken(token) {
+ return Cookies.set(TokenKey, token);
+}
+
+export function removeToken() {
+ return Cookies.remove(TokenKey);
+}
+```
+
+```vue
+async function loginFun(){
+  const loginResult = await loginService(userAccount.value, password.value)
+  console.log("登录结果: ", loginResult);
+  if(loginResult.data.code == 1000){
+    console.log("登录成功")
+    router.push('/oj/system')
+    setToken(loginResult.data.data)
+  }else{
+    console.log("登录失败")
+  }
+}
+```
+![](assets/Day5/file-20251210142710880.png)
+
