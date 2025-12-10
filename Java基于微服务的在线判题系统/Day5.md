@@ -285,3 +285,30 @@ service.interceptors.response.use(
   }
 );
 ```
+
+通过相应拦截器优化
+```vue
+async function loginFun(){
+  try{
+    const loginResult = await loginService(userAccount.value, password.value)
+    console.log("登录结果: ", loginResult);
+    router.push('/oj/system')
+    setToken(loginResult.data)
+  }catch(error) {
+    console.log("登录结果: ", error);
+  }
+
+/*   if(loginResult.data.code == 1000){
+    console.log("登录成功")
+    router.push('/oj/system')
+    setToken(loginResult.data.data)
+    ElMessage({
+    message: '登录成功',
+    type: 'success',
+  })
+  }else{
+    console.log("登录失败")
+    ElMessage.error(loginResult.data.msg)
+  } */
+}
+```
