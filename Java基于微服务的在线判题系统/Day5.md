@@ -180,7 +180,7 @@ import axios from 'axios'
 
 //不同的功能，通过axios请求不同的接口
 const service = axios.create({
-  baseURL:"http://127.0.0.1:19090/system", //解决跨域问题用这个：baseURL:"/dev-api",
+  baseURL:"http://127.0.0.1:19090/system", //解决跨域问题用：baseURL:"/dev-api",
   timeout: 5000,
 
 })
@@ -226,3 +226,9 @@ vite.config
     },
   },
 ```
+
+安装js-cookie
+```powershell
+npm install js-cookie
+```
+将token存到浏览器cookie中
