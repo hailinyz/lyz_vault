@@ -180,8 +180,9 @@ import axios from 'axios'
 
 //不同的功能，通过axios请求不同的接口
 const service = axios.create({
-  baseURL:"127.0.0.1:19090/system",
-  timeout: 5000,
+  baseURL:"http://127.0.0.1:19090/system",
+  timeout: 5000,
+
 })
 
 export default service
@@ -205,3 +206,7 @@ export function loginService(userAccount, password) {
 
 }
 ```
+
+跨域策略阻塞CORS（同源策略）
+浏览器只允许来自同源请求访问资源（协议+域名+端口相同）
+![](assets/Day5/file-20251210133844583.png)
