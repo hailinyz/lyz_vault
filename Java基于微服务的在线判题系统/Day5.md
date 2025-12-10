@@ -354,4 +354,7 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 现在启动前端项目之后打开的是 http://localhost:5173/ 是一个空页面，每次想看到页面都得手动添加路径，麻烦
 
 可以用**重定向**
+加这个配置
+![](assets/Day5/file-20251210225417715.png)
 
+虽然现在进到 layout 这个页面，但是我们没登陆或者退出了，理论上应该不能让其登录了
