@@ -170,3 +170,8 @@ const password = ref('')
 
 ## Axios
 异步操作，我们vue项目发出的是Ajax请求
+安装axios
+```powershell
+npm install axios
+```
+创建axios实例
