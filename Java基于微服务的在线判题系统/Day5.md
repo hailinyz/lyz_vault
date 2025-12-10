@@ -319,3 +319,8 @@ async function loginFun(){
 
 ## 后端提供动态获取管理员昵称接口
 
+添加nick_name 这个新列
+```sql
+alter table tb_sys_user add nick_name varchar(20) null after user_account;
+```
+然后解决mysql编码问题
