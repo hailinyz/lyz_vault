@@ -180,7 +180,7 @@ import axios from 'axios'
 
 //不同的功能，通过axios请求不同的接口
 const service = axios.create({
-  baseURL:"http://127.0.0.1:19090/system",
+  baseURL:"http://127.0.0.1:19090/system", //baseURL:"/dev-api",
   timeout: 5000,
 
 })
@@ -214,3 +214,15 @@ export function loginService(userAccount, password) {
 **代理服务器    解决跨域问题**
 前端请求 --> 代理服务器 --> 后端
 因为代理服务器不受浏览器影响
+vite.config
+```JS
+  // 设置代理服务器，解决跨域问题
+  server: {
+    proxy: {
+      '/dev-api': {
+        target: 'http://127.0.0.1:19090/system',
+        rewrite: (p) => p.replace(/^\/dev-api/, ""),
+      },
+    },
+  },
+```
