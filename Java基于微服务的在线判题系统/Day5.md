@@ -336,3 +336,5 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 3. 最后获得nickName返回给前端
 ![](assets/Day5/file-20251210190404849.png)
 
+## 退出登录
+
