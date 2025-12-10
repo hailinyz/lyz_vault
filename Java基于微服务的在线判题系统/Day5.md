@@ -338,3 +338,7 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 
 ## 退出登录
 
+用户点击退出登录，并且确认退出，将退出的请求(携带token)，发送给后端
+后端先验证用户是否处于登录状态，并且验证是否是管理员 
+
+后端处理退出登录逻辑
