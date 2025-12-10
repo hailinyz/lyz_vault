@@ -359,6 +359,8 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 
 提高用户体验：
 虽然现在进到 layout 这个页面，但是我们没登陆或者退出了，理论上应该不能让其登录了
-
 我现在已经登录过了，上完厕所之后打开登录页路径后应该跳转到layout
 
+可以概括为以下两点
+1. 非登录状态下，访问除登录页以外的页面，自动跳转回登录页
+2. 已登录，并且token未过期，此时访问登录页应该自动跳转到layout后台管理页面
