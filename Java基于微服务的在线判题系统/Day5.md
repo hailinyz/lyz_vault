@@ -328,3 +328,10 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 ![](assets/Day5/file-20251210163442449.png)
 ![](assets/Day5/file-20251210163610402.png)
 
+好的接下来就是这几个围绕着获取当前用户信息info这个接口的步骤
+1. 首先获得前端传过来的token
+![](assets/Day5/file-20251210190139572.png)
+2. 然后调用解析token根据用户唯一标识userkey调用redis查看用户信息
+![](assets/Day5/file-20251210190305021.png)
+3. 最后获得nickName返回给前端
+![](assets/Day5/file-20251210190404849.png)
