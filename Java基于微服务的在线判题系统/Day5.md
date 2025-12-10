@@ -365,3 +365,23 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 1. 非登录状态下，访问除登录页以外的页面，自动跳转回登录页
 2. 已登录，并且token未过期，此时访问登录页应该自动跳转到layout后台管理页面
 **全局前置守卫**
+```js
+router.beforeEach((to, from, next) => {
+    if (getToken()) {
+        /* has token*/
+        if (to.path === '/oj/login') {
+            next({ path: '/oj/layout/cuser' })
+        } else {
+            next()
+        }
+    } else {
+        if (to.path !== '/oj/login') {
+            next({
+                path:'/oj/login'
+            })
+        } else {
+            next()
+        }
+    }
+})
+```
