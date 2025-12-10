@@ -265,3 +265,23 @@ async function loginFun(){
 ![](assets/Day5/file-20251210142710880.png)
 
 勤看[Element-Plus官网]([Input 输入框 | Element Plus (element-plus.org)](https://element-plus.org/zh-CN/component/input#input-%E8%BE%93%E5%85%A5%E6%A1%86))
+
+设置相应拦截器
+```js
+service.interceptors.response.use(
+  (res) => {
+    // 未设置状态码则默认成功状态
+    const code = res.data.code;
+    const msg = res.data.msg;
+    if (code !== 1000) {
+      ElMessage.error(msg);
+      return Promise.reject(new Error(msg));
+    } else {
+      return Promise.resolve(res.data);
+    }
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+```
