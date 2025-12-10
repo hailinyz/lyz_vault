@@ -153,3 +153,17 @@ export default defineConfig({
 
 **登陆失败**
 提示一下失败信息
+
+双向数据绑定
+
+```vue
+<el-input v-model="username" placeholder="请输⼊账号" />
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+const username = ref('')
+const password = ref('')
+</script>
+```
