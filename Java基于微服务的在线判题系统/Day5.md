@@ -316,3 +316,6 @@ async function loginFun(){
 ## 页面布局
 
 [Container布局容器]([Container 布局容器 | Element Plus (element-plus.org)](https://element-plus.org/zh-CN/component/container#container-%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8))
+
+## 后端提供动态获取管理员昵称接口
+
