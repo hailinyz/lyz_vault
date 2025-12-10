@@ -324,3 +324,4 @@ async function loginFun(){
 alter table tb_sys_user add nick_name varchar(20) null after user_account;
 ```
 然后解决mysql编码问题
+![](assets/Day5/file-20251210163442449.png)
