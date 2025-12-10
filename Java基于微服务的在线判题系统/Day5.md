@@ -357,6 +357,8 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 加这个配置
 ![](assets/Day5/file-20251210225417715.png)
 
+提高用户体验：
 虽然现在进到 layout 这个页面，但是我们没登陆或者退出了，理论上应该不能让其登录了
 
 我现在已经登录过了，上完厕所之后打开登录页路径后应该跳转到layout
+
