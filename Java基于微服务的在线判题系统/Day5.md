@@ -175,6 +175,14 @@ const password = ref('')
 npm install axios
 ```
 创建axios实例
-```
+```js
+import axios from 'axios'
 
+//不同的功能，通过axios请求不同的接口
+const service = axios.create({
+  baseURL:"127.0.0.1:19090/system",
+  timeout: 5000,
+})
+
+export default service
 ```
