@@ -349,3 +349,9 @@ alter table tb_sys_user add nick_name varchar(20) null after user_account;
 
 --- 
 
+## 前端路由优化
+
+现在启动前端项目之后打开的是 http://localhost:5173/ 是一个空页面，每次想看到页面都得手动添加路径，麻烦
+
+可以用**重定向**
+
