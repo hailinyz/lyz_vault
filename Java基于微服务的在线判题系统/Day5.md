@@ -210,3 +210,7 @@ export function loginService(userAccount, password) {
 跨域策略阻塞CORS（同源策略）
 浏览器只允许来自同源请求访问资源（协议+域名+端口相同）
 ![](assets/Day5/file-20251210133844583.png)
+
+**代理服务器    解决跨域问题**
+前端请求 --> 代理服务器 --> 后端
+因为代理服务器不受浏览器影响
