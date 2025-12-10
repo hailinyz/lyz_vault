@@ -370,7 +370,7 @@ router.beforeEach((to, from, next) => {
     if (getToken()) {
         /* has token*/
         if (to.path === '/oj/login') {
-            next({ path: '/oj/layout/cuser' })
+            next({ path: '/oj/layout' })
         } else {
             next()
         }
