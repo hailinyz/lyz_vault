@@ -68,4 +68,5 @@ dependency>
 <pagehelper.boot.version>2.0.0</pagehelper.boot.version>
 ```
 只需把页码和记录数提供给它，就会拼装在普通sql后完成分页效果
+底层已经直接拿到总记录数了，直接想办法取出来就行了
 
