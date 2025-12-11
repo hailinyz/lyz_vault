@@ -25,3 +25,30 @@ create table tb_question(
 );
 ```
 
+创建和表相互应的实体类
+```java
+@TableName("tb_question")  
+@Getter  
+@Setter  
+public class Question extends BaseEntity {  
+  
+    @TableId(type = IdType.ASSIGN_ID) // 主键 雪花算法  
+    private Long questionId;  
+  
+    private String title;  
+  
+    private Integer difficulty;  
+  
+    private Long timelimit;  
+  
+    private Long spacelimit;  
+  
+    private String content;  
+  
+    private String questionCase;  
+  
+    private String defaultCode;  
+  
+    private String mainFunc;  
+}
+```
