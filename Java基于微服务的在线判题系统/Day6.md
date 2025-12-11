@@ -60,4 +60,12 @@ public class Question extends BaseEntity {
 **分页PageHelper**
 ```xml
 引入依赖
+dependency>
+ <groupId>com.github.pagehelper</groupId>
+ <artifactId>pagehelper-spring-boot-starter</artifactId>
+ <version>${pagehelper.boot.version}</version>
+</dependency>
+<pagehelper.boot.version>2.0.0</pagehelper.boot.version>
 ```
+只需把页码和记录数提供给它，就会拼装在普通sql后完成分页效果
+
