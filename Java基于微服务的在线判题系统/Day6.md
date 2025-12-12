@@ -254,3 +254,5 @@ public int edit(QuestionEditDTO questionEditDTO) {
 
 ### 删除题目
 
+1. 找到要删除题目，点击删除按钮
+2. 前端向后端发起删除题目请求
