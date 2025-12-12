@@ -222,3 +222,7 @@ public QuestionDetailVO detail(Long questionId) {
     return questionDetailVO;  
 }
 ```
+
+### 编辑题目
+
+**这时候就得通过题目id获取题目**
