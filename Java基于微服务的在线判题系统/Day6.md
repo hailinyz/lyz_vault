@@ -176,6 +176,24 @@ OK了，现在应该没啥问题了，后端应该能拿到前端传过来的参
 
 ### 新增接口
 
-将DTO转换成实体
+```java
+/*  
+添加题目接口  
+ */@Override  
+public int add(QuestionAddDTO questionAddDTO) {  
+    //在添加题目之前，先判断题目标题是否已经存在，只要查看数据库中存在相同标题的题目，则返回错误  
+    List<Question> questionList = questionMapper.selectList(new LambdaQueryWrapper<Question>()  
+            .eq(Question::getTitle, questionAddDTO.getTitle()));  
+    if (CollectionUtil.isNotEmpty(questionList)){  
+        throw new ServiceException(ResultCode.FAILED_ALREADY_EXISTS);  
+    }  
+  
+    //转换DTO对象成实体对象,使用对象的属性拷贝  
+    Question question = new Question();  
+    BeanUtils.copyProperties(questionAddDTO,question);  
+    //插入数据库  
+    return questionMapper.insert(question);  
+}
+```
 
    
