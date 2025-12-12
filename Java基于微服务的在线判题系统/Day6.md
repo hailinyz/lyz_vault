@@ -204,3 +204,21 @@ public int add(QuestionAddDTO questionAddDTO) {
 5. 前端携带者题目id以及修改后的内容向后端发起编辑题目的请求
 6. 后端在接收到请求之后，根据题目id查到对应题目对题目进行修改，并将修改后的结果返回前端
 7. 前端收到后，提示用户编辑成功，若失败，提示失败原因
+
+**获取题目详情接口**
+```java
+/*  
+查询题目详情  
+ */@Override  
+public QuestionDetailVO detail(Long questionId) {  
+    Question question = questionMapper.selectById(questionId);  
+    if (question == null){  
+        throw new ServiceException(ResultCode.FAILED_NOT_EXISTS);  
+    }  
+    //返回题目详情给前端，将实体对象转换成VO对象  
+    QuestionDetailVO questionDetailVO = new QuestionDetailVO();  
+    BeanUtils.copyProperties(question,questionDetailVO);  
+  
+    return questionDetailVO;  
+}
+```
