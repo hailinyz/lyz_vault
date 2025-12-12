@@ -119,3 +119,15 @@ public class PageQueryDTO {
     private Integer pageNum = 1; // 当前页码  
     }
 ```
+
+接口IQuestionService
+```java
+public interface IQuestionService {  
+  
+    /*  
+    * 获取题目列表接口  
+     */    List<QuestionVO> list(QuestionQueryDTO questionQueryDTO);  
+  
+}
+```
+
