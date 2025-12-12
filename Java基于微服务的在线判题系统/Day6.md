@@ -150,3 +150,5 @@ public class QuestionServiceImpl implements IQuestionService {
   
 }
 ```
+OK了，现在应该没啥问题了，后端应该能拿到前端传过来的参数
+
