@@ -71,3 +71,7 @@ dependency>
 底层已经直接拿到总记录数了，直接想办法取出来就行了
 ![](assets/Day6/file-20251211230735876.png)
 
+列表功能各文件代码:
+Controller
+```java
+```
