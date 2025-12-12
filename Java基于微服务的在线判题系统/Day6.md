@@ -226,3 +226,31 @@ public QuestionDetailVO detail(Long questionId) {
 ### 编辑题目
 
 **这时候就得通过题目id获取题目**
+
+编辑题目接口
+```java
+/*  
+编辑题目接口  
+ */@Override  
+public int edit(QuestionEditDTO questionEditDTO) {  
+    Question oldquestion = questionMapper.selectById(questionEditDTO.getQuestionId());  
+    if (oldquestion == null){  
+        throw new ServiceException(ResultCode.FAILED_NOT_EXISTS);  
+    }  
+  
+    //使用对象属性拷贝，将DTO对象属性拷贝到实体对象中，然后更新数据库  
+    oldquestion.setTitle(questionEditDTO.getTitle());  
+    oldquestion.setDifficulty(questionEditDTO.getDifficulty());  
+    oldquestion.setTimeLimit(questionEditDTO.getTimeLimit());  
+    oldquestion.setSpaceLimit(questionEditDTO.getSpaceLimit());  
+    oldquestion.setContent(questionEditDTO.getContent());  
+    oldquestion.setQuestionCase(questionEditDTO.getQuestionCase());  
+    oldquestion.setDefaultCode(questionEditDTO.getDefaultCode());  
+    oldquestion.setMainFunc(questionEditDTO.getMainFunc());  
+    return questionMapper.updateById(oldquestion);  
+  
+}
+```
+
+### 删除题目
+
