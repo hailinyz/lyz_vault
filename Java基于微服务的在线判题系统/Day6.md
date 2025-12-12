@@ -260,3 +260,16 @@ public int edit(QuestionEditDTO questionEditDTO) {
 4. 前端接收到后端相应后 
    如果成功：提示用户删除成功，并将题目从题目列表移除
    如果失败：提示用户失败原因
+
+```java
+/*  
+删除题目接口  
+ */@Override  
+public int delete(Long questionId) {  
+    Question question = questionMapper.selectById(questionId);  
+    if (question == null){  
+        throw new ServiceException(ResultCode.FAILED_NOT_EXISTS);  
+    }  
+    return questionMapper.deleteById(questionId);  
+}
+```
