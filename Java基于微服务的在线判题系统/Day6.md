@@ -74,4 +74,25 @@ dependency>
 列表功能各文件代码:
 Controller
 ```java
+@RestController  
+@RequestMapping("/question")  
+@Tag(name = "题目管理接口")  
+public class QuestionController extends BaseController {  
+  
+    @Autowired  
+    private IQuestionService questionService;  
+  
+    /*  
+    * 获取题目列表接口  
+     */    @GetMapping("/list")  
+    public TableDataInfo list(QuestionQueryDTO questionQueryDTO){  
+        return getTableDataInfo(questionService.list(questionQueryDTO));  
+    }  
+  
+}
+```
+
+QuestionQueryDTO
+```java
+
 ```
