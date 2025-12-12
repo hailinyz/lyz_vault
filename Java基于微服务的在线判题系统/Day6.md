@@ -71,7 +71,10 @@ dependency>
 底层已经直接拿到总记录数了，直接想办法取出来就行了
 ![](assets/Day6/file-20251211230735876.png)
 
-列表功能各文件代码:
+
+
+### 列表功能各文件代码:
+
 Controller
 ```java
 @RestController  
@@ -94,5 +97,25 @@ public class QuestionController extends BaseController {
 
 QuestionQueryDTO
 ```java
+@Getter  
+@Setter  
+public class QuestionQueryDTO extends PageQueryDTO {  
+  
+    private Integer difficulty;  
+  
+    private String title;  
+      
+}
+```
 
+PageQueryDTO
+```java
+@Getter  
+@Setter  
+public class PageQueryDTO {  
+      
+    private Integer pageSize = 10; // 每页显示的条数  
+  
+    private Integer pageNum = 1; // 当前页码  
+    }
 ```
