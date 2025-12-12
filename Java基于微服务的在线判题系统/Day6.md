@@ -154,3 +154,7 @@ public class QuestionServiceImpl implements IQuestionService {
 OK了，现在应该没啥问题了，后端应该能拿到前端传过来的参数
 
 ### 前端开发
+
+1. 根据用户需要携带请求参数向后端获取题目列表请求（请求头携带token）
+2. 前端接收到后端的响应数据，根据响应结果，将题目列表展示在页面
+					如果失败，向用户提示错误信息，页面保持原样
