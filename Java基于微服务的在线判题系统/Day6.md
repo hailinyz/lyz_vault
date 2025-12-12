@@ -131,3 +131,22 @@ public interface IQuestionService {
 }
 ```
 
+实现类
+```java
+@Service  
+public class QuestionServiceImpl implements IQuestionService {  
+  
+    @Autowired  
+    private QuestionMapper questionMapper;  
+  
+    /*  
+    获取题目列表接口  
+     */    @Override  
+    public List<QuestionVO> list(QuestionQueryDTO questionQueryDTO) {  
+        PageHelper.startPage(questionQueryDTO.getPageNum(),questionQueryDTO.getPageSize());  
+        return questionMapper.selectQuestionList(questionQueryDTO);  
+    }  
+  
+  
+}
+```
