@@ -55,6 +55,7 @@ public class Question extends BaseEntity {
 
 ## 列表功能
 
+### 后端开发
 定义一些实体类、VO
 
 **分页PageHelper**
@@ -152,3 +153,4 @@ public class QuestionServiceImpl implements IQuestionService {
 ```
 OK了，现在应该没啥问题了，后端应该能拿到前端传过来的参数
 
+### 前端开发
