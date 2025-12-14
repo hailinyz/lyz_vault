@@ -65,3 +65,4 @@ create table tb_exam_question (
 );
 ```
 
+**把这两个表对应的实体类创建出来**
