@@ -89,3 +89,7 @@ public List<ExamVO> list(ExamQueryDTO examQueryDTO) {
 
 ### 竞赛新增
 
+第一种：不包含题目的竞赛新增（**不能允许它发布**，因为可能没有添加题目等完善竞赛）
+可以理解成一种暂存的竞赛
+
+第二种：包含题目的竞赛的新增
