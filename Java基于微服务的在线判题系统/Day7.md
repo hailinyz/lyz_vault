@@ -50,6 +50,7 @@ create table tb_exam (
     primary key(exam_id)  
 );  
   
+-- 题目和竞赛关系表  
 create table tb_exam_question (  
     exam_question_id bigint unsigned not null comment '竞赛题目关系id（主键）',  
     question_id bigint unsigned not null comment '题目id（主键）',  
