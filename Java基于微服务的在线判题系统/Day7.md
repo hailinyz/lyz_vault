@@ -28,3 +28,5 @@ npm install ace-builds@1.4.13
 关于 async/await 的使用规则：
 需要 async/await：当函数内部有异步操作（如 API 调用）且需要等待结果时
 
+## 竞赛管理
+
