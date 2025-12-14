@@ -158,4 +158,29 @@ for (Long questionId : questionIdSet){
     examQuestionMapper.insert(examQuestion);  
 }
 ```
-优化
+
+优化把两处对于数据库的操作都去掉了，取而代之的是批量操作方式selectBatchIds、saveBatch
+```java
+//批量查询  
+List<Question> questionList = questionMapper.selectBatchIds(questionIdSet);  
+if (CollectionUtil.isEmpty(questionList) || questionList.size() != questionIdSet.size()){  
+    throw new ServiceException(ResultCode.EXAM_QUESTION_NOT_EXISTS);  
+}
+
+
+
+        int number = 1;  
+        List<ExamQuestion> examQuestionList = new ArrayList<>();  
+        for (Long questionId : questionIdSet){  
+            //判断question是否为空  
+/*            Question question = questionMapper.selectById(questionId);  
+            if (question == null){                throw new ServiceException(ResultCode.EXAM_QUESTION_NOT_EXISTS);            }*/            //到这里就可以进行添加了  
+            ExamQuestion examQuestion = new ExamQuestion();  
+            examQuestion.setExamId(examQuestionAddDTO.getExamId());  
+            examQuestion.setQuestionId(questionId);  
+            examQuestion.setQuestionOrder(number++);  
+            examQuestionList.add(examQuestion);  
+//            examQuestionMapper.insert(examQuestion);  
+        }  
+        saveBatch(examQuestionList);
+```
