@@ -66,3 +66,4 @@ create table tb_exam_question (
 ```
 
 **把这两个表对应的实体类创建出来**
+![](assets/Day7/file-20251214150448287.png)
