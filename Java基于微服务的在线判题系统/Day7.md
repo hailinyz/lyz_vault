@@ -75,3 +75,14 @@ create table tb_exam_question (
 4. 前端接收到后端相应后(成功/失败)
    如果成功：将查询到的数据展示到页面中
    如果失败：提示用户失败信息
+
+接口代码
+```java
+/*  
+* 查询竞赛列表接口  
+ */@Override  
+public List<ExamVO> list(ExamQueryDTO examQueryDTO) {  
+    PageHelper.startPage(examQueryDTO.getPageNum(),examQueryDTO.getPageSize());  
+    return examMapper.selectExamList(examQueryDTO);  
+}
+```
