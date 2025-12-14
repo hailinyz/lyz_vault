@@ -127,5 +127,6 @@ public int add(ExamAddDTO examAddDTO) {
 第二种：包含题目的竞赛的新增 **等于 = 新增不包含题目竞赛  + 为这个竞赛新增题目**
 
 为什么分成两步呢？
+![](assets/Day7/file-20251214213926404.png)
 
 
