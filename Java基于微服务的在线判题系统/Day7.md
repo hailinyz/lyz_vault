@@ -142,7 +142,7 @@ public int add(ExamAddDTO examAddDTO) {
    如果失败：提示用户失败信息
 
 MyBatis-Plus给我们提供了批量添加的方法
-可以优化下面单个添加的方式
+可以优化下面单个添加的方式，因为这个循环里面调用了两次数据库，性能堪忧
 ```java
 for (Long questionId : questionIdSet){  
     //判断question是否为空  
