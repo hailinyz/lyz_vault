@@ -86,3 +86,6 @@ public List<ExamVO> list(ExamQueryDTO examQueryDTO) {
     return examMapper.selectExamList(examQueryDTO);  
 }
 ```
+
+### 竞赛新增
+
