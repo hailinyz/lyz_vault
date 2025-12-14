@@ -97,7 +97,32 @@ public List<ExamVO> list(ExamQueryDTO examQueryDTO) {
 3. 前端接收到后端响应后
    如果成功：提示用户添加成功，竞赛列表中看到新增竞赛
    如果失败：提示失败原因
-
-
+```java
+/*  
+* 添加竞赛 - 不包含题目的新增  
+ */@Override  
+public int add(ExamAddDTO examAddDTO) {  
+  
+    //竞赛名称的重复性校验  
+    List<Exam> examList = examMapper  
+            .selectList(new LambdaQueryWrapper<Exam>().eq(Exam::getTitle, examAddDTO.getTitle()));  
+    if (CollectionUtil.isNotEmpty(examList)) {  
+        throw new ServiceException(ResultCode.FAILED_ALREADY_EXISTS);  
+    }  
+    //进行时间的校验  
+    if (examAddDTO.getStartTime().isBefore(LocalDateTime.now())) {  
+        throw new ServiceException(ResultCode.EXAM_START_TIME_BEFORE_CURRENT_TIME);  
+    }  
+    if (examAddDTO.getStartTime().isAfter(examAddDTO.getEndTime())) {  
+        throw new ServiceException(ResultCode.EXAM_START_TIME_AFTER_END_TIME);  
+    }  
+  
+    //处理传过来的参数，将DTO转为实体  
+    Exam exam = new Exam();  
+    BeanUtil.copyProperties(examAddDTO,exam);  
+    return examMapper.insert(exam);  
+}
+```
 
 第二种：包含题目的竞赛的新增
+
