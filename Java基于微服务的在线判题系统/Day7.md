@@ -140,3 +140,22 @@ public int add(ExamAddDTO examAddDTO) {
 5. 前端接收到后端响应后
    如果成功：在竞赛的题目列表中要能看到新增的题目
    如果失败：提示用户失败信息
+
+MyBatis-Plus给我们提供了批量添加的方法
+可以优化下面单个添加的方式
+```java
+for (Long questionId : questionIdSet){  
+    //判断question是否为空  
+    Question question = questionMapper.selectById(questionId);  
+    if (question == null){  
+        throw new ServiceException(ResultCode.EXAM_QUESTION_NOT_EXISTS);  
+    }  
+    //到这里就可以进行添加了  
+    ExamQuestion examQuestion = new ExamQuestion();  
+    examQuestion.setExamId(examQuestionAddDTO.getExamId());  
+    examQuestion.setQuestionId(questionId);  
+    examQuestion.setQuestionOrder(number++);  
+    examQuestionMapper.insert(examQuestion);  
+}
+```
+优化
