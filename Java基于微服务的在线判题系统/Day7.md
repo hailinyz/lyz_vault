@@ -188,7 +188,7 @@ if (CollectionUtil.isEmpty(questionList) || questionList.size() != questionIdSet
 
 ### 竞赛编辑
 
-竞赛编辑编辑 = 竞赛详情功能 + 
+竞赛编辑编辑 = 竞赛详情功能 + 竞赛基本信息编辑 + 竞赛题目信息编辑
 
 需要**竞赛详情功能：**
 1. 查询回显，携带竞赛 id 向后端发起获取竞赛详情请求
