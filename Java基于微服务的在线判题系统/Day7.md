@@ -233,7 +233,7 @@ if (CollectionUtil.isEmpty(questionList) || questionList.size() != questionIdSet
     }
 ```
 
-竞赛基本信息编辑
+### 竞赛基本信息编辑
 1. 输入/选择更新后端的数据，点击保存，前端携带更新后的数据以及竞赛 id 向后端发起编辑题目基本信息的请求
 2. 后端接收请求后，根据竞赛 id 找到要编辑竞赛，根据请求参数对竞赛数据进行更新，并且将更新结果同步到数据中，并返回编辑结果
 3.  前对岸接收后端响应之后
@@ -255,3 +255,7 @@ public int edit(ExamEditDTO examEditDTO) {
     return examMapper.updateById(exam);  
 }
 ```
+
+
+### 竞赛题目信息编辑
+
