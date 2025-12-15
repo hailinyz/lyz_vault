@@ -239,3 +239,19 @@ if (CollectionUtil.isEmpty(questionList) || questionList.size() != questionIdSet
 3.  前对岸接收后端响应之后
    如果成功，展示编辑后的信息
    如果失败：提示失败原因，并展示原来的信息
+
+```java
+/*  
+编辑竞赛基本信息  
+ */@Override  
+public int edit(ExamEditDTO examEditDTO) {  
+    Exam exam = getExam(examEditDTO.getExamId());  
+    checkExamSaveParams(examEditDTO, examEditDTO.getExamId());  
+    //更新并且对时间、标题等进行校验  
+    exam.setTitle(examEditDTO.getTitle());  
+    exam.setStartTime(examEditDTO.getStartTime());  
+    exam.setEndTime(examEditDTO.getEndTime());  
+    //将更新的数据保存到数据库中  
+    return examMapper.updateById(exam);  
+}
+```
