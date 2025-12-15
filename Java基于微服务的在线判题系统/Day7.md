@@ -296,3 +296,21 @@ public int questionDelete(Long examId, Long questionId) {
             </if>
 ```
 
+```java
+/*  
+* 查询竞赛列表  
+ */@Override  
+public List<ExamVO> list(ExamQueryDTO examQueryDTO) {  
+    String excludeIdStr = examQueryDTO.getExcludeIdStr();  
+    if (StrUtil.isNotEmpty(excludeIdStr)){  
+        String[] excludeInArr = excludeIdStr.split(Constants.SPLIT_SEM);  
+        Set<Long> excludeIdSet = Arrays.stream(excludeInArr)  
+                .map(Long::parseLong)  
+                .collect(Collectors.toSet());  
+        //将已经排除的id集合添加到参数中  
+        examQueryDTO.setExcludeIdSet(excludeIdSet);  
+    }  
+    PageHelper.startPage(examQueryDTO.getPageNum(),examQueryDTO.getPageSize());  
+    return examMapper.selectExamList(examQueryDTO);  
+}
+```
