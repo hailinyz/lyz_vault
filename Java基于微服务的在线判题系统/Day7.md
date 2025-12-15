@@ -196,3 +196,40 @@ if (CollectionUtil.isEmpty(questionList) || questionList.size() != questionIdSet
 3. 前对岸接收后端响应之后
    如果成功，在页面中展示详情信息
    如果失败：提示失败原因
+
+注意集合的数据拷贝用这个方法
+![](assets/Day7/file-20251215204429175.png)
+
+这是竞赛详情功能接口
+```java
+    /*  
+    * 根据id查询竞赛详情  
+     */    @Override  
+    public ExamDtailVO detail(Long examId) {  
+        ExamDtailVO examDtailVO = new ExamDtailVO();  
+        //获取竞赛基本信息  
+        Exam exam = getExam(examId);  
+        BeanUtil.copyProperties(exam,examDtailVO);  
+        //获取题目id集合  
+        List<ExamQuestion> examQuestionList = examQuestionMapper.selectList(new LambdaQueryWrapper<ExamQuestion>()  
+                .select(ExamQuestion::getQuestionId)  
+                .eq(ExamQuestion::getExamId, examId)  
+                .orderByAsc(ExamQuestion::getQuestionOrder));  
+        if (CollectionUtil.isEmpty(examQuestionList)){ //有可能是没有题目的竞赛  
+            //只包含竞赛基本信息  
+            return examDtailVO;  
+        }  
+        //先拿到题目id的集合到新的List 集合中  
+        List<Long> questionIdList = examQuestionList.stream().map(ExamQuestion::getQuestionId).toList();  
+        //批量在题目表中根据id集合查询  
+        List<Question> questionList = questionMapper.selectList(new LambdaQueryWrapper<Question>()  
+                .select(Question::getQuestionId, Question::getTitle, Question::getDifficulty)  
+                .in(Question::getQuestionId, questionIdList));  
+        //将题目信息转为VO  
+//        List<QuestionVO> quesiontVOList = new ArrayList<>();  
+        List<QuestionVO> quesiontVOList = BeanUtil.copyToList(questionList,QuestionVO.class);  
+        examDtailVO.setExamQuestionList(quesiontVOList);  
+        return examDtailVO;  
+    }
+```
+
