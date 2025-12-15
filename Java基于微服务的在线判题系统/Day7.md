@@ -287,3 +287,12 @@ public int questionDelete(Long examId, Long questionId) {
 可选参数，题目列表的时候就不传这个参数就可以了，竞赛列表带上
 ##### 给题目列表这个接口添加一个可选参数，用于告诉后端用户在添加竞赛题目的时候已经选择的题目，后端可以根据这个可选参数，将被选择的题目过滤掉**
 
+```xml
+            /*排除题目id*/
+            <if test="excludeIdSet != null and !excludeIdSet.isEmpty()">
+                <foreach collection="excludeIdSet" open=" AND tq.question_id NOT IN( " close=" )" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+```
+
