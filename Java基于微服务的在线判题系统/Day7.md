@@ -268,3 +268,17 @@ public int edit(ExamEditDTO examEditDTO) {
 3. 前端接收响应如果成功/失败
 
 **题目删除接口**
+```java
+/*  
+删除竞赛中题目  
+ */@Override  
+public int questionDelete(Long examId, Long questionId) {  
+    Exam exam = getExam(examId);  
+    checkExam(exam);  
+    int delete = examQuestionMapper.delete(new LambdaQueryWrapper<ExamQuestion>()  
+            .eq(ExamQuestion::getExamId, examId)  
+            .eq(ExamQuestion::getQuestionId, questionId));  
+    return delete;  
+}
+```
+
