@@ -250,3 +250,9 @@ public int updateStatus(UserDTO userDTO) {
 ![](assets/Day8/file-20251216191932288.png)
 ### 错了错了，返回给前端的是VO，所以这个注解应该在UserVO上加
 
+
+![](assets/Day8/file-20251216195212189.png)
+好的以上的B端功能都已经差不多了
+
+### 现在开始开发C端
+![](assets/Day8/file-20251216195238875.png)
