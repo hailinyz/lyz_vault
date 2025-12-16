@@ -235,3 +235,5 @@ public int updateStatus(UserDTO userDTO) {
 // todo 拉黑/接近：限制/放开用户操作票
 ```
 
+进行接口测试的时候注意：
+![](assets/Day8/file-20251216190344222.png)
