@@ -186,4 +186,13 @@ public List<UserVO> list(UserQueryDTO userQueryDTO) {
    如果失败：用户状态保持不变，提示失败原因
    如果成功：如果拉黑用户，限制用户的一些操作
              如果是解禁，放开之前限制
- 
+
+为了安全着想我们的参数可以用@RequestBody ，所以下面代码中的userId、status最好定义在一个DTO里。
+```java
+/*  
+* 修改用户状态  
+ */@PutMapping("updateStatus")  
+public R<Void> updateStatus(@RequestBody Long userId, Integer status){  
+    return userService.toR(userService.updateStatus(userId,status));  
+}
+```
