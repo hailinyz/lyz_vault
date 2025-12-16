@@ -248,3 +248,5 @@ public int updateStatus(UserDTO userDTO) {
 还需要注意
 ![](assets/Day8/file-20251216191918450.png)
 ![](assets/Day8/file-20251216191932288.png)
+### 错了错了，返回给前端的是VO，所以这个注解应该在UserVO上加
+
