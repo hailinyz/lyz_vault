@@ -166,3 +166,17 @@ public class User extends BaseEntity {
 3. 前端接收到后端响应
    如果成功：页面展示用户的数据
    如果失败：提示失败原因
+
+**获取用户列表接口**
+```java
+/*  
+获取用户列表  
+ */@Override  
+public List<UserVO> list(UserQueryDTO userQueryDTO) {  
+    PageHelper.startPage(userQueryDTO.getPageNum(),userQueryDTO.getPageSize());  
+    return userMapper.selectUserList(userQueryDTO);  
+}
+```
+
+**用户拉黑功能**
+
