@@ -244,3 +244,7 @@ public int updateStatus(UserDTO userDTO) {
     "status": 1
 }
 ```
+
+还需要注意
+![](assets/Day8/file-20251216191918450.png)
+![](assets/Day8/file-20251216191932288.png)
