@@ -178,5 +178,6 @@ public List<UserVO> list(UserQueryDTO userQueryDTO) {
 }
 ```
 
-**用户拉黑功能**
+**修改用户状态（用户拉黑/解禁功能）**
 
+1. 前端向后端发起修改用户状态请求
