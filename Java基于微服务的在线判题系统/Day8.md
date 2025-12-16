@@ -71,4 +71,20 @@ public int publish(Long examId) {
    如果失败：B端竞赛列表中当前竞赛状态变为未发布
 		   当前竞赛C端竞赛列表中消失
 		   
+```java
+/*  
+撤销发布  
+ */@Override  
+public int cancelpublish(Long examId) {  
+    //判断竞赛是否存在  
+    Exam exam = getExam(examId);  
+    //判断竞赛是否开始  
+    checkExam(exam);  
+    exam.setStatus(Constants.FALSE);  
+    return examMapper.updateById(exam);  
+}
+```
+
+![](assets/Day8/file-20251216154036734.png)
+此前的这几个已经开发完毕，现在继续开发
 
