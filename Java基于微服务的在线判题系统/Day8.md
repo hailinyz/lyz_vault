@@ -196,3 +196,42 @@ public R<Void> updateStatus(@RequestBody Long userId, Integer status){
     return userService.toR(userService.updateStatus(userId,status));  
 }
 ```
+应该是这样
+```java
+@Getter  
+@Setter  
+public class UserDTO {  
+  
+    private Long userId;  
+  
+    private Integer status;  
+  
+}
+
+/*  
+* 修改用户状态  
+ */@PutMapping("updateStatus")  
+public R<Void> updateStatus(@RequestBody UserDTO userDTO){  
+    return toR(userService.updateStatus(userDTO));  
+}
+```
+
+接口代码
+```java
+/*  
+修改用户状态  
+ */@Override  
+public int updateStatus(UserDTO userDTO) {  
+    User user = userMapper.selectById(userDTO.getUserId());  
+    if (user == null){  
+        throw new ServiceException(ResultCode.FAILED_USER_NOT_EXISTS);  
+    }  
+    user.setStatus(userDTO.getStatus());  
+    return userMapper.updateById(user);  
+}
+```
+好的，到这里修改用户状态完成，就差**限制/放开**用户的一些功能了
+```java
+// todo 拉黑/接近：限制/放开用户操作票
+```
+
