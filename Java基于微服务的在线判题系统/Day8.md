@@ -5,4 +5,20 @@
 2. 后端接收请求后，根据竞赛 id （先判断竞赛是否存在，竞赛是否开赛）删除竞赛基本信息 和 竞赛题目信息。并且返回删除结果
 3. 前端接收到响应，如果成功/失败
 
+```java
+/*  
+删除竞赛  
+ */@Override  
+public int delete(Long examId) {  
+    //判断竞赛是否存在  
+    Exam exam = getExam(examId);  
+    //判断竞赛是否开始  
+    checkExam(exam);  
+    //删除竞赛中的题目  
+    examQuestionMapper.delete(new LambdaQueryWrapper<ExamQuestion>()  
+            .eq(ExamQuestion::getExamId, examId));  
+    //删除竞赛  
+    return examMapper.deleteById(exam);  
+}
+```
  
