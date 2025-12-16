@@ -86,5 +86,7 @@ public int cancelpublish(Long examId) {
 ```
 
 ![](assets/Day8/file-20251216154036734.png)
-此前的这几个已经开发完毕，现在继续开发
+B端功能全部功能如图此前的这几个已经开发完毕，现在继续开发
+
+
 
