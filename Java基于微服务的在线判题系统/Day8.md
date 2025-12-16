@@ -294,6 +294,7 @@ public void sendCode(UserDTO userDTO) {
 **集成阿里云短信服务**
 创建AcessKey并保存好ID 和 Secret
 ![](assets/Day8/file-20251216234202752.png)
+搜索短信服务自行购买下单即可
 
 
 
