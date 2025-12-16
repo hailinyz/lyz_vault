@@ -35,7 +35,29 @@ A添加竞赛
 3. 前端接收到后端响应之后
    如果失败，展示失败原因
    如果成功，跳转回列表页，当前状态变回已发布
-   C端竞赛列表中要能找到已发布竞赛（可以将0的竞赛过滤掉，后面可能会传参数给接口）
+   C端竞赛列表中要能找到已发布竞赛（可以将状态字段为0的竞赛过滤掉，后面可能会传参数给接口）
 
 B 编辑竞赛
 C竞赛列表当中
+
+```java
+/*  
+发布竞赛  
+ */@Override  
+public int publish(Long examId) {  
+    //判断竞赛是否存在  
+    Exam exam = getExam(examId);  
+    //判断竞赛中是否有题目 select count(*) from tb_exam_question where exam_id = #{examId}    Long count = examQuestionMapper.selectCount(new LambdaQueryWrapper<ExamQuestion>()  
+            .eq(ExamQuestion::getExamId, examId));  
+    if (count == null || count <= 0){  
+        throw new ServiceException(ResultCode.EXAM_NOT_HAS_QUESTION);  
+    }  
+    //改变状态并同步到数据库  
+    exam.setStatus(Constants.TRUE);  
+    return examMapper.updateById(exam);  
+}
+```
+
+## 竞赛撤销
+
+
