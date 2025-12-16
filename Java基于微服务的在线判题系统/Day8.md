@@ -237,3 +237,10 @@ public int updateStatus(UserDTO userDTO) {
 
 进行接口测试的时候注意：
 ![](assets/Day8/file-20251216190344222.png)
+传的是这个，根据DTO传的
+```java
+{
+    "userId": 1796100478535168002,
+    "status": 1
+}
+```
