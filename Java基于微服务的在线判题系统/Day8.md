@@ -292,7 +292,7 @@ public void sendCode(UserDTO userDTO) {
 这里使用糊涂的生成验证码之后，怎么将验证码发送给用户手机，借助第三方**阿里云短信服务**将验证码发送到用户手机上
 
 **集成阿里云短信服务**
-创建AcessKey
+创建AcessKey并保存好ID 和 Secret
 ![](assets/Day8/file-20251216234202752.png)
 
 
