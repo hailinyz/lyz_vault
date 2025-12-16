@@ -256,3 +256,10 @@ public int updateStatus(UserDTO userDTO) {
 
 ### 现在开始开发C端
 ![](assets/Day8/file-20251216195238875.png)
+
+C端登录注册功能：
+A老用户
+1. 输入手机号，
+
+
+B新用户
