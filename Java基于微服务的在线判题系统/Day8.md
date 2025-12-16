@@ -275,8 +275,23 @@ A老用户
 之前开发B端都是在system微服务下，现在C端应该在用户端（friend微服务）
 
 **获取验证码接口**
+```java
+/*  
+获取验证码  
+ */@Override  
+public void sendCode(UserDTO userDTO) {  
+    //先判断传过来的是不是一个真的手机号  
+    if (!checkPhone(userDTO.getPhone())){  
+        throw new ServiceException(ResultCode.FAILED_USER_PHONE);  
+    }  
+    //生成验证码  
+    String code = RandomUtil.randomNumbers(6);  
+  
+}
+```
+这里使用糊涂的生成验证码之后，怎么将验证码发送给用户手机，借助第三方**阿里云短信服务**将验证码发送到用户手机上
 
-
+**集成阿里云短信服务**
 
 
 
