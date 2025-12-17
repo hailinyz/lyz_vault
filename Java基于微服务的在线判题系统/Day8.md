@@ -325,6 +325,8 @@ public void sendCode(UserDTO userDTO) {
 ```
 
 
+浇给sqpring容器处理 
+配置类、所看到的参数用nacos进行管理，用@Value注解
 
 
 
