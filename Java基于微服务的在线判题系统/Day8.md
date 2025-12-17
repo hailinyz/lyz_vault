@@ -307,12 +307,21 @@ public void sendCode(UserDTO userDTO) {
         <artifactId>dypnsapi20170525</artifactId>  
         <version>2.0.0</version>  
     </dependency>  
+    
+    <dependency>
+	  <groupId>com.aliyun</groupId>
+	  <artifactId>dysmsapi20170525</artifactId>
+	  <version>4.3.1</version>
+	</dependency>
+
     <dependency>  
         <groupId>com.alibaba.fastjson2</groupId>  
         <artifactId>fastjson2</artifactId>  
         <version>${fastjson.version}</version>  
     </dependency>  
 </dependencies>
+
+
 ```
 
 
