@@ -298,6 +298,22 @@ public void sendCode(UserDTO userDTO) {
 截至我写这篇文章之前，短信服务已经**不支持个人资质**，所以我只能用**号码认证**了
 
 创建oj-common-message短信微服务
+引入依赖
+```xml
+<!-- 阿里云号码认证 -->  
+<dependencies>  
+    <dependency>  
+        <groupId>com.aliyun</groupId>  
+        <artifactId>dypnsapi20170525</artifactId>  
+        <version>2.0.0</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>com.alibaba.fastjson2</groupId>  
+        <artifactId>fastjson2</artifactId>  
+        <version>${fastjson.version}</version>  
+    </dependency>  
+</dependencies>
+```
 
 
 
