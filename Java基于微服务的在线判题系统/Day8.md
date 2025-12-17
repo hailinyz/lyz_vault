@@ -297,6 +297,8 @@ public void sendCode(UserDTO userDTO) {
 搜索短信服务自行购买下单即可
 截至我写这篇文章之前，短信服务已经**不支持个人资质**，所以我只能用**号码认证**了
 
+创建oj-common-message短信微服务
+
 
 
 
