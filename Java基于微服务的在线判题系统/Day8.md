@@ -295,7 +295,7 @@ public void sendCode(UserDTO userDTO) {
 创建AcessKey并保存好ID 和 Secret
 ![](assets/Day8/file-20251216234202752.png)
 搜索短信服务自行购买下单即可
-
+截至我写这篇文章之前，短信服务已经**不支持个人资质**，所以我只能用**号码认证**了
 
 
 
