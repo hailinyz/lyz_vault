@@ -333,7 +333,7 @@ public void sendCode(UserDTO userDTO) {
 
 ## 继续
 
-
+因为我没有开通阿里短信服务的个人资质，所以使用了模拟的短信验证码发送MockSmsService
 
 
 
