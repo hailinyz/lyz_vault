@@ -258,7 +258,7 @@ public int updateStatus(UserDTO userDTO) {
 ![](assets/Day8/file-20251216195238875.png)
 
 C端登录注册功能：
-A老用户
+**A老用户**
 1. 输入手机号，点击获取验证码按钮。前端向后端发起获取验证码请求。
 2. 后端接收到请求后，随机生成验证码，并将验证码发送到用户的手机上。
 
@@ -340,4 +340,4 @@ public void sendCode(UserDTO userDTO) {
 ![](assets/Day8/file-20251220000116676.png)
 
 
-B新用户
+**B新用户**
