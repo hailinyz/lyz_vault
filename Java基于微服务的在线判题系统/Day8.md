@@ -334,6 +334,8 @@ public void sendCode(UserDTO userDTO) {
 ## 继续
 
 因为我没有开通阿里短信服务的个人资质，所以使用了模拟的短信验证码发送通过调用SmsService接口进行区分，开发环境用模拟，正式环境用开通的，用哪个注入哪个，注意oj-friend的nacos配置和bootstrap.yal配置
+到这里我们就将短信服务集成到项目里了
+![](assets/Day8/file-20251219235948211.png)
 
 
 
