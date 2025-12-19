@@ -339,5 +339,14 @@ public void sendCode(UserDTO userDTO) {
 继续吧
 ![](assets/Day8/file-20251220000116676.png)
 
+验证码是比较频繁的操作，不建议存到数据库，每次所获取的验证码不同，而且有有效时长
+所以用**redis**
+
+
+
+
+
+
+
 
 **B新用户**
