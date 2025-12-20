@@ -453,3 +453,7 @@ redisService.deleteObject(phoneCodeKey);
 如果是投入生成使用的话 ，我们将这个开关打开。
 打开后：生成随机验证码，并将这验证码发送到用户手机上
 关闭后：测试的时候，生成一个固定验证码123456，并且不发送这个验证码
+```java
+//生成验证码  
+String code = isSend ? RandomUtil.randomNumbers(6) : Constants.DEFAULT_CODE;
+```
