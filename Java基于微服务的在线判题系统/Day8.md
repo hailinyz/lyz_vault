@@ -417,3 +417,34 @@ if (!cacheCode.equals(code)){
 //验证码已经比对成功，删除redis中的验证码  
 redisService.deleteObject(phoneCodeKey);
 ```
+
+登录注册接口
+```java
+    /*  
+    登录注册  
+     */    @Override  
+    public String codeLogin(String phone, String code) {  
+        //验证码的比对  
+        checkCode(phone, code);  
+  
+        //判断新老用户  
+        User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getPhone, phone));  
+        if (user == null){ //新用户  
+            //注册逻辑  
+            user = new User();  
+            user.setPhone(phone);  
+            userMapper.insert(user);  
+        }  
+  
+        //生成token  
+        return tokenService.createToken(user.getUserId(), secret, UserIdentity.ORDINARY.getValue(),user.getNickName());  
+  
+/*        if (user != null){ //说明是老用户  
+            String phoneCodeKey = getPhoneCodeKey(phone);            //获取redis中存储的验证码  
+            String cacheCode = redisService.getCacheObject(phoneCodeKey, String.class);            //判断验证码是否是空  
+            if (StrUtil.isEmptyIfStr(cacheCode)){                throw new ServiceException(ResultCode.FAILED_INVALID_CODE);            }            if (!cacheCode.equals(code)){                throw new ServiceException(ResultCode.FAILED_ERROR_CODE);            }            //验证码已经比对成功，删除redis中的验证码  
+            redisService.deleteObject(phoneCodeKey);            //生成token  
+            return tokenService.createToken(user.getUserId(), secret, UserIdentity.ORDINARY.getValue(),user.getNickName());        }*/  
+        //新用户.在上面  
+    }
+```
