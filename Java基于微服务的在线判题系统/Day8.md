@@ -455,5 +455,14 @@ redisService.deleteObject(phoneCodeKey);
 关闭后：测试的时候，生成一个固定验证码123456，并且不发送这个验证码
 ```java
 //生成验证码  
-String code = isSend ? RandomUtil.randomNumbers(6) : Constants.DEFAULT_CODE;
+String code = isSend ? RandomUtil.randomNumbers(6) : Constants.DEFAULT_CODE;  
+//存储到redis中 数据结构：String key：p:c:手机号 value：code  
+redisService.setCacheObject(phoneCodeKey, code, phoneCodeExpiration, TimeUnit.MINUTES);  
+if (isSend){  
+    //发送验证码  
+    boolean sendMobileCode = mockSmsService.sendMobileCode(userDTO.getPhone(), code);  
+    if (!sendMobileCode){  
+        throw new ServiceException(ResultCode.FAILED_SEND_CODE);  
+    }  
+}
 ```
