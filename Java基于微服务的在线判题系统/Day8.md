@@ -401,4 +401,19 @@ public boolean sendCode(UserDTO userDTO) {
 **注册逻辑**
 	先完成验证码的比对。
 	 如果比对成功，往系统中新增一个用户，（向数据库的用户表插入一条新数据）
-	 
+	 **不管是新用户还是老用户进来先进行验证码的比对**
+```java
+//验证码的比对  
+String phoneCodeKey = getPhoneCodeKey(phone);  
+//获取redis中存储的验证码  
+String cacheCode = redisService.getCacheObject(phoneCodeKey, String.class);  
+//判断验证码是否是空  
+if (StrUtil.isEmptyIfStr(cacheCode)){  
+    throw new ServiceException(ResultCode.FAILED_INVALID_CODE);  
+}  
+if (!cacheCode.equals(code)){  
+    throw new ServiceException(ResultCode.FAILED_ERROR_CODE);  
+}  
+//验证码已经比对成功，删除redis中的验证码  
+redisService.deleteObject(phoneCodeKey);
+```
