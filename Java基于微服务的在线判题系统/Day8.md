@@ -433,6 +433,7 @@ redisService.deleteObject(phoneCodeKey);
             //注册逻辑  
             user = new User();  
             user.setPhone(phone);  
+            user.setStatus(UserStatus.Normal.getValue());  
             userMapper.insert(user);  
         }  
   
