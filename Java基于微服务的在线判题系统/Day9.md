@@ -9,3 +9,15 @@ views下创建两个页面级的.vue (Login.vue、Home.vue)
 
 ## C端用户的退出登录
 
+```java
+/*  
+ * 退出登录  
+ */@Override  
+public boolean logout(String token) {  
+    if (StrUtil.isNotEmpty(token) &&  
+            token.startsWith(HttpConstants.PREFIX)) {  
+        token = token.replaceFirst(HttpConstants.PREFIX, StrUtil.EMPTY);  
+    }  
+    return tokenService.deleteLoginUser(token, secret);  
+}
+```
