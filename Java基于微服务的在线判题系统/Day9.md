@@ -4,3 +4,8 @@ router配置文件中，增加新页面的路由配置信息。
 views下创建两个页面级的.vue (Login.vue、Home.vue)
 
 然后完成相关配置的初始化，scss、axios等的引入
+
+---
+
+## C端用户的退出登录
+
