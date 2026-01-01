@@ -86,3 +86,5 @@ public class ExamQueryDTO extends PageQueryDTO {
 ```
 
 好的既然要所有的人包括游客能看到竞赛列表，可以在网关配置，just do it
+为了让后续有的接口也能实现半登录就能查看的效果，可以加上一个前缀
+![](assets/Day10/file-20260101124503427.png)
