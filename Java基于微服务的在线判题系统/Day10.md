@@ -33,3 +33,56 @@ C端支持游客使用，B端必须先登录完成（网关配置跳过用户身
 
 
 **既然竞赛列表的显示跟B端不一样，那就在前端传输过来的参数进行增加一个标识，已参赛，未参赛，在DTO里加**
+```java
+//属性就是发起请求时候前端会传递什么参数  
+@Getter  
+@Setter  
+public class ExamQueryDTO extends PageQueryDTO {  
+  
+    private String title;  
+  
+    private String startTime;  
+  
+/*    private String excludeIdStr;  
+  
+    private Set<Long> excludeIdSet;*/  
+    private String endTime;  
+  
+    private Integer type; //0 未完赛 1 历史竞赛  
+  
+}
+```
+
+还有查询的xml文件
+```xml
+    <select id="selectExamList" resultType="com.bite.friend.domain.exam.vo.ExamVO">
+        SELECT
+            te.exam_id,
+            te.title,
+            te.start_time,
+            te.end_time,
+        FROM
+            tb_exam te
+        where
+            status = 1
+            <if test="title !=null and title !='' ">
+                AND te.title LIKE CONCAT('%',#{title},'%')
+            </if>
+            <if test="startTime != null and startTime != '' ">
+                AND te.start_time >= #{startTime}
+            </if>
+            <if test="endTime != null and endTime != '' ">
+                AND te.end_time &lt;= #{endTime}
+            </if>
+            <if test="type == 0">
+                AND te.end_time > NOW()
+            </if>
+            <if test="type == 1">
+                AND te.end_time &lt;= NOW()
+            </if>
+        ORDER BY
+            te.create_time DESC
+    </select>
+```
+
+好的既然要所有的人包括游客能看到竞赛列表，可以在网关配置，just do it
