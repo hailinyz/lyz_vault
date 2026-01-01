@@ -89,3 +89,9 @@ public class ExamQueryDTO extends PageQueryDTO {
 为了让后续有的接口也能实现半登录就能查看的效果，可以加上一个前缀
 ![](assets/Day10/file-20260101124503427.png)
 ![](assets/Day10/file-20260101124619496.png)
+
+
+
+### 现在竞赛列表查询只从数据库钟查询的话呢，性能其实是不过关的
+
+通过压测工具**Jmeter**
