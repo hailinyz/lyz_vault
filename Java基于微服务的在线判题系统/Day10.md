@@ -22,3 +22,6 @@ public R<LoginUserVO> info(String token) {
 ```
 注意要新增参数，VO、实体类啥的还有调用的地方。
 
+
+## C端竞赛列表页面
+
