@@ -28,3 +28,4 @@ public R<LoginUserVO> info(String token) {
 不同：
 展示形式不同（前端处理）
 每个竞赛展示的数据不同，C端的更少一些。（只需要调整查询sql）
+搜索条件不同
