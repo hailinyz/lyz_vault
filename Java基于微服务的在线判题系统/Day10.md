@@ -95,3 +95,4 @@ public class ExamQueryDTO extends PageQueryDTO {
 ### 现在竞赛列表查询只从数据库钟查询的话呢，性能其实是不过关的
 
 通过压测工具**Jmeter**
+cao测试还是先不用，这里跳过
