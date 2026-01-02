@@ -122,3 +122,4 @@ key： e:t:l   e:h:l
 										   value : 存储竞赛的基本信息  json形式 
 
 
+创建一个manger包，里面的ExamCacheManger全都是关于redis的缓存操作
