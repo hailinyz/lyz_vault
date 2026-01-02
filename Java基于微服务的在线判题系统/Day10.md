@@ -123,3 +123,4 @@ key： e:t:l   e:h:l
 
 
 创建一个manger包，里面的ExamCacheManger全都是关于redis的缓存操作
+撤销发布也只能是操作那些未完赛的竞赛
