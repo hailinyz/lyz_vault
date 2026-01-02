@@ -124,3 +124,48 @@ key： e:t:l   e:h:l
 
 创建一个manger包，里面的ExamCacheManger全都是关于redis的缓存操作
 撤销发布也只能是操作那些未完赛的竞赛
+
+将未结束竞赛存到redis中，或者从redis中删除未结束竞赛
+```java
+/*  
+发布竞赛  
+ */@Override  
+public int publish(Long examId) {  
+    //判断竞赛是否存在  
+    Exam exam = getExam(examId);  
+  
+    //已经结束的竞赛不能发布  
+    if (exam.getEndTime().isBefore(LocalDateTime.now())){  
+        throw new ServiceException(ResultCode.EXAM_IS_FINISH);  
+    }  
+  
+    //判断竞赛中是否有题目 select count(*) from tb_exam_question where exam_id = #{examId}    Long count = examQuestionMapper.selectCount(new LambdaQueryWrapper<ExamQuestion>()  
+            .eq(ExamQuestion::getExamId, examId));  
+    if (count == null || count <= 0){  
+        throw new ServiceException(ResultCode.EXAM_NOT_HAS_QUESTION);  
+    }  
+    //改变状态并同步到数据库  
+    exam.setStatus(Constants.TRUE);  
+    //要将新发布的竞赛数据存储到redis中  新发布竞赛往两个缓存里面存 e:t:l   e:d:examId    examCacheManager.addCache(exam);  
+    return examMapper.updateById(exam);  
+}  
+  
+/*  
+撤销发布  
+ */@Override  
+public int cancelpublish(Long examId) {  
+    //判断竞赛是否存在  
+    Exam exam = getExam(examId);  
+    //判断竞赛是否开始  
+    checkExam(exam);  
+    //已经结束的竞赛不能发布  
+    if (exam.getEndTime().isBefore(LocalDateTime.now())){  
+        throw new ServiceException(ResultCode.EXAM_IS_FINISH);  
+    }  
+    exam.setStatus(Constants.FALSE);// 改变状态并同步到数据库  
+    examCacheManager.deleteCache(examId);  
+    return examMapper.updateById(exam);  
+}
+```
+
+上面只是把数据存储到redis中，存进去的目的就是为了查出来，现在我们还要查询代码进行完善
