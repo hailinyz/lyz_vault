@@ -169,3 +169,6 @@ public int cancelpublish(Long examId) {
 ```
 
 上面只是把数据存储到redis中，存进去的目的就是为了查出来，现在我们还要查询代码进行完善
+
+既然B端有了个操控redis的manger，C端也要有一个manger
+
