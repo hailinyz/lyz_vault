@@ -114,4 +114,11 @@ cao测试还是先不用，这里跳过
 
 key 是什么  value是什么
 key： e:t:l   e:h:l
-value:  存储竞赛的基本信息  json形式 
+	value:  存储竞赛的基本信息  json形式 (会重复存储数据，所以不能这么存)
+
+
+
+
+
+将竞赛的基本信息只存储一份：数据结构：String       key : e:d:examId     
+										   value : 存储竞赛的基本信息  json形式 
