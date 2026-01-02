@@ -172,3 +172,7 @@ public int cancelpublish(Long examId) {
 
 既然B端有了个操控redis的manger，C端也要有一个manger
 
+之前发布竞赛的这些新数据，可以存到redis中也可以从redis中查询出来，但是之前已经发布过的老数据（老竞赛）没办法从redis中查出来，应该让这些老数据出现在redis中，怎么做呢？
+
+
+
