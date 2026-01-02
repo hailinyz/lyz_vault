@@ -178,6 +178,8 @@ public int cancelpublish(Long examId) {
 
 然后数据库和redis中的**数据就一致了**，那我们再一次查询的时候就可以直接走redis了。
 
+还有个比较**极限**的问题：就是刚发布了一个竞赛，然后刚发布这个竞赛可以在redis中，但是老数据呢？
+
 
 
 
