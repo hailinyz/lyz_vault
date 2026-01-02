@@ -116,9 +116,9 @@ key 是什么  value是什么
 key： e:t:l   e:h:l
 	value:  存储竞赛的基本信息  json形式 (会重复存储数据，所以不能这么存)
 
-
-
-
+**最终确定  value 中存储 examId**
 
 将竞赛的基本信息只存储一份：数据结构：String       key : e:d:examId     
 										   value : 存储竞赛的基本信息  json形式 
+
+
