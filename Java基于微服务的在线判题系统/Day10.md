@@ -194,6 +194,7 @@ public int cancelpublish(Long examId) {
 
 我们的微服务oj-job就是 “执行器项目” 的微服务
 
+**1.部署和配置分布式任务调度中心**
 [先执行对应的sql创建xxl-job的数据库]([doc/db/tables_xxl_job.sql · 许雪里/xxl-job - 码云 - 开源中国 (gitee.com)](https://gitee.com/xuxueli0323/xxl-job/blob/master/doc/db/tables_xxl_job.sql#))
 
 拉取镜像之后启动，访问地址：**http://localhost:8080/xxl-job-admin**
@@ -213,3 +214,6 @@ WHERE username = 'admin';
 
 然后就成功启动了
 ![](assets/Day10/file-20260103130849569.png)
+
+
+**2.配置部署执行器项目**
