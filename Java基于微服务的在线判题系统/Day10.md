@@ -249,3 +249,27 @@ WHERE username = 'admin';
 ```
 
 **4.配置xxl-job nacos上进行配置就行哈**
+```yaml
+server:
+ port: 9203
+spring:
+ datasource:
+ url: jdbc:mysql://localhost:3306/bitoj_dev?
+useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSS
+L=true&serverTimezone=GMT%2B8&allowMultiQueries=true
+ username: ojtest
+ password: 123456
+ 
+ data:
+ redis:
+ host: localhost
+ port: 6379
+ password: 123456
+xxl:
+ job:
+ admin:
+ addresses: http://localhost:8080/xxl-job-admin
+ accessToken: default_token
+ executor:
+ appname: ${spring.application.name}-executor
+```
