@@ -219,3 +219,33 @@ WHERE username = 'admin';
 **2.配置部署执行器项目**
 ![](assets/Day10/file-20260103131647668.png).
 新增任务
+![](assets/Day10/file-20260103132854472.png)
+**3.引入依赖**
+```xml
+<dependencies>  
+    <dependency>  
+        <groupId>com.bite</groupId>  
+        <artifactId>oj-common-core</artifactId>  
+        <version>${oj-common-core.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>com.bite</groupId>  
+        <artifactId>oj-common-redis</artifactId>  
+        <version>${oj-common-redis.version}</version>  
+    </dependency>  
+    <!-- xxl-job-core -->  
+    <dependency>  
+        <groupId>com.xuxueli</groupId>  
+        <artifactId>xxl-job-core</artifactId>  
+        <version>${xxl-job.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>com.bite</groupId>  
+        <artifactId>oj-common-mybatis</artifactId>  
+        <version>${oj-common-mybatis.version}</version>  
+    </dependency>  
+  
+</dependencies>
+```
+
+**4.配置xxl-job nacos上进行配置就行哈**
