@@ -198,5 +198,18 @@ public int cancelpublish(Long examId) {
 
 拉取镜像之后启动，访问地址：**http://localhost:8080/xxl-job-admin**
 ```powershell
-docker run -e PARAMS="--spring.datasource.url=jdbc:mysql://172.17.0.2:3307/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai --spring.datasource.username=ojtest --spring.datasource.password=123456" -p 8080:8080 --name xxl-job-admin -d xuxueli/xxl-job-admin:2.4.0
+docker run -e PARAMS="--spring.datasource.url=jdbc:mysql://host.docker.internal:3307/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai --spring.datasource.username=root --spring.datasource.password=123456" -p 8080:8080 --name xxl-job-admin -d xuxueli/xxl-job-admin:2.4.0
 ```
+
+记得改一下数据库的密码：admin 123456
+```sql
+USE xxl_job;  
+SELECT * FROM xxl_job_user WHERE username = 'admin';  
+  
+UPDATE xxl_job_user  
+SET password = 'e10adc3949ba59abbe56e057f20f883e'  
+WHERE username = 'admin';
+```
+
+然后就成功启动了
+![](assets/Day10/file-20260103130849569.png)
