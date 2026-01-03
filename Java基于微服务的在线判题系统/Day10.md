@@ -217,3 +217,5 @@ WHERE username = 'admin';
 
 
 **2.配置部署执行器项目**
+![](assets/Day10/file-20260103131647668.png).
+新增任务
