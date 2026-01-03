@@ -271,3 +271,26 @@ xxl:
     executor:
       appname: ${spring.application.name}-executor
 ```
+
+xxl的配置类
+```java
+@Configuration  
+@Slf4j  
+public class XxlJobConfig {  
+    @Value("${xxl.job.admin.addresses}")  
+    private String adminAddresses;  
+    @Value("${xxl.job.accessToken}")  
+    private String accessToken;  
+    @Value("${xxl.job.executor.appname}")  
+    private String appname;  
+    @Bean  
+    public XxlJobSpringExecutor xxlJobExecutor() {  
+        log.info(">>>>>>>>>>> xxl-job config init.");  
+        XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();  
+        xxlJobSpringExecutor.setAdminAddresses(adminAddresses);  
+        xxlJobSpringExecutor.setAppname(appname);  
+        xxlJobSpringExecutor.setAccessToken(accessToken);  
+        return xxlJobSpringExecutor;  
+    }  
+}
+```
