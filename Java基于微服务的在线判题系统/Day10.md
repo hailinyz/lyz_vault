@@ -189,3 +189,6 @@ public int cancelpublish(Long examId) {
 **长期 反复 的 去执行 竞赛移动的方法。** （定时任务）
 ### （定时任务）
 频率：每天凌晨 1:00
+
+#### 分布式任务调度平台 -- XXL-JOB
+
