@@ -196,8 +196,7 @@ public int cancelpublish(Long examId) {
 
 [先执行对应的sql创建xxl-job的数据库]([doc/db/tables_xxl_job.sql · 许雪里/xxl-job - 码云 - 开源中国 (gitee.com)](https://gitee.com/xuxueli0323/xxl-job/blob/master/doc/db/tables_xxl_job.sql#))
 
-拉取镜像之后启动
+拉取镜像之后启动，访问地址：**http://localhost:8080/xxl-job-admin**
 ```powershell
 docker run -e PARAMS="--spring.datasource.url=jdbc:mysql://172.17.0.2:3307/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai --spring.datasource.username=ojtest --spring.datasource.password=123456" -p 8080:8080 --name xxl-job-admin -d xuxueli/xxl-job-admin:2.4.0
 ```
-
