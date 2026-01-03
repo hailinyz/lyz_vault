@@ -267,9 +267,12 @@ xxl:
   job:
     admin:
       addresses: http://localhost:8080/xxl-job-admin
-      accessToken: default_token
+    accessToken: default_token    
     executor:
       appname: ${spring.application.name}-executor
+      
+jwt:
+  secret: sdfghuijasxdjkawskuigy
 ```
 
 xxl的配置类
@@ -294,3 +297,31 @@ public class XxlJobConfig {
     }  
 }
 ```
+
+注意bootstrap.yml也要配置：（注意mysql驱动的依赖也要导入）
+```yaml
+spring:  
+  application:  
+    # 应⽤名称  
+    name: oj-job  
+  profiles:  
+    active: local  
+  cloud:  
+    nacos:  
+      discovery: # nacos注册中心  
+        namespace: bebc7274-6a9a-4c8b-84e8-461d7d385346  
+        server-addr: http://localhost:8848  
+      config: # nacos配置中心  
+        namespace: bebc7274-6a9a-4c8b-84e8-461d7d385346  
+        server-addr: http://localhost:8848  
+        file-extension: yaml
+```
+
+注意启动项的扫描包
+![](assets/Day10/file-20260104002506293.png)
+
+要测试是否已经完成已经完成的竞赛转变为历史竞赛可以执行一次定时任务。
+
+OK到这里C端的竞赛列表就完了
+
+--- 
