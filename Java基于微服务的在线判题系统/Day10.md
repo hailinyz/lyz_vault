@@ -192,3 +192,5 @@ public int cancelpublish(Long examId) {
 
 #### 分布式任务调度平台 -- XXL-JOB
 
+我们的微服务oj-job就是 “执行器项目” 的微服务
+
