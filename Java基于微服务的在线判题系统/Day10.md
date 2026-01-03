@@ -194,3 +194,5 @@ public int cancelpublish(Long examId) {
 
 我们的微服务oj-job就是 “执行器项目” 的微服务
 
+[先执行对应的sql创建xxl-job的数据库]([doc/db/tables_xxl_job.sql · 许雪里/xxl-job - 码云 - 开源中国 (gitee.com)](https://gitee.com/xuxueli0323/xxl-job/blob/master/doc/db/tables_xxl_job.sql#))
+
