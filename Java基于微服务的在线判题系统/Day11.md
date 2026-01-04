@@ -53,3 +53,6 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 设计缓存结构（提高查询效率）
 这是之前竞赛列表的缓存结构设计，可以参考一下：
 ![](assets/Day11/file-20260104222318896.png)
+
+我的竞赛列表 key ： u:e:l:用户id
+![](assets/Day11/file-20260104223648072.png)
