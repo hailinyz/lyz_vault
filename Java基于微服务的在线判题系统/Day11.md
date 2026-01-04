@@ -47,5 +47,7 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 
 用户的竞赛报名信息存储到**数据库中 和 redis中**
 
-表结构竞赛报名：tb_user_exam：
+表结构设计竞赛报名：tb_user_exam：
+![](assets/Day11/file-20260104221908255.png)
 
+设计缓存结构（提高查询效率）
