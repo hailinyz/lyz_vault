@@ -48,7 +48,7 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 用户的竞赛报名信息存储到**数据库中 和 redis中**
 
 表结构设计竞赛报名：tb_user_exam：
-![](assets/Day11/file-20260104221908255.png)
+![](assets/Day11/file-20260104224821355.png)
 
 设计缓存结构（提高查询效率）
 这是之前竞赛列表的缓存结构设计，可以参考一下：
@@ -66,4 +66,6 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
   如果成功，竞赛列表中该竞赛展示 “已报名” 标签，并且在我的竞赛列表中要能找到报名的竞赛。
 
 报名条件：1.用户必须处于登录状态  2.不能报名不存在的比赛  3.不能重复报名   4.已经开赛的竞赛不能再进行报名
+
+
 
