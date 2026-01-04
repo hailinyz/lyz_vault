@@ -37,3 +37,5 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 ```
 
 ## 竞赛报名功能
+
+竞赛报名和比赛、竞赛排名、我的竞赛、竞赛列表有关
