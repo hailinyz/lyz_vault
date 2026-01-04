@@ -67,5 +67,24 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 
 报名条件：1.用户必须处于登录状态  2.不能报名不存在的比赛  3.不能重复报名   4.已经开赛的竞赛不能再进行报名
 
+#### OK，开始开发这个功能
+
+创建表tb_user_exam
+```sql
+create table tb_user_exam(  
+    user_exam_id bigint unsigned NOT NULL COMMENT '用户竞赛关系id',  
+    user_id bigint unsigned NOT NULL COMMENT '用户id',  
+    exam_id bigint unsigned NOT NULL COMMENT '竞赛id',  
+    score int unsigned COMMENT '得分',  
+    exam_rank int unsigned COMMENT '排名',  
+    create_by bigint unsigned not null comment '创建人',  
+    create_time datetime not null comment '创建时间',  
+    update_by bigint unsigned comment '更新人',  
+    update_time datetime comment '更新时间',  
+    primary key(user_exam_id)  
+);
+```
+
+根据这个表创建对应的实体类、mapper等
 
 
