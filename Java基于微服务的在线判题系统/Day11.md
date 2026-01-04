@@ -36,3 +36,4 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 }
 ```
 
+## 竞赛报名功能
