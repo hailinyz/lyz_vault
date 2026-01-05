@@ -108,3 +108,20 @@ Long userId = tokenService.getUserId(token, secret); //secret在nacos上维护�
 **ThreadLocal 线程本地变量，它会为使用这个变量的线程创建一个独立的副本。意味着每个线程去操作的时候始终都是自己的副本，对于其他线程造不成任何影响。**
 
 **userId 可以存到 ThreadLocal 。**
+
+但是由于Java原生的ThreadLocal在线程池里会丢数据，TransmittableThreadLocal（TTL）不会。
+![](assets/Day11/file-20260105094233941.png)
+
+
+### TTL
+
+引入依赖
+```xml
+<transmittable-thread-local.version>2.14.4</transmittable-thread-local.version>
+
+<dependency>
+ <groupId>com.alibaba</groupId>
+ <artifactId>transmittable-thread-local</artifactId>
+ <version>${transmittable-thread-local.version}</version>
+</dependency>
+```
