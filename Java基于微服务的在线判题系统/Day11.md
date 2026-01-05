@@ -160,3 +160,11 @@ public class ThreadLocalUtil {
 
 这时候可以用到拦截器，因为拦截器是和具体的某一个服务是绑定的，所以就可以取到。
 ![](assets/Day11/file-20260105102802304.png)
+
+通过线程池ThreadLocal配合过滤器存取userId
+```java
+Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);
+```
+当然，其他用到userId的也可以直接从ThreadLocal中取，我这里就偷懒不变了，其他还是使用原来解析token获取userId的方法。
+
+注意：内存泄露问题，
