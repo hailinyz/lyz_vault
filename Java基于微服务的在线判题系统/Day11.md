@@ -186,5 +186,10 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
 
 type就是用来配合ExamListType过滤掉是未完成竞赛、历史竞赛、我的竞赛的。
 
-因为是我的竞赛，要用到userId，就可以从TreadLocal中获取
+因为是我的竞赛，要用到userId，就可以从TreadLocal中获取；
+
+改造后的代码，由于C端查询竞赛列表的时候也会用到，所以直接传null就行，因为不需要登录，是一种版登录状态，无需userId。
+
+
+
 
