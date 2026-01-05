@@ -180,4 +180,5 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
 
 ## 我的竞赛
 
-都是我报名过的。
+都是我报名过的。先查询缓存（u:e:l:用户id） ，如果查不到，数据库当中再去查，并且将数据库中的数据同步给redis。
+
