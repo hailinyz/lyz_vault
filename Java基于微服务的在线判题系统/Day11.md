@@ -65,7 +65,7 @@ public TableDataInfo redisList(ExamQueryDTO examQueryDTO) {
 前端接收到后端响应之后，根据返回结果提示用户报名成功/失败。
   如果成功，竞赛列表中该竞赛展示 “已报名” 标签，并且在我的竞赛列表中要能找到报名的竞赛。
 
-报名条件：1.用户必须处于登录状态  2.不能报名不存在的比赛  3.不能重复报名   4.已经开赛的竞赛不能再进行报名
+报名条件：1.用户必须处于登录状态（在网关层已经实现）  2.不能报名不存在的比赛  3.不能重复报名   4.已经开赛的竞赛不能再进行报名
 
 #### OK，开始开发这个功能
 
@@ -97,4 +97,9 @@ public R<Void> enter(@RequestHeader(HttpConstants.AUTHENTICATION) String token, 
 }
 ```
 关于参数因为姚明竞赛要想要知道用户id得从token中解析出来，所以要获取前端传过来的token，然后POST请求对应的是请求体用@RequestBody。
+
+获取userId
+```java
+Long userId = tokenService.getUserId(token, secret); //secret在nacos上维护，可以@Value引入，应该是一个盐值
+```
 
