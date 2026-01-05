@@ -103,4 +103,5 @@ public R<Void> enter(@RequestHeader(HttpConstants.AUTHENTICATION) String token, 
 Long userId = tokenService.getUserId(token, secret); //secret在nacos上维护，可以@Value引入，应该是一个盐值
 ```
 
-其实在网管层进行身份认证的时候userId就能获取到了
+其实在网管层进行身份认证的时候userId就能获取到了，可以存起来，解决了重复的解析获取用户id的麻烦
+
