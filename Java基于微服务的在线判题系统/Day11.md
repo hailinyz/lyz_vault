@@ -190,6 +190,79 @@ type就是用来配合ExamListType过滤掉是未完成竞赛、历史竞赛、�
 
 改造后的代码，由于C端查询竞赛列表的时候也会用到，所以直接传null就行，因为不需要登录，是一种版登录状态，无需userId。
 
+最后清空ThreadLocal里面的数据，防止内存泄露问题。
+
+我的竞赛实现代码
+```java
+/*  
+ * 我的竞赛  
+ */@Override  
+public TableDataInfo list(ExamQueryDTO examQueryDTO) {  
+    //从ThreadLocal中获取用户id  
+    Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);  
+    examQueryDTO.setType(ExamListType.USER_EXAM_LIST.getValue()); //设置查询类型为我的竞赛  
+    //从redis中获取 竞赛列表数据  
+    Long total = examCacheManager.getListSize(ExamListType.USER_EXAM_LIST.getValue(), userId);  
+    List<ExamVO> examVOList;  
+    if (total == null || total <= 0){  
+        //从数据库中获取 我的竞赛列表数据  
+        PageHelper.startPage(examQueryDTO.getPageNum(),examQueryDTO.getPageSize());  
+        examVOList = userExamMapper.selectUserExamList(userId);  
+        //同步到redis中  
+        examCacheManager.refreshCache(ExamListType.USER_EXAM_LIST.getValue(), userId);  
+        total = new PageInfo<>(examVOList).getTotal(); //获取总记录数  
+    } else {  
+        //从redis中获取 竞赛列表数据  
+        examVOList = examCacheManager.getExamVOList(examQueryDTO, userId);  
+        total =  examCacheManager.getListSize(examQueryDTO.getType(), userId); // 获取总记录数  
+    }  
+    if (CollectionUtil.isEmpty(examVOList)){ //使用hutool工具包判断集合是否为空  
+        return TableDataInfo.empty(); //未查出任何数据时调用  
+    }  
+    return TableDataInfo.success(examVOList, total);  
+}
+```
+
+刷新缓存逻辑改造
+```java
+//刷新缓存逻辑  
+public void refreshCache(Integer examListType, Long userId) {  
+    List<Exam> examList = new ArrayList<>();  
+    if (ExamListType.EXAM_UN_FINISH_LIST.getValue().equals(examListType)) {  
+        //查询未完成竞赛  
+        examList = examMapper.selectList(new LambdaQueryWrapper<Exam>()  
+                .select(Exam::getExamId, Exam::getTitle, Exam::getStartTime, Exam::getEndTime)  
+                .gt(Exam::getEndTime, LocalDateTime.now())  
+                .eq(Exam::getStatus, Constants.TRUE)  
+                .orderByDesc(Exam::getCreateTime));  
+  
+    } else if (ExamListType.EXAM_HISTORY_LIST.getValue().equals(examListType)) {  
+        //查询历史竞赛  
+        examList = examMapper.selectList(new LambdaQueryWrapper<Exam>()  
+                .select(Exam::getExamId, Exam::getTitle, Exam::getStartTime, Exam::getEndTime)  
+                .le(Exam::getEndTime, LocalDateTime.now())  
+                .eq(Exam::getStatus, Constants.TRUE)  
+                .orderByDesc(Exam::getCreateTime));  
+    } else if (ExamListType.USER_EXAM_LIST.getValue().equals( examListType)) {  
+        //  查询用户竞赛  
+        List<ExamVO> examVOList = userExamMapper.selectUserExamList(userId);  
+        BeanUtil.copyToList( examList, Exam.class);  
+    }  
+    if (CollectionUtil.isEmpty(examList)) {  
+        return;  
+    }  
+  
+    Map<String, Exam> examMap = new HashMap<>();  
+    List<Long> examIdList = new ArrayList<>();  
+    for (Exam exam : examList) {  
+        examMap.put(getDetailKey(exam.getExamId()), exam);  
+        examIdList.add(exam.getExamId());  
+    }  
+    redisService.multiSet(examMap); //刷新详情缓存  
+    redisService.deleteObject(getExamListKey(examListType, userId));  
+    redisService.rightPushAll(getExamListKey(examListType, userId), examIdList); //刷新列表缓存  
+}
+```
 
 
 
