@@ -85,6 +85,6 @@ create table tb_user_exam(
 );
 ```
 
-根据这个表创建对应的实体类、mapper等
+根据这个表创建对应的实体类、controller、service、mapper等
 
 
