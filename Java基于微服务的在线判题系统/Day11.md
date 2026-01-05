@@ -105,3 +105,6 @@ Long userId = tokenService.getUserId(token, secret); //secret在nacos上维护�
 
 其实在网管层进行身份认证的时候userId就能获取到了，可以存起来，解决了重复的解析获取用户id的麻烦
 
+**ThreadLocal 线程本地变量，它会为使用这个变量的线程创建一个独立的副本。意味着每个线程去操作的时候始终都是自己的副本，对于其他线程造不成任何影响。**
+
+**userId 可以存到 ThreadLocal 。**
