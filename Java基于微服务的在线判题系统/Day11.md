@@ -125,3 +125,8 @@ Long userId = tokenService.getUserId(token, secret); //secret在nacos上维护�
  <version>${transmittable-thread-local.version}</version>
 </dependency>
 ```
+
+封装一个工具类，操作ThreadLocal
+```java
+
+```
