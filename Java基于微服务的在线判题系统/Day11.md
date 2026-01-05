@@ -155,3 +155,5 @@ public class ThreadLocalUtil {
     }  
 }
 ```
+
+存userId的时候是在gateway这个微服务村的，取得时候是在friend这个微服务取的，是两个不同的微服务，不可能是在一个线程里了，就会有线程隔离。
