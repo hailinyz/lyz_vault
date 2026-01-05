@@ -167,4 +167,12 @@ Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);
 ```
 当然，其他用到userId的也可以直接从ThreadLocal中取，我这里就偷懒不变了，其他还是使用原来解析token获取userId的方法。
 
-注意：内存泄露问题，
+**注意**：内存泄露问题，ThreadLocal用完得清除。（请求处理完成之后再删除）
+在拦截器里面清除掉
+```java
+@Override
+public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+        throws Exception {
+    ThreadLocalUtil.remove();
+}
+```
