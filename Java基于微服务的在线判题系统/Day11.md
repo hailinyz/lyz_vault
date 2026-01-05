@@ -87,4 +87,14 @@ create table tb_user_exam(
 
 根据这个表创建对应的实体类、controller、service、mapper等
 
+竞赛报名接口设计
+```java
+/*  
+ * 竞赛报名  
+ */@PostMapping("/enter")  
+public R<Void> enter(@RequestHeader(HttpConstants.AUTHENTICATION) String token, @RequestBody ExamDTO examDTO){  
+  
+}
+```
+关于参数因为姚明竞赛要想要知道用户id得从token中解析出来，所以要获取前端传过来的token，然后POST请求对应的是请求体用@RequestBody。
 
