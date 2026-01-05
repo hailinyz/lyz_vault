@@ -184,4 +184,7 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
 
 代码改造，借鉴之前C端竞赛列表开发我的竞赛：
 
+type就是用来配合ExamListType过滤掉是未完成竞赛、历史竞赛、我的竞赛的。
+
+因为是我的竞赛，要用到userId，就可以从TreadLocal中获取
 
