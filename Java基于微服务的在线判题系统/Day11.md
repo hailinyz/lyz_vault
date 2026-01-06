@@ -270,4 +270,5 @@ public void refreshCache(Integer examListType, Long userId) {
 ![](assets/Day11/file-20260106133814788.png)
 
 
-现在竞赛开始时间和结束时间能返回给前端了，用户是否报名竞赛还没有返回
+现在竞赛开始时间和结束时间能返回给前端了，用户是否报名竞赛还没有返回。
+
