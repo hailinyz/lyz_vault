@@ -277,3 +277,50 @@ public void refreshCache(Integer examListType, Long userId) {
 
 可以使用用户id去结合我的竞赛、竞赛列表，如果竞赛列表里的数据和我的竞赛列表书韩剧重合那就说明这个竞赛**被报名**了。
 
+所以在以前的**查询竞赛列表接口**增加一个方法判断当前用户是否参加竞赛。
+```java
+/*  
+ * 判断当前用户是否参加竞赛  
+ */private void assembleExamVOList(List<ExamVO> examVOList) {  
+    //先拿到当前用户id  
+    Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);  
+    //获取当前用户所有已报名的竞赛列表  
+    List<Long> userExamIdList =examCacheManager.getAllUserExamList(userId);  
+    if (CollectionUtil.isEmpty(userExamIdList)){  
+        return;  
+    }  
+    for (ExamVO examVO : examVOList) { //遍历所有竞赛列表数据(查看竞赛是否包含在用户我的竞赛里)  
+        if (userExamIdList.contains(examVO.getExamId())) {  
+            examVO.setEnter(true);  
+        }  
+    }  
+}
+```
+
+获取用户报名的所有竞赛ID，不分页，全拿出来。
+```java
+    /*
+     获取用户所有竞赛
+     */
+    public List<Long> getAllUserExamList(Long userId) {
+        //首先拿到redis中的key (把当前用户所有报名过竞赛redis当中的key)
+         String examListKey = CacheConstants.USER_EXAM_LIST +  userId;
+         // 拿到redis中所有的 值，不需要分 割，直接获取所有数据
+        List<Long> userExamIdList = redisService.getCacheListByRange(examListKey, 0, -1, Long.class);
+        if ( CollectionUtil.isNotEmpty(userExamIdList)){
+            return userExamIdList;
+        } else  {
+            //说明redis当中没数据 从数据库中查数据并且重新刷新缓存
+            List<UserExam> userExamList = userExamMapper.selectList(new LambdaQueryWrapper<UserExam>()
+                    .eq(UserExam::getUserId, userId));
+            if ( CollectionUtil.isEmpty(userExamList)){
+                 return null;
+            }
+            refreshCache(ExamListType.USER_EXAM_LIST.getValue(),userId);
+            //最后拿到的是竞赛的 id列表
+            return  userExamList.stream().map(UserExam::getExamId).collect(Collectors.toList());
+        }
+    }
+```
+
+这下可以继续开发我们可爱的前端了，用 vi-if 每个按钮或者标签都有自己的展示规则。
