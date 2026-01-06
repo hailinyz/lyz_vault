@@ -324,3 +324,8 @@ public void refreshCache(Integer examListType, Long userId) {
 ```
 
 这下可以继续开发我们可爱的前端了，用 vi-if 每个按钮或者标签都有自己的展示规则。
+
+可以在index.js路由配置banner图片的是否显示配置，然后在使用banner图的地方进行设置等前端功能...
+![](assets/Day11/file-20260106150620086.png)
+
+--- 
