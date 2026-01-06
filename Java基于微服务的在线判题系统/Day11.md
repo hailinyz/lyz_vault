@@ -274,3 +274,6 @@ public void refreshCache(Integer examListType, Long userId) {
 
 可以在查询竞赛列表接口返回加上个enter参数。
 ![](assets/Day11/file-20260106134824030.png)
+
+可以使用用户id去结合我的竞赛、竞赛列表，如果竞赛列表里的数据和我的竞赛列表书韩剧重合那就说明这个竞赛**被报名**了。
+
