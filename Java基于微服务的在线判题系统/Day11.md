@@ -272,3 +272,5 @@ public void refreshCache(Integer examListType, Long userId) {
 
 现在竞赛开始时间和结束时间能返回给前端了，用户是否报名竞赛还没有返回。
 
+可以在查询竞赛列表接口返回加上个enter参数。
+![](assets/Day11/file-20260106134824030.png)
