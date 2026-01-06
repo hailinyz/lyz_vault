@@ -267,6 +267,6 @@ public void refreshCache(Integer examListType, Long userId) {
 
 ## 竞赛报名&我的竞赛前端
 
-
+![](assets/Day11/file-20260106133814788.png)
 
 
