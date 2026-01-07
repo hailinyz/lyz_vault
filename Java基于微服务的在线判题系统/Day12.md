@@ -159,3 +159,6 @@ ik_max_word：（最新粒度划分）会更可能的分出一些额外的词汇
     <artifactId>spring-boot-starter-data-elasticsearch</artifactId>  
 </dependency>
 ```
+
+添加配置
+![](assets/Day12/file-20260107213704868.png)
