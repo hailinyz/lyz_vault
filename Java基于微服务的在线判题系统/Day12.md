@@ -135,3 +135,6 @@ GET _analyze
 ![](assets/Day12/file-20260107193328874.png)
 这种一个词一个词，不符合我们的使用习惯
 
+[下载中文分词器]([Index of: analysis-ik/stable/ (infinilabs.com)](https://release.infinilabs.com/analysis-ik/stable/))8.5.3
+放在项目的D:\Project\bite-oj\deploy\dev\elasticSearch\es-plugins目录下
+
