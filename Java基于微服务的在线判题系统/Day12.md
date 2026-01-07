@@ -138,3 +138,13 @@ GET _analyze
 [下载中文分词器]([Index of: analysis-ik/stable/ (infinilabs.com)](https://release.infinilabs.com/analysis-ik/stable/))8.5.3
 放在项目的D:\Project\bite-oj\deploy\dev\elasticSearch\es-plugins目录下
 
+安装好之后在kibana验证出现即可
+```json
+GET _cat/plugins
+```
+
+ik分词器有两种分词算法
+ik_smart算法：（最少切分）’
+
+ik_max_word：（最新粒度划分）
+
