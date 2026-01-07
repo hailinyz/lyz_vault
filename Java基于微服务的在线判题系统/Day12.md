@@ -27,5 +27,28 @@ ES解决 全文搜索（全部字段） 、模糊查询（搜索） 、数据分
 ```powershell
 docker pull elasticsearch:8.5.3
 ```
-如果
+如果镜像拉取失败配置一下国内镜像：
+![](assets/Day12/file-20260107173905451.png)
+```json
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false,
+  "registry-mirrors": [
+    "https://docker.m.daocloud.io",
+    "https://docker.lpanel.live"
+  ]
+}
+```
 为什么创建网络，配置同一个网络？可以通过容器名称进行容器连接，容器之间的通信。
+```powershell
+docker network create oj-network
+```
+启动ES
+```powershell
+
+```
