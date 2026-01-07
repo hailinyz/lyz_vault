@@ -151,4 +151,11 @@ ik_max_word：（最新粒度划分）会更可能的分出一些额外的词汇
 ![](assets/Day12/file-20260107202042316.png)
 
 
-到这里，既然ES作为我们的公共组件，就要创建一个公共的包
+到这里，既然ES作为我们的公共组件，就要创建一个公共的包oj-common-elasticsearch
+引入依赖
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-data-elasticsearch</artifactId>  
+</dependency>
+```
