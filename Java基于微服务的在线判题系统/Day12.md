@@ -8,3 +8,6 @@
 
 模糊查找：1.Java原生的方式， 通过for循环 进行模糊搜索
                  2. list结构 key  q:l:合并    q:l:有序   q:l:两 ...          valuse   qiestionId
+
+#### 针对于这种搜索这块包含模糊查询我们业界会选择ES
+
