@@ -53,6 +53,15 @@ docker network create oj-network
 docker run -d --name oj-es-dev -e "ES_JAVA_OPTS=-Xms256m -Xmx256m" -e "discovery.type=single-node" -v E:\bitepro\oj\biteoj\deploy\dev\elasticSearch\es-plugins:/usr/share/elasticsearch/plugins -e "xpack.security.enabled=false" --privileged --network oj-network -p 9200:9200 -p 9300:9300 elasticsearch:8.5.3
 
 
-# 避免端口被占用
+# 避免端口被占用 换成了9201  访问：http://localhost:9201/，验证启动成功。
 docker run -d --name oj-es-dev -e "ES_JAVA_OPTS=-Xms256m -Xmx256m" -e "discovery.type=single-node" -v E:\bitepro\oj\biteoj\deploy\dev\elasticSearch\es-plugins:/usr/share/elasticsearch/plugins -e "xpack.security.enabled=false" --privileged --network oj-network -p 9201:9200 -p 9301:9300 elasticsearch:8.5.3
+```
+
+安装Kibana
+```powershell
+docker pull kibana:8.5.3
+```
+启动kibana容器
+```powershell
+cker run -d --name oj-kibana-dev -e "ELASTICSEARCH_HOSTS=http://oj-esdev:9200" -e "I18N_LOCALE=zh-CN" -p15601:5601 --net=oj-network kibana:8.5.3
 ```
