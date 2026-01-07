@@ -145,6 +145,6 @@ GET _cat/plugins
 
 ik分词器有两种分词算法
 ik_smart算法：（最少切分）’
-
+![](assets/Day12/file-20260107201641869.png)
 ik_max_word：（最新粒度划分）
 
