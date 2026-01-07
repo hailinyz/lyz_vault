@@ -107,5 +107,21 @@ GET /employee/_doc/3
 
 删除单个数据（某个数据）
 ```json
-
+DELETE /employee/_doc/3
 ```
+
+删除整个数据
+```json
+DELETE /employee
+```
+
+修改单条数据（某个数据）
+```json
+POST /employee/_update/3
+{
+ "doc" : {
+ "last_name" : "mark"
+ }
+}
+```
+
