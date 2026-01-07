@@ -57,7 +57,7 @@ docker run -d --name oj-es-dev -e "ES_JAVA_OPTS=-Xms256m -Xmx256m" -e "discovery
 docker run -d --name oj-es-dev -e "ES_JAVA_OPTS=-Xms256m -Xmx256m" -e "discovery.type=single-node" -v E:\bitepro\oj\biteoj\deploy\dev\elasticSearch\es-plugins:/usr/share/elasticsearch/plugins -e "xpack.security.enabled=false" --privileged --network oj-network -p 9201:9200 -p 9301:9300 elasticsearch:8.5.3
 ```
 
-安装Kibana
+安装Kibana,  Kibana **就是 Elasticsearch（ES）官方配套的可视化工具**
 ```powershell
 docker pull kibana:8.5.3
 ```
@@ -98,4 +98,14 @@ PUT /employee/_doc/3
 查询所有数据
 ```json
 GET /employee/_search
+```
+
+根据id搜索
+```json
+GET /employee/_doc/3
+```
+
+删除单个数据（某个数据）
+```json
+
 ```
