@@ -65,3 +65,37 @@ docker pull kibana:8.5.3
 ```powershell
 docker run -d --name oj-kibana-dev -e "ELASTICSEARCH_HOSTS=http://oj-es-dev:9200" -e "I18N_LOCALE=zh-CN" -p 15601:5601 --net=oj-network kibana:8.5.3
 ```
+
+增加数据
+```json
+PUT /employee/_doc/1
+{
+  "first_name" : "John",
+  "last_name" : "Smith",
+  "age" : 25,
+  "about" : "I love to go rock climbing",
+  "interests": [ "sports", "music" ]
+}
+
+PUT /employee/_doc/2
+{
+  "first_name" : "Jane",
+  "last_name" : "Smith",
+  "age" : 32,
+  "about" : "I like to collect rock albums",
+  "interests": [ "music" ]
+}
+
+PUT /employee/_doc/3
+{
+  "first_name" : "Douglas",
+  "last_name" : "Fir",
+  "age" : 35,
+  "about": "I like to build cabinets",
+  "interests": [ "forestry" ]
+```
+
+查询所有数据
+```json
+GET /employee/_search
+```
