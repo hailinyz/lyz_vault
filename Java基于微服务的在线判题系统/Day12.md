@@ -63,5 +63,5 @@ docker pull kibana:8.5.3
 ```
 启动kibana容器
 ```powershell
-cker run -d --name oj-kibana-dev -e "ELASTICSEARCH_HOSTS=http://oj-esdev:9200" -e "I18N_LOCALE=zh-CN" -p15601:5601 --net=oj-network kibana:8.5.3
+docker run -d --name oj-kibana-dev -e "ELASTICSEARCH_HOSTS=http://oj-es-dev:9200" -e "I18N_LOCALE=zh-CN" -p 15601:5601 --net=oj-network kibana:8.5.3
 ```
