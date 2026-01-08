@@ -322,3 +322,5 @@ public TableDataInfo list(QuestionQueryDTO questionQueeryDTO) {
     questionRespository.saveAll(questionESList);  
 }
 ```
+
+Java操作ES会自动创建索引
