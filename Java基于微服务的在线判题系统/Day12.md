@@ -170,5 +170,58 @@ ik_max_word：（最新粒度划分）会更可能的分出一些额外的词汇
 
 创建类似于mysql的es的实体类QuestionES
 ```java
-
+@Document(indexName = "idx_question")  
+public class QuestionES {  
+  
+    @Id  
+    @Field(type = FieldType.Long)  
+    private Long questionId;  
+  
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")  
+    private String title;  
+  
+    @Field(type = FieldType.Byte)  
+    private Integer difficulty;  
+  
+    @Field(type = FieldType.Long)  
+    private Long timelimit;  
+  
+    @Field(type = FieldType.Long)  
+    private Long spacelimit;  
+  
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_max_word")  
+    private String content;  
+  
+    @Field(type = FieldType.Text)  
+    private String questionCase;  
+  
+    @Field(type = FieldType.Text)  
+    private String mainFunc;  
+  
+    @Field(type = FieldType.Text)  
+    private String defaultCode;  
+  
+    @Field(type = FieldType.Date, format = DateFormat.date_hour_minute_second)  
+    private LocalDateTime createTime;  
+  
+    // 这里可以补充 Getter、Setter 方法（如果需要操作字段的话）  
+    public Long getQuestionId() {  
+        return questionId;  
+    }  
+  
+    public void setQuestionId(Long questionId) {  
+        this.questionId = questionId;  
+    }  
+  
+    public String getTitle() {  
+        return title;  
+    }  
+  
+    public void setTitle(String title) {  
+        this.title = title;  
+    }  
+  
+}
 ```
+
+
