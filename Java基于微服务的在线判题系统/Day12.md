@@ -324,3 +324,67 @@ public TableDataInfo list(QuestionQueryDTO questionQueeryDTO) {
 ```
 
 Java操作ES会自动创建索引
+启动oj-friend服务之前记得配置nacos
+```yaml
+server:
+  port: 9202
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/bitoj_dev?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+    username: ojtest
+    password: 123456
+  data:
+    redis:
+      host: localhost
+      password: 123456
+  elasticsearch:
+    uris: http://localhost:9201
+    connection-timeout: 1000
+    socket-timeout: 30000
+    connection-request-timeout: 500
+    max-conn-total: 100
+
+# ............等等
+```
+由于ES占用了宿主机的9201端口，导致B端的服务与ES服务起冲突，所以我决定更改B端端口9304
+
+执行这个指令能把索引的结构返回
+```json
+GET /idx_question/_mapping  
+```
+要做测试的话我先看一下现在ES是没有数据的验证
+```json
+GET /idx_question/_search
+
+//返回
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 0,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": []
+  }
+}
+```
+然后用apifox测试接口查询之后从数据库中同步再查询一次就有数据了 ![](file://D:\Hexo-Blog\blog-demo\source\_posts\Day13-media\46ba70132b451a345a3dd9095679fe67b0c6ce46.png?lastModify=1767891121)
+
+好的，到这里不要以为结束了，涉及到数据的一致性问题，老数据的删除和新数据的添加逻辑。 B端的增删改要进行关于ES的调整
+
+先是新增这块，先往数据库里面加，在往ES里面加，因为先往数据库中插才会有questionId ![](file://D:\Hexo-Blog\blog-demo\source\_posts\Day13-media\a5eba9f752f7d1e11f91b551cdbd0e3995b648c9.png?lastModify=1767891121) 增加编辑都是： ![](file://D:\Hexo-Blog\blog-demo\source\_posts\Day13-media\89ead826fdc6168c7778f73fa53e34ef45334db6.png?lastModify=1767891121)
+
+删除 ![](file://D:\Hexo-Blog\blog-demo\source\_posts\Day13-media\f9d47ec24cd24ba298eefbfdc1b6dc3e58e88084.png?lastModify=1767891121)
+
+既然B端的题目增删改都要进行对于数据库到ES的同步，那我们之前的竞赛列表需不需呢？不需要，麻烦，可以设置撤销发布的时候才允许操作编辑、删除，发布之后不允许操作。
+
+![](file://D:\Hexo-Blog\blog-demo\source\_posts\Day13-media\032effdc14f5bc2086c9a3a170421984208c4471.png?lastModify=1767891121) 所以前端和后端配合按钮显示问题就能解决这个问题
