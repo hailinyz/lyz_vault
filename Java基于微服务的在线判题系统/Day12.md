@@ -235,3 +235,36 @@ public interface QuestionRepository extends ElasticsearchRepository<QuestionES, 
 }
 ```
 
+查询语句解析
+```json
+GET /idx_question/_search
+{
+  "query": {
+    "bool": {
+      "must": [ // 必须
+        {
+          "term": { //精确匹配
+            "difficulty": 2
+          }
+        }
+      ],
+      "should": [ //应该
+        {
+          "match": {
+            "title": "TTT"
+          }
+        },
+        {
+          "match": {
+            "content": "TTT"
+          }
+        }
+      ],
+      "minimum_should_match": 1 //should至少有一个成立
+    }
+  },
+  "from": 0,
+  "size": 10 //这两个是分页
+}
+```
+
