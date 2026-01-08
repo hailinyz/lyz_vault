@@ -268,3 +268,57 @@ GET /idx_question/_search
 }
 ```
 
+ES查询题目列表接口实现
+```java
+/*  
+查询题目列表  
+ */@Override  
+public TableDataInfo list(QuestionQueryDTO questionQueeryDTO) {  
+  
+    long count = questionRespository.count(); //先会让它试探性的判断ES中是否有数据  
+    if (count <= 0){  
+        refreshQuestion(); //刷新ES,同步数据  
+    }  
+  
+    Sort sort = Sort.by(Sort.Direction.DESC, "createTime");  
+    Pageable pageable = PageRequest.of(questionQueeryDTO.getPageNum() - 1, questionQueeryDTO.getPageSize(), sort); // 分页参数  
+    Integer difficulty = questionQueeryDTO.getDifficulty();  
+    String keeyword = questionQueeryDTO.getKeeyword();  
+  
+    //返回的形式  
+    Page<QuestionES> questionESPage;  
+  
+    if (difficulty == null && keeyword == null){  
+        questionESPage = questionRespository.findAll(pageable);  
+    } else if (StrUtil.isEmpty(keeyword)) {  
+        questionESPage = questionRespository.findQuestionByDifficulty(difficulty, pageable);  
+    } else if (difficulty == null) {  
+        questionESPage = questionRespository.findByTitleOrContent(keeyword, keeyword, pageable);  
+    } else {  
+        questionESPage = questionRespository.findByTitleOrContentAndDifficulty(keeyword, keeyword, difficulty, pageable);  
+    }  
+  
+    long total = questionESPage.getTotalElements();  
+    if (total <= 0){  
+        return TableDataInfo.empty();  
+    }  
+    List<QuestionES> questionESList = questionESPage.getContent();  
+    // 将QuestionES转换成QuestionVO，因为在QuestionES中前端不需要的字段太多了，所以这里只转换一部分字段  
+    List<QuestionVO> questionVOList = BeanUtil.copyToList(questionESList, QuestionVO.class);  
+    return TableDataInfo.success(questionVOList, total);  
+  
+}  
+  
+/*  
+刷新题目从数据库中查  
+ */private void refreshQuestion() {  
+    //查询数据库的题目  
+    List<Question> questionList = questionMapper.selectList(new LambdaQueryWrapper<Question>());  
+    if (CollectionUtil.isEmpty(questionList)){  
+        return;  
+    }  
+  
+    List<QuestionES> questionESList = BeanUtil.copyToList(questionList, QuestionES.class);  
+    questionRespository.saveAll(questionESList);  
+}
+```
