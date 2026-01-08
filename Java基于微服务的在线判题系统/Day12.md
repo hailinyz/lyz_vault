@@ -170,6 +170,8 @@ ik_max_word：（最新粒度划分）会更可能的分出一些额外的词汇
 
 创建类似于mysql的es的实体类QuestionES
 ```java
+@Getter  
+@Setter  
 @Document(indexName = "idx_question")  
 public class QuestionES {  
   
@@ -203,24 +205,7 @@ public class QuestionES {
   
     @Field(type = FieldType.Date, format = DateFormat.date_hour_minute_second)  
     private LocalDateTime createTime;  
-  
-    // 这里可以补充 Getter、Setter 方法（如果需要操作字段的话）  
-    public Long getQuestionId() {  
-        return questionId;  
-    }  
-  
-    public void setQuestionId(Long questionId) {  
-        this.questionId = questionId;  
-    }  
-  
-    public String getTitle() {  
-        return title;  
-    }  
-  
-    public void setTitle(String title) {  
-        this.title = title;  
-    }  
-  
+    
 }
 ```
 
