@@ -7,3 +7,18 @@
 
 ###### !!!!!!!!!!!!!重磅，经过我的不断调试网关的过滤以及统一了nacos上的jwt配置
 ![](assets/Day13/file-20260109210634689.png)
+注意，之前的nacos不统一，是这样的：
+```cao
+system：sdfghuijasxdjkawskuigy
+friend：sdfghuijasxdjkawskuigysms
+gateway：sdfghuijasxdjkawskuigy
+job：sdfghuijasxdjkawskuigy
+```
+
+统一后才对，因为生成token和解析token的jwt应该是一样的才能正确解析出userId
+```cao
+system：sdfghuijasxdjkawskuigy
+friend：sdfghuijasxdjkawskuigy
+gateway：sdfghuijasxdjkawskuigy
+job：sdfghuijasxdjkawskuigy
+```
