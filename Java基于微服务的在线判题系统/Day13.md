@@ -22,3 +22,7 @@ friend：sdfghuijasxdjkawskuigy
 gateway：sdfghuijasxdjkawskuigy
 job：sdfghuijasxdjkawskuigy
 ```
+
+###### !!!!!!!!!!!!!!!!!!!!!!所以注意接口测试的时候切莫操之过急，每一步都不能忽略！！！！
+
+--- 
