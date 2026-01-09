@@ -86,3 +86,27 @@ vue中前后端交互的方法一般都写在js文件中
 ###### 为了解决头像这个问题
 
 要集成OSS到项目中
+```java
+<dependency>
+ <groupId>com.aliyun.oss</groupId>
+ <artifactId>aliyun-sdk-oss</artifactId>
+ <version>3.17.4</version>
+</dependency>
+<dependency>
+ <groupId>javax.xml.bind</groupId>
+ <artifactId>jaxb-api</artifactId>
+ <version>2.3.1</version>
+</dependency>
+<dependency>
+ <groupId>javax.activation</groupId>
+ <artifactId>activation</artifactId>
+ <version>1.1.1</version>
+</dependency>
+<!-- no more than 2.3.3-->
+<dependency>
+ <groupId>org.glassfish.jaxb</groupId>
+ <artifactId>jaxb-runtime</artifactId>
+ <version>2.3.3</version>
+</dependency>
+
+```
