@@ -47,6 +47,34 @@ if (user == null){ //新用户
 
 
 #### 用户信息编辑的接口
+```java
+/*  
+修改用户信息  
+ */@Override  
+public int edit(UserUpdateDTO userUpdateDTO) {  
+    Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);  
+    if (userId == null) {  
+        throw new ServiceException(ResultCode.FAILED_USER_NOT_EXISTS);  
+    }  
+    User user = userMapper.selectById(userId);  
+    if (user == null) {  
+        throw new ServiceException(ResultCode.FAILED_USER_NOT_EXISTS);  
+    }  
+    user.setNickName(userUpdateDTO.getNickName());  
+    user.setSex(userUpdateDTO.getSex());  
+    user.setSchoolName(userUpdateDTO.getSchoolName());  
+    user.setMajorName(userUpdateDTO.getMajorName());  
+    user.setPhone(userUpdateDTO.getPhone());  
+    user.setEmail(userUpdateDTO.getEmail());  
+    user.setWechat(userUpdateDTO.getWechat());  
+    user.setIntroduce(userUpdateDTO.getIntroduce());  
+    ////更新用户缓存  
+    userCacheManager.refreshUser(user); //用户详情的缓存  
+    tokenService.refreshLoginUser(user.getNickName(), user.getHeadImage(), //刷新当前用户的登录信息  
+            ThreadLocalUtil.get(Constants.USER_KEY, String.class));  
+    return userMapper.updateById(user);  
+}
+```
 
 更改的时候不仅仅是用户详情信息的缓存，注意还有当前登录用户的缓存。
 
@@ -54,3 +82,4 @@ vue中前后端交互的方法一般都写在js文件中
 ![](assets/Day13/file-20260109215441856.png)
 
 然后views文件中调用，发起请求，别忘要引入。
+
