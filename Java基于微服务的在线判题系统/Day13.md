@@ -131,4 +131,40 @@ vue中前后端交互的方法一般都写在js文件中
 
 ```
 
-初始化
+初始化 - 创建OSSClient实例 浇给spring容器处理（创建在config包下面）
+```java
+@Slf4j
+@Configuration
+public class OSSConfig {
+
+    @Autowired
+    private OSSProperties prop;
+
+    public OSS ossClient;
+
+    @Bean
+    public OSS ossClient() throws ClientException {
+        DefaultCredentialProvider credentialsProvider = CredentialsProviderFactory.newDefaultCredentialProvider(
+                prop.getAccessKeyId(), prop.getAccessKeySecret());
+
+        // 创建ClientBuilderConfiguration
+        ClientBuilderConfiguration clientBuilderConfiguration = new ClientBuilderConfiguration();
+        clientBuilderConfiguration.setSignatureVersion(SignVersion.V4);
+
+        // 使用内网endpoint进行上传
+        ossClient = OSSClientBuilder.create()
+                .endpoint(prop.getEndpoint())
+                .credentialsProvider(credentialsProvider)
+                .clientConfiguration(clientBuilderConfiguration)
+                .region(prop.getRegion())
+                .build();
+        return ossClient;
+    }
+
+    @PreDestroy
+    public void closeOSSClient() {
+        ossClient.shutdown();
+    }
+}
+```
+
