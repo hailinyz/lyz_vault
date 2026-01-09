@@ -139,6 +139,18 @@ file:
  bucketName: 你的bucketName
  pathPrefix: ojtest/
 
+# 或者
+file:
+  max-time: 3
+  test: true
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    region: cn-beijing
+    accessKeyId: 你的accessKeyId
+    accessKeySecret: f你的accessKeySecret
+    bucketName: 你的bucketName
+    pathPrefix: ojtest/
+
 ```
 
 初始化 - 创建OSSClient实例 浇给spring容器处理（创建在config包下面）
