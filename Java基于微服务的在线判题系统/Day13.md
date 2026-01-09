@@ -128,6 +128,16 @@ vue中前后端交互的方法一般都写在js文件中
 
 配置凭证  &  nacos增加配置
 ```yaml
+file:
+ max-time: 3
+ test: true
+ oss:
+ endpoint: oss-cn-chengdu.aliyuncs.com
+ region: cn-chengdu
+ accessKeyId: 你的accessKeyId
+ accessKeySecret: 你的accessKeySecret
+ bucketName: 你的bucketName
+ pathPrefix: ojtest/
 
 ```
 
