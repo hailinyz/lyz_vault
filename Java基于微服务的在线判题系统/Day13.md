@@ -178,3 +178,31 @@ public class OSSConfig {
 }
 ```
 
+```java
+@Data  
+@Component  
+@ConfigurationProperties(prefix = "file.oss")  
+public class OSSProperties {  
+  
+    private String endpoint;  
+  
+    private String region;  
+  
+    private String accessKeyId;  
+  
+    private String accessKeySecret;  
+  
+    private String bucketName;  
+  
+    /**  
+     * 路径前缀，加在 endPoint 之后  
+     */  
+    private String pathPrefix;  //ojtest  
+}
+```
+
+上传文件（简单上传 - 上传文件流）
+跟短信服务一样，抽象出一个Service封装好，以后哪个服务用直接调用就行了。
+```java
+
+```
