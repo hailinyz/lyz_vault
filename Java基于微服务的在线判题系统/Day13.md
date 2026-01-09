@@ -85,28 +85,50 @@ vue中前后端交互的方法一般都写在js文件中
 
 ###### 为了解决头像这个问题
 
-要集成OSS到项目中
+要集成OSS到项目中,创建一个模块oj-common-file
 ```java
-<dependency>
- <groupId>com.aliyun.oss</groupId>
- <artifactId>aliyun-sdk-oss</artifactId>
- <version>3.17.4</version>
+<dependency>  
+    <groupId>com.aliyun.oss</groupId>  
+    <artifactId>aliyun-sdk-oss</artifactId>  
+    <version>${aliyun-sdk-oss}</version>  
+</dependency>  
+<dependency>  
+    <groupId>javax.xml.bind</groupId>  
+    <artifactId>jaxb-api</artifactId>  
+    <version>${jaxb-api}</version>  
+</dependency>  
+<dependency>  
+    <groupId>javax.activation</groupId>  
+    <artifactId>activation</artifactId>  
+    <version>${activation}</version>  
+</dependency>  
+<!-- no more than 2.3.3-->  
+<dependency>  
+    <groupId>org.glassfish.jaxb</groupId>  
+    <artifactId>jaxb-runtime</artifactId>  
+    <version>${jaxb-runtime}</version>  
+</dependency>  
+  
+<dependency>  
+    <groupId>com.bite</groupId>  
+    <artifactId>oj-common-core</artifactId>  
+    <version>${oj-common-core.version}</version>  
+</dependency>  
+<dependency>  
+    <groupId>com.bite</groupId>  
+    <artifactId>oj-common-redis</artifactId>  
+    <version>${oj-common-redis.version}</version>  
+</dependency>  
+<dependency>  
+    <groupId>com.bite</groupId>  
+    <artifactId>oj-commin-security</artifactId>  
+    <version>${oj-common-security.version}</version>  
 </dependency>
-<dependency>
- <groupId>javax.xml.bind</groupId>
- <artifactId>jaxb-api</artifactId>
- <version>2.3.1</version>
-</dependency>
-<dependency>
- <groupId>javax.activation</groupId>
- <artifactId>activation</artifactId>
- <version>1.1.1</version>
-</dependency>
-<!-- no more than 2.3.3-->
-<dependency>
- <groupId>org.glassfish.jaxb</groupId>
- <artifactId>jaxb-runtime</artifactId>
- <version>2.3.3</version>
-</dependency>
+```
+
+配置凭证  &  nacos增加配置
+```yaml
 
 ```
+
+初始化
