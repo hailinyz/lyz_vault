@@ -25,4 +25,24 @@ job：sdfghuijasxdjkawskuigy
 
 ###### !!!!!!!!!!!!!!!!!!!!!!所以注意接口测试的时候切莫操之过急，每一步都不能忽略！！！！
 
+核心问题：新用户注册时，ThreadLocalUtil 中没有 USER_ID（因为还没登录），但 MyMetaObjectHandler 会从 ThreadLocalUtil 获取 USER_ID 来填充 createBy 字段，结果获取到 null，导致数据库插入失败。
+
+解决方案：在插入新用户之前，手动设置 createBy 字段。有两种方式：
+
+方式 1（推荐）：手动设置 createBy 和 createTime
+```java
+if (user == null){ //新用户
+    //注册逻辑
+    user = new User();
+    user.setPhone(phone);
+    user.setStatus(UserStatus.Normal.getValue());
+    // 新用户自注册，createBy设为0或-1表示系统创建
+    user.setCreateBy(0L);
+    user.setCreateTime(LocalDateTime.now());
+    userMapper.insert(user);
+}
+```
+
 --- 
+
+
