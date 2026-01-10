@@ -49,6 +49,7 @@ public QuestionDetailVO detail(Long questionId) {
 ```
 
 然后是前端，因为有可以编写代码的编译器区域，可以跟之前B端的一样，引入一个库：
+![](assets/Day14/file-20260110162316571.png)
 ##### ace-builds
 ![](assets/Day14/file-20260110161233166.png)
 ```powershell
