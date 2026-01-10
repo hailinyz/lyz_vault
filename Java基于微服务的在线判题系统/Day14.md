@@ -96,4 +96,5 @@ public String nextQuestion(Long questionId) {
 ```
 
 **注意**：在数据库进行增删题目之后，redis还是老数据，所以在我们添加、删除题目的时候把添加到缓存和从缓存中删除的逻辑补充上就好了。
+![](assets/Day14/file-20260110184854639.png)
 
