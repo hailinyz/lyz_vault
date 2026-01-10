@@ -21,3 +21,5 @@ CREATE TABLE tb_user_submit (
 );
 ```
 
+点击开始答题之后向后端提交**获取题目详情请求**
+
