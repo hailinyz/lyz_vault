@@ -66,3 +66,6 @@ function goQuestTest(questionId) {
 
 然后在Answer.vue就能拿到questionId，就能向后端发起请求了
 ![](assets/Day14/file-20260110165933652.png)
+
+和B端一样，获取到默认代码块之后放到aceCode里面
+![](assets/Day14/file-20260110171924750.png)
