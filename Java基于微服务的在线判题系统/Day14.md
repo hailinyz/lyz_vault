@@ -100,3 +100,5 @@ public String nextQuestion(Long questionId) {
 
 
 ### 竞赛开始答题
+
+需要后端提供一个**获取竞赛中第一道题目的id接口**
