@@ -80,3 +80,17 @@ redis  list数据类型(顺序,已经排好序了) key:  q:l   value:  questionI
 
 需要把顺序存到**redis**里面，可以先从中获得顺序列表，然后查出来当前题目所在位置，
 然后上一题、下一题也就清楚了
+
+主要是操作redis的index操作获取上一题、下一题
+```java
+/*  
+获取下一题  
+ */@Override  
+public String nextQuestion(Long questionId) {  
+    Long listSize = questionCacheManager.getListSize();  
+    if (listSize == null || listSize == 0){ // Redis中没有数据  
+        questionCacheManager.refreshCache(); // 同步数据  
+    }  
+    //到这里才去redis中获取上一题的 id    return questionCacheManager.nextQuestion(questionId).toString();  
+}
+```
