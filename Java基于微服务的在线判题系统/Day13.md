@@ -355,3 +355,5 @@ async function handleUploadSuccess(res) {
 https://l-study-test01.oss-cn-beijing.aliyuncs.com/ojtest/
 
 应该要拼接
+![](assets/Day13/file-20260110141304859.png)
+应该是nacos
