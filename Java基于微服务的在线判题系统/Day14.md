@@ -119,3 +119,8 @@ public String getFirstQuestion(Long examId) {
     return examCacheManager.getFirstQuestion(examId).toString();  
 }
 ```
+
+###### reids数据同步问题
+
+**注意：** 第一次从缓存中查不到数据才回到数据库查询并且更新缓存，后续直接从redis中查，这就导致了以后每次获取到的都是旧数据，增加/删除竞赛中的题目后，系统是没办法拿到最新数据的。
+
