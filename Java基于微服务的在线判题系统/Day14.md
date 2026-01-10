@@ -56,3 +56,13 @@ public QuestionDetailVO detail(Long questionId) {
 npm install ace-builds@1.4.13
 ```
 
+和B端同样的方式，将参数questionId传过去
+然后另一个页面就可以了
+```vue
+function goQuestTest(questionId) {
+  router.push(`/c-oj/anwser?questionId=${questionId}`)
+}
+```
+
+然后在Answer.vue就能拿到questionId，就能向后端发起请求了
+![](assets/Day14/file-20260110165933652.png)
