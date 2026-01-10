@@ -94,3 +94,6 @@ public String nextQuestion(Long questionId) {
     //到这里才去redis中获取上一题的 id    return questionCacheManager.nextQuestion(questionId).toString();  
 }
 ```
+
+**注意**：在数据库进行增删题目之后，redis还是老数据，所以在我们添加、删除题目的时候把添加到缓存和从缓存中删除的逻辑补充上就好了。
+
