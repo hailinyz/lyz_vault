@@ -356,4 +356,6 @@ https://l-study-test01.oss-cn-beijing.aliyuncs.com/ojtest/
 
 应该要拼接
 ![](assets/Day13/file-20260110141304859.png)
-应该是nacos
+应该是nacos![](assets/Day13/file-20260110141624175.png)
+
+就是数据库只存储唯一标识，然后返回前端显示的时候拼接上前缀就行了。
