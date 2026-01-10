@@ -336,3 +336,17 @@ const headers = ref({
 所以不能省略。
 
 既然要存储文件唯一标识，可以使用钩子onsuccess：就是上传文件成功后......
+```vue
+async function handleUploadSuccess(res) {
+  if (res.code !== 1000) {
+    ElMessage.error(res.msg)
+  } else {
+    const userUpdateDTO = reactive({
+      headImage : res.data.name
+    })
+    await updateHeadImageService(userUpdateDTO)
+    getUserDetail()
+    ElMessage.success("头像上传成功")
+  }
+}
+```
