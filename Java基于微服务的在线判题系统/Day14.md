@@ -73,5 +73,9 @@ function goQuestTest(questionId) {
 
 #### 获取上一题&下一题
 
+获取上一题  
+题目的顺序列表  当前题目是哪个(questionId)  
+redis  list数据类型(顺序,已经排好序了) key:  q:l   value:  questionId
+
 需要把顺序存到**redis**里面，可以先从中获得顺序列表，然后查出来当前题目所在位置，
 然后上一题、下一题也就清楚了
