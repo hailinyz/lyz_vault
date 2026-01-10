@@ -300,4 +300,37 @@ public class OSSService {
 
 --- 
 
-**存储唯一标识的接口**
+**存储唯一标识的接口** - 和之前的修改（更新）用户信息差不多，但是就只改头像
+```java
+/*  
+存储文件唯一标识(修改用户头像)  
+ */@Override  
+public int updateHeadImage(String headImage) {  
+    Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);  
+    if (userId == null) {  
+        throw new ServiceException(ResultCode.FAILED_USER_NOT_EXISTS);  
+    }  
+    User user = userMapper.selectById(userId);  
+    if (user == null) {  
+        throw new ServiceException(ResultCode.FAILED_USER_NOT_EXISTS);  
+    }  
+  
+    user.setHeadImage(headImage);  
+  
+    ////更新用户缓存  
+    userCacheManager.refreshUser(user); //用户详情的缓存  
+    tokenService.refreshLoginUser(user.getNickName(), user.getHeadImage(), //刷新当前用户的登录信息  
+            ThreadLocalUtil.get(Constants.USER_KEY, String.class));  
+    return userMapper.updateById(user);  
+}
+```
+
+先看看前端的这个上传文件的，直接复制elp的下来修改一下
+![](assets/Day13/file-20260110135034215.png)
+这个url是向后端的哪个接口发起请求； 然后headers和其他向后端发起请求不一样，它不走axois请求，所以请求拦截不了，响应也拦截不了，我们要自己去处理......
+```vue
+const headers = ref({
+  Authorization: "Bearer " + getToken(),
+})
+```
+所以不能省略。
