@@ -49,6 +49,7 @@ public QuestionDetailVO detail(Long questionId) {
 ```
 
 然后是前端，因为有可以编写代码的编译器区域，可以跟之前B端的一样，引入一个库：
+##### ace-builds
 ![](assets/Day14/file-20260110161233166.png)
 ```powershell
 npm install ace-builds@1.4.13
