@@ -102,3 +102,5 @@ public String nextQuestion(Long questionId) {
 ### 竞赛开始答题
 
 需要后端提供一个**获取竞赛中第一道题目的id接口**
+//代码逻辑：获取竞赛中题目的顺序列表，  先从redis  redis没有再从数据库  
+// 排在第一个的题目 返回给前端
