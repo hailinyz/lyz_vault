@@ -23,5 +23,34 @@ CREATE TABLE tb_user_submit (
 
 点击开始答题之后向后端提交**获取题目详情请求**
 如果ES查不到，再去数据库查，然后同步给ES
+```java
+/*  
+获取题目详情  
+ */@Override  
+public QuestionDetailVO detail(Long questionId) {  
+  
+    // 从ES中查询  
+    QuestionES questionES = questionRespository.findById(questionId).orElse(null); //获取的是options字段,所以需要.orElse(null)  
+    QuestionDetailVO questionDetailVO = new QuestionDetailVO();  
+    if (questionES != null){  
+        BeanUtils.copyProperties(questionES,questionDetailVO);  
+        return questionDetailVO;  
+    }  
+  
+    // 从数据库中查询  
+    Question question = questionMapper.selectById(questionId);  
+    if (question == null){  
+        return null;  
+    }  
+    refreshQuestion(); //将数据库中的数据同步到ES中  
+    BeanUtils.copyProperties(question,questionDetailVO);  
+    return questionDetailVO;  
+}
+```
 
+然后是前端，因为有可以编写代码的编译器区域，可以跟之前B端的一样，引入一个库：
+![](assets/Day14/file-20260110161233166.png)
+```powershell
+npm install ace-builds@1.4.13
+```
 
