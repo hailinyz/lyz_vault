@@ -350,3 +350,8 @@ async function handleUploadSuccess(res) {
   }
 }
 ```
+
+现在寸的少了前缀  
+https://l-study-test01.oss-cn-beijing.aliyuncs.com/ojtest/
+
+应该要拼接
