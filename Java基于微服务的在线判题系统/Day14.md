@@ -104,3 +104,18 @@ public String nextQuestion(Long questionId) {
 需要后端提供一个**获取竞赛中第一道题目的id接口**
 //代码逻辑：获取竞赛中题目的顺序列表， 先从redis  redis没有再从数据库 key：e:q:l:examId  value：questionId  
 // 排在第一个的题目 返回给前端
+```java
+/*  
+ * 获取竞赛的第一道题  
+ */@Override  
+public String getFirstQuestion(Long examId) {  
+  
+    //先判断缓存中有没有数据  
+    Long listSize = examCacheManager.getExamQuestionListSize(examId);  
+    if (listSize == null || listSize <= 0){  
+        examCacheManager.refreshExamQuestionCache(examId); //现在刷新的是竞赛中题目列表数据  
+    }  
+  
+    return examCacheManager.getFirstQuestion(examId).toString();  
+}
+```
