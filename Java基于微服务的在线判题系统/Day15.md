@@ -24,10 +24,14 @@ public String nextQuestion(Long examId, Long questionId) {
 
 **业务逻辑**
 
+
+**friend**
 后端接收到前端请求之后，获取参数，根据programType判断用户提交代码的语言类型，根据语言类型进行不同的处理。
 
 根据questionId从ES中查询出题目对应的main函数和测试用例（入参），将代码拼接完整。查询的时候还需查询题目时间、空间限制、难以程度。
 
+
+**judge**
 执行代码：javac 编译  java执行
 
 javac  如果成功：继续执行后续逻辑
@@ -57,4 +61,6 @@ java   如果成功：继续执行后续逻辑
 
 docker 容器相互隔离，相互干扰out；资源滥用数据泄露，可以限制；安全漏洞，在容器里面执行，大部分能化解，容器挂掉再拉一个就行了
 
-这些操作都是Java代码执行，所以就要通过Java操作docker  judge服务主要是拿来判题
+这些操作都是Java代码执行，所以就要通过Java操作docker  judge服务主要是拿来判题,所以docker相关依赖应该引入到judge服务。
+
+服务间调用的问题：feign/openfign
