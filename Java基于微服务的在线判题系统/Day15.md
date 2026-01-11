@@ -117,3 +117,5 @@ judge微服务
     <version>3.3.4</version>  
 </dependency>
 ```
+
+代码沙箱（安全机制，隔离限制代码执行的环境，防止恶意代码）
