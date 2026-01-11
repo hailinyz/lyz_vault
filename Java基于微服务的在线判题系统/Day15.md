@@ -63,4 +63,4 @@ docker 容器相互隔离，相互干扰out；资源滥用数据泄露，可以�
 
 这些操作都是Java代码执行，所以就要通过Java操作docker  judge服务主要是拿来判题,所以docker相关依赖应该引入到judge服务。
 
-服务间调用（friend --> judge）的问题：feign/openfign
+服务间调用（friend --> judge）的问题：openfign发起服务间调用（说白了就是发起HTTP请求）
