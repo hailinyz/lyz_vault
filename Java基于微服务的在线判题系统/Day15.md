@@ -82,3 +82,19 @@ docker 容器相互隔离，相互干扰out；资源滥用数据泄露，可以�
     <version>1.0-SNAPSHOT</version>  
 </dependency>
 ```
+
+用户提交代码
+    ↓
+Friend 服务（当前服务）
+    ↓
+组装 JudgeSubmitDTO（题目信息、用户代码、测试用例等）
+    ↓
+调用 remoteJudgeService.doJudgeJavaCode(judgeSubmitDTO)
+    ↓
+Feign 通过 Nacos 找到 Judge 服务
+    ↓
+Judge 服务执行判题（编译、运行、对比输出）
+    ↓
+返回判题结果（通过/失败、运行时间、内存占用等）
+    ↓
+Friend 服务返回结果给用户
