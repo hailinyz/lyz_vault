@@ -66,3 +66,19 @@ docker 容器相互隔离，相互干扰out；资源滥用数据泄露，可以�
 服务间调用（friend --> judge）的问题：openfign发起服务间调用（说白了就是发起HTTP请求）
 
 创建oj-api的一个模块：把openfeign的客户端统一放在这。 
+```xml
+<dependency>  
+    <groupId>org.springframework.cloud</groupId>  
+    <artifactId>spring-cloud-starter-openfeign</artifactId>  
+</dependency>  
+<dependency>  
+    <groupId>org.springframework.cloud</groupId>  
+    <artifactId>spring-cloud-starter-loadbalancer</artifactId>  
+</dependency>  
+  
+<dependency>  
+    <groupId>com.bite</groupId>  
+    <artifactId>oj-common-core</artifactId>  
+    <version>1.0-SNAPSHOT</version>  
+</dependency>
+```
