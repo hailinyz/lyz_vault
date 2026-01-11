@@ -65,4 +65,4 @@ docker 容器相互隔离，相互干扰out；资源滥用数据泄露，可以�
 
 服务间调用（friend --> judge）的问题：openfign发起服务间调用（说白了就是发起HTTP请求）
 
-创建oj-api的一个模块：把openfeign的客户端统一放在这。
+创建oj-api的一个模块：把openfeign的客户端统一放在这。 
