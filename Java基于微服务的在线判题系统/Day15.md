@@ -22,5 +22,9 @@ public String nextQuestion(Long examId, Long questionId) {
 
 ### 用户提交 & 判题
 
-业务逻辑：
+**业务逻辑**
+
+后端接收到前端请求之后，获取参数，根据programType判断用户提交代码的语言类型，根据语言类型进行不同的处理。
+
+执行代码：
 
