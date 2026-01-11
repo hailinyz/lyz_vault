@@ -98,3 +98,22 @@ Judge 服务执行判题（编译、运行、对比输出）
 返回判题结果（通过/失败、运行时间、内存占用等）
     ↓
 Friend 服务返回结果给用户
+
+judge微服务
+```xml
+<dependency>  
+    <groupId>com.bite</groupId>  
+    <artifactId>oj-api</artifactId>  
+    <version>1.0-SNAPSHOT</version>  
+    <scope>compile</scope>  
+</dependency>  
+<dependency>  
+    <groupId>com.mysql</groupId>  
+    <artifactId>mysql-connector-j</artifactId>  
+</dependency>  
+<dependency>  
+    <groupId>com.github.docker-java</groupId>  
+    <artifactId>docker-java</artifactId>  
+    <version>3.3.4</version>  
+</dependency>
+```
