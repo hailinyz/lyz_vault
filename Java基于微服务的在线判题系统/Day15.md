@@ -241,5 +241,24 @@ docker代码沙箱（安全机制，隔离限制代码执行的环境，防止�
 
 
 将代码写进文件，然后将文件挂载，就可以了。
-要写进文件，首先得有一个文件夹
+第一步：
+要写进文件，首先得有一个**目录**
 ![](assets/Day15/file-20260112144427759.png)
+```java
+// 创建并返回用户代码的文件  
+private void createUserCodeFile(Long userId, String userCode) {  
+    String examCodeDir = System.getProperty("user.dir") + File.separator + JudgeConstants.EXAM_CODE_DIR;  
+    if (!FileUtil.exist(examCodeDir)) {  
+        FileUtil.mkdir(examCodeDir); // 创建存放用户代码的目录  
+    }  
+  
+    String time = LocalDateTimeUtil.format(LocalDateTime.now(), DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));  
+    // 拼接用户代码文件路径  
+    userCodeDir = examCodeDir + File.separator + userId + Constants.UNDERLINE_SEPARATOR + time;  
+    userCodeFileName = userCodeDir + File.separator + JudgeConstants.USER_CODE_JAVA_CLASS_NAME;  
+  
+    FileUtil.writeString(userCode, userCodeFileName, Constants.UTF8);  
+}
+```
+
+第二步：
