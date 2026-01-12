@@ -263,4 +263,57 @@ private void createUserCodeFile(Long userId, String userCode) {
 
 第二步：
 将容器创建好（初始化），并且将user-code挂载
+```java
+/*  
+ 初始化docker容器  
+ */private void initDockerSanBox() {  
+    DefaultDockerClientConfig clientConfig = DefaultDockerClientConfig.createDefaultConfigBuilder()  
+            .withDockerHost(dockerHost)  
+            .build();  
+  
+    dockerClient = DockerClientBuilder  
+            .getInstance(clientConfig)  
+            .withDockerCmdExecFactory(new NettyDockerCmdExecFactory())  
+            .build();  
+  
+    // 拉取镜像  
+    pullJavaEnvImage();  
+  
+    // 创建容器 限制资源 控制权限  
+    HostConfig hostConfig = getHostConfig();  
+    CreateContainerCmd containerCmd = dockerClient  
+            .createContainerCmd(JudgeConstants.JAVA_ENV_IMAGE)  
+            .withName(JudgeConstants.JAVA_CONTAINER_NAME);  
+  
+    CreateContainerResponse createContainerResponse = containerCmd  
+            .withHostConfig(hostConfig)  
+            .withAttachStderr(true)  
+            .withAttachStdout(true)  
+            .withTty(true)  
+            .exec();  
+  
+    // 记录容器id  
+    containerId = createContainerResponse.getId();  
+    // 启动容器  
+    dockerClient.startContainerCmd(containerId).exec();  
+}  
+  
+  
+// 限制资源 控制权限  
+private HostConfig getHostConfig() {  
+    HostConfig hostConfig = new HostConfig();  
+  
+    // 设置挂载目录，指定用户代码路径  
+    hostConfig.setBinds(new Bind(userCodeDir, new Volume(JudgeConstants.DOCKER_USER_CODE_DIR)));  
+  
+    // 限制docker容器使用资源  
+    hostConfig.withMemory(memoryLimit);  
+    hostConfig.withMemorySwap(memorySwapLimit);  
+    hostConfig.withCpuCount(cpuLimit);  
+    hostConfig.withNetworkMode("none"); // 禁用网络  
+    hostConfig.withReadonlyRootfs(true); // 禁止在root目录写文件  
+  
+    return hostConfig;  
+}
+```
 
