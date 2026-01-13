@@ -271,7 +271,7 @@ private void createUserCodeFile(Long userId, String userCode) {
             .withDockerHost(dockerHost)  
             .build();  
   
-    dockerClient = DockerClientBuilder  
+    dockerClient = DockerClientBuilder //都是要拿client操作第三方  
             .getInstance(clientConfig)  
             .withDockerCmdExecFactory(new NettyDockerCmdExecFactory())  
             .build();  
@@ -296,6 +296,29 @@ private void createUserCodeFile(Long userId, String userCode) {
     containerId = createContainerResponse.getId();  
     // 启动容器  
     dockerClient.startContainerCmd(containerId).exec();  
+}  
+  
+// 拉取java执行环境镜像 需要控制只拉取一次  
+private void pullJavaEnvImage() {  
+    ListImagesCmd listImagesCmd = dockerClient.listImagesCmd();  
+    List<Image> imageList = listImagesCmd.exec();  
+  
+    // 检查本地是否已存在目标镜像  
+    for (Image image : imageList) {  
+        String[] repoTags = image.getRepoTags();  
+        if (repoTags != null && repoTags.length > 0 && JudgeConstants.JAVA_ENV_IMAGE.equals(repoTags[0])) {  
+            // 镜像已存在，直接返回，避免重复拉取  
+            return;  
+        }  
+    }  
+  
+    // 镜像不存在，执行拉取  
+    PullImageCmd pullImageCmd = dockerClient.pullImageCmd(JudgeConstants.JAVA_ENV_IMAGE);  
+    try {  
+        pullImageCmd.exec(new PullImageResultCallback()).awaitCompletion();  
+    } catch (InterruptedException e) {  
+        throw new RuntimeException(e);  
+    }  
 }  
   
   
