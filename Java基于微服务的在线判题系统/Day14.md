@@ -11,7 +11,7 @@ CREATE TABLE tb_user_submit (
     program_type TINYINT NOT NULL COMMENT '代码类型 0 java 1 CPP',
     user_code TEXT NOT NULL COMMENT '用户代码',
     pass TINYINT NOT NULL COMMENT '0:未通过 1:通过',
-    exe_message VARCHAR(500) NOT NULL COMMENT '执行结果',
+    exe_message VARCHAR(500) COMMENT '执行结果',
     score INT NOT NULL DEFAULT '0' COMMENT '得分',
     create_by BIGINT UNSIGNED NOT NULL COMMENT '创建人',
     create_time DATETIME NOT NULL COMMENT '创建时间',
