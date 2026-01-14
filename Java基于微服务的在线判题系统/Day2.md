@@ -140,7 +140,7 @@ CREATE USER 'ojtest'@'%' IDENTIFIED BY '123456';
 
 然后建库建表
 ```powershell
-CREATE database if NOT EXISTS `bitoj_dev` ；
+CREATE database if NOT EXISTS `bitoj_dev` ;
 ```
 
 赋予⽤⼾操作权限,只限定在我们创建的这个bitoj_dev库就行了
