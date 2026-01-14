@@ -110,6 +110,9 @@ docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JV
 ![](assets/Day3/file-20251205193905811.png)
 ```powershell
 docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=172.17.0.2 -e MYSQL_SERVICE_PORT=3306 -e MYSQL_SERVICE_DB_NAME=bitoj_nacos_local -e MYSQL_SERVICE_USER=ojtest -e MYSQL_SERVICE_PASSWORD=123456 nacos/nacos-server:v2.2.3
+
+# 或者
+docker run -d -p 8848:8848 -p 9848:9848 --name oj-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=172.17.0.2 -e MYSQL_SERVICE_PORT=3306 -e MYSQL_SERVICE_DB_NAME=bitoj_nacos_dev -e MYSQL_SERVICE_USER=ojtest -e MYSQL_SERVICE_PASSWORD=123456 nacos/nacos-server:v2.2.3
 ```
 172.17.0.2为什么用这个后面会说
 
