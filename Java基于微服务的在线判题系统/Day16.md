@@ -163,7 +163,7 @@ private JudgeProducer judgeProducer;
 </dependency>
 ```
 创建aspect包
-1.创建注解
+1.创建注解（这个注解加载哪个接口/方法之上，那么就会在接口/方法执行之前执行下面前置方法）
 ```java
 @Target({ElementType.TYPE, ElementType.METHOD})  
 @Retention(RetentionPolicy.RUNTIME)  
@@ -194,3 +194,6 @@ public class UserStatusCheckAspect {
     }  
 }
 ```
+**前置通知**类型，在接口执行之前会被执行；我们要达到的目的就是进来之前先检查一下用户状态
+![](assets/Day16/file-20260115215609749.png)
+
