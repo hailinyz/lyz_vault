@@ -114,3 +114,20 @@ public class JudgeConsumer {
 ![](assets/Day16/file-20260115150119262.png)
 
 我们直接提供新接口就行了，以前旧的代码留着以后看（欣赏）
+![](assets/Day16/file-20260115150845775.png)
+记得引入消息的生产者
+```java
+@Autowired  
+private JudgeProducer judgeProducer;
+```
+
+现在我们只需要把组装好的数据传给rabbitmq就行了，只要rabbitmq中有消息，judge就能够监听到并且消费-->判题。
+
+所以现在的这个rabbitSubmit接口已经没有判题的功能了，只是提交。所以根本没有办法把结果返回。
+
+这怎么办呢？前端需要判题结果，后面说 //TODO，现在先将这个接口改成boolean类型
+![](assets/Day16/file-20260115151408688.png)
+
+
+现在再来看下消费者
+
