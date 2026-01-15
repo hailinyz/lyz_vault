@@ -28,3 +28,14 @@ rabbitmq-plugins enable rabbitmq_management
 
 
 创建oj-common-rabbitmq⼯程
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-amqp</artifactId>  
+</dependency>  
+<dependency>  
+    <groupId>com.bite</groupId>  
+    <artifactId>oj-common-core</artifactId>  
+    <version>${oj-common-core.version}</version>  
+</dependency>
+```
