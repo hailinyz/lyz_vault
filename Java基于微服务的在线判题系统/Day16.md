@@ -165,5 +165,11 @@ private JudgeProducer judgeProducer;
 创建aspect包
 1.创建注解
 ```java
-
+@Target({ElementType.TYPE, ElementType.METHOD})  
+@Retention(RetentionPolicy.RUNTIME)  
+@Documented  
+public @interface CheckUserStatus {  
+      
+}
 ```
+2.提供切面类
