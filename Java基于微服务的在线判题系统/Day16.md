@@ -10,3 +10,13 @@
 代码的改动：把之前那种每提交一次代码都要创建一个新容器**改成**从容器池中直接拿容器的方式；清理不在是删除容器而是**归还**的方式。
 
 短时间内可能会有大量的请求，导致崩溃（就该用rabbitmq的**流量削峰**）
+
+
+拉取镜像
+```powershell
+docker pull rabbitmq:3.8.30-management
+```
+启动容器
+```powershell
+docker run -d --name oj-rabbit-dev -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 rabbitmq:3.8.30- management
+```
