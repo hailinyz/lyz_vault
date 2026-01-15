@@ -10,9 +10,13 @@
 
 竞赛结果的通信消息（属于第二种点对点）
 
+消息发送：
+1. 消息是如何产生的（竞赛结果通知消息）
+		
+2. 消息如何发送
 
-数据库表设计
 
+数据库表设计：
 消息内容表
 ```sql
 create table tb_message_text(  
@@ -27,7 +31,16 @@ create table tb_message_text(
 );
 ```
 
-
-
-
 消息表
+```sql
+create table tb_message(  
+    message_id bigint unsigned NOT NULL COMMENT '消息id（主键）',  
+    send_id bigint unsigned NOT NULL COMMENT '消息发送人id',  
+    rec_id bigint unsigned NOT NULL COMMENT '消息接收人id',  
+    create_by bigint unsigned not null comment '创建人',  
+    create_time datetime not null comment '创建时间',  
+    update_by bigint unsigned comment '更新人',  
+    update_time datetime comment '更新时间',  
+    primary key (message_id)  
+);
+```
