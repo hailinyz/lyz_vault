@@ -70,3 +70,26 @@ public class RabbitConfig {
 
 生产者：friend
 消费者：judge
+
+生产者代码：
+```java
+@Component  
+@Slf4j  
+public class JudgeProducer {  
+    @Autowired  
+    private RabbitTemplate rabbitTemplate;  
+    public void produceMsg(JudgeSubmitDTO judgeSubmitDTO) {  
+        try {  
+            rabbitTemplate.convertAndSend(RabbitMQConstants.OJ_WORK_QUEUE,  
+                    judgeSubmitDTO);  
+        } catch (Exception e) {  
+            log.error("⽣产者发送消息异常", e);  
+            throw new ServiceException(ResultCode.FAILED_RABBIT_PRODUCE);  
+        }  
+    }  
+}
+```
+消费者代码
+```java
+
+```
