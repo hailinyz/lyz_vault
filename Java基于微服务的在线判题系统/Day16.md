@@ -142,5 +142,5 @@ private JudgeProducer judgeProducer;
 既然前端不知道什么时间能把判题搞定，每隔一段时间（前端定时任务）请求这个接口
 
 
-### 热榜排行列表-自写（Redis + 定时任务xxljob）
+### 热榜排行列表-自写（Redis + 定时任务xxljob + ES）
 ![](assets/Day16/file-20260115183406070.jpg)
