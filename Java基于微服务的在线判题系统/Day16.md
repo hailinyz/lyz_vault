@@ -144,3 +144,5 @@ private JudgeProducer judgeProducer;
 
 ### 热榜排行列表-自写（Redis + 定时任务xxljob + ES）
 ![](assets/Day16/file-20260115183406070.jpg)
+直接抄，要抄的明白。
+
