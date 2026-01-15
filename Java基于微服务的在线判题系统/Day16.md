@@ -135,4 +135,5 @@ private JudgeProducer judgeProducer;
 
 
 现在完成上面的//TODO判题结果的获取
-再
+在后端再提供一个新的接口，就是用来前端查询判题结果的。
+
