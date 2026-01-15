@@ -154,4 +154,8 @@ private JudgeProducer judgeProducer;
 ![](assets/Day16/file-20260115214451758.png)
 很麻烦。
 
-这样我们的代码要写很多遍，维护很多遍，不太好吧。 -- **SpringAOP**切面编程。
+这样我们的代码要写很多遍，维护很多遍，不太好吧。  **SpringAOP**解决我们这个问题切面编程。
+引入依赖
+```xml
+
+```
