@@ -130,4 +130,6 @@ private JudgeProducer judgeProducer;
 
 
 现在再来看下消费者
-   
+![](assets/Day16/file-20260115152456725.png)
+因为这个注解会监听有没有消息，有消息会自动出发这个消费的方法自动执行判题。
+所以就串起来了
