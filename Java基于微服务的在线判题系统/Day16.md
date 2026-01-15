@@ -39,3 +39,34 @@ rabbitmq-plugins enable rabbitmq_management
     <version>${oj-common-core.version}</version>  
 </dependency>
 ```
+
+实体类
+```java
+public class RabbitMQConstants {  
+    public static final String OJ_WORK_QUEUE = "oj-work-queue";  
+}
+```
+
+配置类
+```java
+@Configuration  
+public class RabbitConfig {  
+    @Bean  
+    public Queue workQueue() {  
+        return new Queue(RabbitMQConstants.OJ_WORK_QUEUE, true);  
+    }  
+    @Bean  
+    public MessageConverter messageConverter() {  
+        return new Jackson2JsonMessageConverter();  
+    }  
+}
+```
+作为公用组件，要想让其他服务能用，得完成这一步
+![](assets/Day16/file-20260115142751037.png)
+
+好的，项目引入babbitmq完成。
+
+判题这块因为我们**要解决的问题就是判题如果大量的用户提交代码以后整体的判题功能支撑不聊这么多用户的处理，所以才引入了rabbitmq进行流量削峰**。
+
+生产者：friend
+消费者：judge
