@@ -25,3 +25,6 @@ docker run -d --name oj-rabbit-dev -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DE
 ```powershell
 rabbitmq-plugins enable rabbitmq_management
 ```
+
+
+创建oj-common-rabbitmq⼯程
