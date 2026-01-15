@@ -149,3 +149,5 @@ private JudgeProducer judgeProducer;
 
 
 用户**行为限制** -- 拉黑
+
+报名限制、答题限制等等，如果要跟报名一样每个接口都改的话，很麻烦。
