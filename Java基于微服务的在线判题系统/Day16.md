@@ -91,5 +91,15 @@ public class JudgeProducer {
 ```
 消费者代码
 ```java
-
+@Slf4j  
+@Component  
+public class JudgeConsumer {  
+    @Autowired  
+    private IJudgeService judgeService;  
+    @RabbitListener(queues = RabbitMQConstants.OJ_WORK_QUEUE)  
+    public void consume(JudgeSubmitDTO judgeSubmitDTO) {  
+        log.info("收到消息为: {}", judgeSubmitDTO);  
+        judgeService.doJudgeJavaCode(judgeSubmitDTO);  
+    }  
+}
 ```
