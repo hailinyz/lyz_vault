@@ -52,3 +52,6 @@ create table tb_message(
 设计redis当中的缓存
 ![](assets/Day17/file-20260116000024593.png)
 
+---
+好的上面分析完成。
+
