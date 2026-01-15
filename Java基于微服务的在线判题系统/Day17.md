@@ -29,7 +29,8 @@ create table tb_message_text(
 消息表
 ```sql
 create table tb_message(  
-    message_id bigint unsigned NOT NULL COMMENT '消息id（主键）',  
+    message_id bigint unsigned NOT NULL COMMENT '消息id（主键）', 
+    text_id bigint unsigned NOT NULL COMMENT '消息内容id（主键）',  
     send_id bigint unsigned NOT NULL COMMENT '消息发送人id',  
     rec_id bigint unsigned NOT NULL COMMENT '消息接收人id',  
     create_by bigint unsigned not null comment '创建人',  
@@ -44,7 +45,8 @@ create table tb_message(
 消息发送：
 1. 消息是如何产生的（竞赛结果通知消息）
 每天凌晨，会对前一天结束竞赛进行用户排名统计。消息在统计过程中随即产生了。
-竞赛结束时间不能超过晚上 10:00 凌晨统计可以一次统计完所有竞赛。
+竞赛结束时间不能超过晚上 10:00 凌晨统计可以一次统计完所有竞赛（xxl-job 每天1:00）。
 
- 
 2. 消息如何发送
+只需要将产生的消息存储到数据库中即可。
+
