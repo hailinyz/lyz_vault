@@ -20,3 +20,8 @@ docker pull rabbitmq:3.8.30-management
 ```powershell
 docker run -d --name oj-rabbit-dev -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 rabbitmq:3.8.30-management
 ```
+进入容器内部并启动管理插件
+![](assets/Day16/file-20260115141533507.png)
+```powershell
+rabbitmq-plugins enable rabbitmq_management
+```
