@@ -63,5 +63,5 @@ create table tb_message(
 
 
 2. 消息的展示
-
+我的消息列表，模仿竞赛那块的代码就行了。
 
