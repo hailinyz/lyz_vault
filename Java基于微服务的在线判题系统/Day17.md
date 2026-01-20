@@ -60,7 +60,60 @@ create table tb_message(
 1. 消息的发送
 通过**定时任务**生成消息 --> 将消息存储到**数据库**和**缓存**当中
 我们现在做个定时任务**生成消息**
-
+```java
+    /*  
+    * 生成排名消息  
+     */    private void createMessage(List<Exam> examList, Map<Long, List<UserScore>> userScoreMap) {  
+        List<MessageText> messageTextList = new ArrayList<>(); //消息详情信息  
+        List<Message> messageList = new ArrayList<>(); //消息信息  
+        for (Exam exam : examList) {  
+            Long examId = exam.getExamId();  
+            List<UserScore> userScoreList = userScoreMap.get(examId);  
+            int totalUser = userScoreList.size();  
+            int examRank = 1;  
+            for (UserScore userScore : userScoreList) {  
+                String msgTitle = exam.getTitle() + "——排名情况";  
+                String msgContent = "您所参与的竞赛：" + exam.getTitle()  
+                        + "，本次参与竞赛一共" + totalUser + "人，您排名第" + examRank + "名。";  
+                MessageText messageText = new MessageText();  
+                messageText.setMessageTitle(msgTitle);  
+                messageText.setMessageContent(msgContent);  
+                messageText.setCreateBy(Constants.SYSTEM_USER_ID);  
+//                messageTextMapper.insert(messageText); //插入数据库，循环插入慢  
+                messageTextList.add(messageText);  
+                Message message = new Message();  
+                message.setSendId(Constants.SYSTEM_USER_ID);  
+                message.setCreateBy(Constants.SYSTEM_USER_ID);  
+                message.setRecId(userScore.getUserId());  
+                examRank++;  
+            }  
+        }  
+        messageTextService.batchInsert(messageTextList); //批量插入  
+        Map<String, MessageTextVO> messageTextVOMap = new HashMap<>();  
+        for (int i = 0; i < messageTextList.size(); i++) {  
+            MessageText messageText = messageTextList.get(i);  
+            MessageTextVO messageTextVO = new MessageTextVO();  
+            BeanUtil.copyProperties(messageText, messageTextVO);  
+            String msgDetailKey = getMsgDetailKey(messageText.getTextId());  
+            messageTextVOMap.put(msgDetailKey, messageTextVO); //为了批量缓存，这里现存入map中  
+            Message message = messageList.get(i);  
+            message.setTextId(messageText.getTextId());  
+        }  
+        messageService.batchInsert(messageList); //批量插入  
+        //分组 划分成每个用户对应的消息列表  
+        Map<Long, List<Message>> userMsgMap = messageList.stream().collect(Collectors.groupingBy(Message::getRecId));  
+        Iterator<Map.Entry<Long, List<Message>>> iterator = userMsgMap.entrySet().iterator();  
+        while (iterator.hasNext()) { //通过迭代器遍历  
+            Map.Entry<Long, List<Message>> entry = iterator.next();  
+            Long recId = entry.getKey(); //用户id  
+            String userMsgListKey = getUserMsgListKey(recId); //缓存key  
+            List<Long> userMsgTextIdList = entry.getValue().stream().map(Message::getTextId).collect(Collectors.toList()); //缓存Value 获取用户消息的textId  
+            redisService.rightPushAll(userMsgListKey, userMsgTextIdList);  
+        }  
+        redisService.multiSet(messageTextVOMap);  
+  
+    }
+```
 
 2. 消息的展示
 我的消息列表，模仿竞赛那块的代码就行了。
