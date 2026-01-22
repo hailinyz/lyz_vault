@@ -145,3 +145,12 @@ public TableDataInfo list(PageQueryDTO dto) {
     return TableDataInfo.success(messageTextVOList, total);  
 }
 ```
+
+执行定时任务生成消息的时候注意修改一下数据库的字符集，不然定时任务会执行失败，造成数据插入数据库失败。
+```sql
+ALTER TABLE tb_message_text CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;  
+  
+ALTER TABLE tb_message_text MODIFY COLUMN message_title VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;  
+  
+ALTER TABLE tb_message_text MODIFY COLUMN message_content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
