@@ -154,3 +154,6 @@ ALTER TABLE tb_message_text MODIFY COLUMN message_title VARCHAR(255) CHARACTER S
   
 ALTER TABLE tb_message_text MODIFY COLUMN message_content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
+
+//TODO删除我的消息功能还没做
+
