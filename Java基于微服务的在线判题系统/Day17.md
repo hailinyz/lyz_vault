@@ -159,6 +159,53 @@ ALTER TABLE tb_message_text MODIFY COLUMN message_content TEXT CHARACTER SET utf
 思路：将数据库数据和缓存数据删除即可，操作的表是**tb_message_text** 和 **tb_message**
 
 删除应该怎么删除呢？根据什么删除？
-
+```java
+/*  
+ * 删除当前用户的消息（硬删除）  
+ */@Override  
+@Transactional(rollbackFor = Exception.class) //添加事务注解  
+public void delete(Long textId) {  
+    // 1. 获取当前用户ID  
+    Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);  
+    log.info("用户 {} 删除消息，textId: {}", userId, textId);  
+  
+    // 2. 删除数据库中的消息关联记录（物理删除）  
+    int deleteCount = messageMapper.delete(new LambdaQueryWrapper<Message>()  
+            .eq(Message::getRecId, userId)  
+            .eq(Message::getTextId, textId));  
+      
+    if (deleteCount == 0) {  
+        log.warn("消息不存在或已被删除，userId: {}, textId: {}", userId, textId);  
+        throw new RuntimeException("消息不存在");  
+    }  
+      
+    log.info("删除数据库记录数: {}", deleteCount);  
+  
+    // 3. 检查是否还有其他用户关联这条消息  
+    Long count = messageMapper.selectCount(new LambdaQueryWrapper<Message>()  
+            .eq(Message::getTextId, textId));  
+      
+    // 4. 如果没有其他用户关联，删除消息内容  
+    if (count == 0) {  
+        messageTextMapper.deleteById(textId);  
+        log.info("消息内容已删除，textId: {}", textId);  
+    } else {  
+        log.info("消息内容保留，还有 {} 个用户关联", count);  
+    }  
+  
+    // 5. 删除 Redis 缓存  
+    // 5.1 从用户消息列表中移除该消息  
+    String userMsgListKey = CacheConstants.USER_MESSAGE_LIST + userId;  
+    redisService.listRemove(userMsgListKey, textId);  
+      
+    // 5.2 如果没有其他用户关联，删除消息详情缓存  
+    if (count == 0) {  
+        String msgDetailKey = CacheConstants.MESSAGE_DETAIL + textId;  
+        redisService.deleteObject(msgDetailKey);  
+    }  
+      
+    log.info("Redis 缓存清理完成");  
+}
+```
 
 
