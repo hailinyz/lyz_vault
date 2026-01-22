@@ -156,4 +156,4 @@ ALTER TABLE tb_message_text MODIFY COLUMN message_content TEXT CHARACTER SET utf
 ```
 
 //TODO删除我的消息功能还没做
-
+思路：将数据库数据和缓存数据删除即可，操作的表是
