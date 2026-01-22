@@ -117,4 +117,31 @@ create table tb_message(
 
 2. 获取当前用户消息列表（消息的展示）
 我的消息列表，模仿竞赛那块的代码就行了。
-
+```java
+/*  
+* 获取当前用户消息列表(消息的展示)  
+ */@Override  
+public TableDataInfo list(PageQueryDTO dto) {  
+    //从ThreadLocal中获取用户id  
+    Long userId = ThreadLocalUtil.get(Constants.USER_ID, Long.class);  
+  
+    //从redis中获取 竞赛列表数据  
+    Long total = messageCacheManager.getListSize(userId);  
+    List<MessageTextVO> messageTextVOList;  
+    if (total == null || total <= 0){  
+        //从数据库中获取 我的竞赛列表数据  
+        PageHelper.startPage(dto.getPageNum(),dto.getPageSize());  
+        messageTextVOList = messageTextMapper.selectUserMsgList(userId);  
+        //同步到redis中  
+        messageCacheManager.refreshCache(userId);  
+        total = new PageInfo<>(messageTextVOList).getTotal(); //获取总记录数  
+    } else {  
+        //从redis中获取 竞赛列表数据  
+        messageTextVOList = messageCacheManager.getMsgTextVOList(dto, userId);  
+    }  
+    if (CollectionUtil.isEmpty(messageTextVOList)){ //使用hutool工具包判断集合是否为空  
+        return TableDataInfo.empty(); //未查出任何数据时调用  
+    }  
+    return TableDataInfo.success(messageTextVOList, total);  
+}
+```
