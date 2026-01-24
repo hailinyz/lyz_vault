@@ -4,4 +4,4 @@
 缓存结构：
 数据结构：List
 key：  e:r:examId
-value:  
+value:  json:    examRank   userId  score
