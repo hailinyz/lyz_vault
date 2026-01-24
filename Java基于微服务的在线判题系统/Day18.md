@@ -5,3 +5,5 @@
 数据结构：List
 key：  e:r:examId
 value:  json:    examRank   userId  score
+
+查看竞赛排名接口
