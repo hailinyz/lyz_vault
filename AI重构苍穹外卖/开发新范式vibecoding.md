@@ -8,6 +8,8 @@
 应用层会很火爆
 ![](assets/开发新范式vibecoding/file-20260326190243538.png)
 
+AI应用开发
+![](assets/开发新范式vibecoding/file-20260326192309021.png)
 
 
 
