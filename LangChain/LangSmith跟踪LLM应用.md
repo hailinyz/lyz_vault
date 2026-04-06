@@ -8,4 +8,6 @@
 
 ## 消息（Message）
  不管是什么消息，langchain都是继承了**BaseMessage**
- 
+ ![](assets/LangSmith跟踪LLM应用/file-20260406105144273.png)
+## 消息--多轮对话
+之前都是和大模型进行单次对话，怎么和大模型进行多轮对话
