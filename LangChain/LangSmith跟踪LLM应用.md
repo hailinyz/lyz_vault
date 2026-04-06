@@ -26,6 +26,11 @@
 
 ## 管理消息列表 -- 裁剪trim
 
+## 过滤filter_message
+![](assets/LangSmith跟踪LLM应用/file-20260406113552426.png)
+
+
+
 
 
 
