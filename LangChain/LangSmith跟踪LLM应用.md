@@ -7,3 +7,5 @@
 并不是所有组件都实现了Runable接口
 
 ## 消息（Message）
+ 不管是什么消息，langchain都是继承了**BaseMessage**
+ 
