@@ -29,6 +29,8 @@
 ## 过滤filter_message
 ![](assets/LangSmith跟踪LLM应用/file-20260406113552426.png)
 
+## 消息合并merge_message_runs
+
 
 
 
