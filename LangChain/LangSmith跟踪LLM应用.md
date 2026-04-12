@@ -33,6 +33,7 @@
 
 
 # 提示词模板
+![](assets/LangSmith跟踪LLM应用/file-20260412223826458.png)
 
 
 
