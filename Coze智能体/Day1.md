@@ -54,3 +54,5 @@
 ![](assets/Day1/file-20260415181850874.png)
 然后**接入智能体**
 ![](assets/Day1/file-20260415181816308.png)
+执行
+![](assets/Day1/file-20260415183103024.png)
