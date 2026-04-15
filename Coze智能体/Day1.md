@@ -51,3 +51,6 @@
 ![](assets/Day1/file-20260415180418050.png)
 ![](assets/Day1/file-20260415180451166.png)
 ![](assets/Day1/file-20260415180458065.png)
+![](assets/Day1/file-20260415181850874.png)
+然后**接入智能体**
+![](assets/Day1/file-20260415181816308.png)
