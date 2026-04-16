@@ -290,4 +290,4 @@ if __name__ == "__main__":
 ```curl
 curl -X POST http://127.0.0.1:5000/api/play -H "Content-Type: application/json" -d "{\"idiom\":\"一心一意\"}"
 ```
-![](assets/挑战三天打通Coze--Agent/file-20260416122657919.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416133038498.png)
