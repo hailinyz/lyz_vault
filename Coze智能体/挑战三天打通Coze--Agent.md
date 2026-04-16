@@ -1,14 +1,14 @@
 # 插件
 
 大模型没有**实时性**，可以加**天气插件**、地图
-![](assets/Day1/file-20260414194059400.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020027.png)
 **天气插件调用
-![](assets/Day1/file-20260414194158380.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020025.png)
 地图插件调用**
-![](assets/Day1/file-20260414194252191.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020024.png)
 **生图插件**
-![](assets/Day1/file-20260414194644040.png)
-![](assets/Day1/file-20260414194729883.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020023.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020022.png)
 还有**视频生成**插件，注意申请第三方平台**API KEY**
 总而言之
 有很多很多插件的分类，可以根据自己的需求添加各种好用的插件**丰富Agent**
@@ -16,7 +16,7 @@
 # 知识库
 大模型是通过**海量的知识**浇灌出来的，我们定制私人**知识库**更有自己的味道
 比如**公司内部资料**大模型拿不到，就可以喂**知识库**到Agent
-![](assets/Day1/file-20260414201948878.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020019.png)
 
 # RAG（检索增强生成）
 
@@ -31,46 +31,46 @@
 
 智能体 **“长期记忆”** 功能
 默认大模型有**轮数**最多只能到100，不能做长期记忆，所以引入**数据库**
-![](assets/Day1/file-20260415133039268.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020018.png)
 测试是否成功插入数据库
-![](assets/Day1/file-20260415133403233.png)
-![](assets/Day1/file-20260415133530710.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020017.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020016.png)
 测试了两个已经成功插入到数据库，接下来就可以进行检索
-![](assets/Day1/file-20260415133612364.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020015.png)
 可以啦！！！
-![](assets/Day1/file-20260415171045996.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020013.png)
 这样一个智能体就出来了，Agent就是如此的简单
 
 也可以用**数据库进行缓存**，注意设计数据库表的字段
-![](assets/Day1/file-20260415172054681.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020011%201.png)
 
 
 # 工作流
 
 工作流也是**大模型**能力的**补充**
-![](assets/Day1/file-20260415180418050.png)
-![](assets/Day1/file-20260415180451166.png)
-![](assets/Day1/file-20260415180458065.png)
-![](assets/Day1/file-20260415181850874.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020011.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020010.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020009.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020008.png)
 然后**接入智能体**
-![](assets/Day1/file-20260415181816308.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020008%201.png)
 执行
-![](assets/Day1/file-20260415183103024.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020006.png)
 也可以**加插件到工作流内部**这样就能节省智能体外面的冗余
 细节可以在工作流里面完成
-![](assets/Day1/file-20260415183351280.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020004.png)
 工作流里面也可以**嵌套工作流**
 
 上面的是**基础节点**
 下面我要做的就是**业务逻辑节点**啦
-![](assets/Day1/file-20260415184418944.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020003.png)
 
 选择器(类似if-else)
-![](assets/Day1/file-20260415184734534.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020002.png)
 意图识别
-![](assets/Day1/file-20260415184957748.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020001.png)
 循环
-![](assets/Day1/file-20260415185253792.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084020000.png)
 批处理**等等**
 
 **代码节点** 做数据处理(py、js脚本)
@@ -80,8 +80,8 @@
 # 应用
 
 **应用**和**智能体**的区别就是T800没带人皮和带了人皮的区别
-![](assets/Day1/file-20260415211834197.png)
-![](assets/Day1/file-20260415211839616.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084019999.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084019997.png)
 
 # coze的API和SDK
 
@@ -89,7 +89,7 @@ API  接口   请求方式   接口路由  请求参数
 SDK  工具包  函数  入参  出餐
 
 **SDK**更加简单易用
-![](assets/Day1/file-20260415222813489.png)
+![](assets/挑战三天打通Coze--Agent/file-20260416084019986.png)
 
 
 **SDK的使用(python)**
