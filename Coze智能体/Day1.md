@@ -91,3 +91,49 @@ SDK  工具包  函数  入参  出餐
 **SDK**更加简单易用
 ![](assets/Day1/file-20260415222813489.png)
 
+
+**SDK的使用(python)**
+```python
+# 导入功能模块  
+import os  
+  
+# 获取工作空间列表  
+from cozepy import Coze, TokenAuth, COZE_CN_BASE_URL  
+  
+# 加载.env环境变量（关键步骤！）  
+from dotenv import load_dotenv  
+load_dotenv()  
+  
+  
+def get_space_list():  
+    # 声明访问令牌  
+    api_token = os.environ.get("COZE_API_TOKEN")  
+  
+    if not api_token:  
+        print("请先设置个人令牌")  
+  
+  
+    # 初始化coze客户端  
+    coze = Coze(  
+        # 声明令牌  
+        auth= TokenAuth(token=api_token),  
+        # 声明域名  
+        base_url= COZE_CN_BASE_URL  
+    )  
+  
+    # 创建完成coze客户端之后，就可以进行调用了  
+    try:  
+        spaces = coze.workspaces.list()  
+        if hasattr(spaces, "items"):  # 判断space有没有items这个属性  
+            spaces = spaces.items  
+        print(spaces)  
+  
+    except Exception as e:  
+        print(f"调用访问空间列表SDK失败: {str(e)}")  
+  
+  
+if __name__== "__main__":  
+    get_space_list()
+```
+
+# coze
