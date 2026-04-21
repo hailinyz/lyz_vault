@@ -291,3 +291,7 @@ if __name__ == "__main__":
 curl -X POST http://127.0.0.1:5000/api/play -H "Content-Type: application/json" -d "{\"idiom\":\"一心一意\"}"
 ```
 ![](assets/挑战三天打通Coze--Agent/file-20260416133038498.png)
+
+# 前端提示词
+请你帮我写一份可以使用的成语接龙的前端代码，后端代码已经有了。 1.前端只使用js、css、html 2.所有前端相关的代码都写到html文件里面 3.后端代码如下：
+![](assets/挑战三天打通Coze--Agent/file-20260421212258007.png)
