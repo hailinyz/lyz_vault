@@ -5,3 +5,7 @@
 ![](assets/Redis/file-20260427200530142.png)
 缓存击穿
 ![](assets/Redis/file-20260427200707946.png)
+![](assets/Redis/file-20260427201141003.png)
+总结
+![](assets/Redis/file-20260427201157265.png)
+缓存雪崩
