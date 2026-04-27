@@ -12,3 +12,7 @@
 ![](assets/Redis/file-20260427201428470.png)
 总结
 ![](assets/Redis/file-20260427201606933.png)
+![](assets/Redis/file-20260427201817709.png)
+Redis作为缓存，MySQL的数据如何与Redis进行同步呢（双写一致性）
+![](assets/Redis/file-20260427202020586.png)
+双写一致：当修改了MySQL的数据也要同时更新Redis的数据，缓存和数据库的数据**保持一致**
