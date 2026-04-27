@@ -9,3 +9,5 @@
 总结
 ![](assets/Redis/file-20260427201157265.png)
 缓存雪崩
+![](assets/Redis/file-20260427201428470.png)
+总结
