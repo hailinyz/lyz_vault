@@ -54,3 +54,5 @@ RDB执行原理
 
 
 2. AOF（追加文件）
+![](assets/Redis/file-20260429185924000.png)
+![](assets/Redis/file-20260429190009967.png)
