@@ -50,4 +50,6 @@ Redis持久化
 1. RDB
 ![](assets/Redis/file-20260429125519031.png)
 
+
+
 2. AOF
