@@ -69,6 +69,7 @@ Redis数据过期策略
 + 定期删除
 ![](assets/Redis/file-20260429210817175.png)
 
+
 Redis的**数据淘汰策略**
 ![](assets/Redis/file-20260429211347885.png)
 
