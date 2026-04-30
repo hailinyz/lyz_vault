@@ -418,7 +418,7 @@ public R<Void> login(@RequestBody LoginDTO loginDTO){
     return sysUserService.login(loginDTO.getUserAccount(), loginDTO.getUserAccount());  
 }
 ```
-创建一个LoginDTP存放用户名和密码
+创建一个LoginDTO存放用户名和密码
 ```java
 @Getter  
 @Setter  
@@ -430,4 +430,4 @@ public class LoginDTO {
 
 注意，上面返回值已经是一个R<T>，记得把原始代码改一下。
 
-但是这样写接口文档太low了，**可以用swagger 生成接口文档**
+但是这样写接口文档太low了， **可以用swagger 生成接口文档**
