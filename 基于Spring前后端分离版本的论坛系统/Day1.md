@@ -40,5 +40,22 @@ create table t_board (
 );
 
 # 帖子表
+create table t_article (
+    id bigint primary key auto_increment comment '编号，主键自增',
+    boardId bigint not null comment '帖子编号',
+    userId bigint not null comment '发帖人，关联用户编号',
+    title varchar(100) not null comment '帖子标题',
+    content text not null comment '帖子正文',
+    visitCount int not null default 0 comment '访问量',
+    replyCount int not null default 0 comment '回复数',
+    likeCount int not null default 0 comment '点赞数',
+    state tinyint not null default 0 comment '状态 0正常，1禁用',
+    deleteState tinyint not null default 0 comment '是否删除，0否，1是',
+    createTime datetime not null comment '创建时间，精确到秒',
+    updateTime datetime not null comment '更新时间，精确到秒'
+);
+
+# 帖子回复表
+
 
 ```
