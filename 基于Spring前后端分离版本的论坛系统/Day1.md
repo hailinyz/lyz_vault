@@ -3,5 +3,9 @@
 
 # 数据库设计
 ```sql
-create database forum_db cha
+# 创建数据库
+create database forum_db character set utf8mb4 collate utf8mb4_general_ci;
+
+# 创建表
+
 ```
