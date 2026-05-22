@@ -28,5 +28,17 @@ create table t_user (
 );
 
 # 板块表
+create table t_board (
+    id bigint primary key auto_increment comment '编号，主键自增',
+    name varchar(50) not null comment '版块名',
+    articleCount int not null default 0 comment '帖子数量',
+    sort int not null default 0 comment '排序优先级，升序',
+    state tinyint not null default 0 comment '状态 0正常，1禁用',
+    deleteState tinyint not null default 0 comment '是否删除，0否，1是',
+    createTime datetime not null comment '创建时间，精确到秒',
+    updateTime datetime not null comment '更新时间，精确到秒'
+);
+
+# 帖子表
 
 ```
