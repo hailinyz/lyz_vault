@@ -71,6 +71,15 @@ create table t_article_reply (
 );
 
 # 站内信
-
+create table t_message (
+    id bigint primary key auto_increment comment '编号，主键自增',
+    postUserId bigint not null comment '发送者，关联用户编号',
+    receiveUserId bigint not null comment '接收者，关联用户编号',
+    content varchar(255) not null comment '内容',
+    state tinyint not null default 0 comment '状态 0正常，1禁用',
+    deleteState tinyint not null default 0 comment '是否删除，0否，1是',
+    createTime datetime not null comment '创建时间，精确到秒',
+    updateTime datetime not null comment '更新时间，精确到秒'
+);
 
 ```
