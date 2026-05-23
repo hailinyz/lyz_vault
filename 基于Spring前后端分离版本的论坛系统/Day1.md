@@ -87,3 +87,6 @@ create table t_message (
 # 软件开发
 ## 搭建环境
 ![](assets/Day1/file-20260523161926078.png)
+有这个maven标签页和这样的文件夹就是创建成功
+![](assets/Day1/file-20260523162154963.png)
+![](assets/Day1/file-20260523162133051.png)
