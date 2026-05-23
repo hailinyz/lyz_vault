@@ -56,6 +56,21 @@ create table t_article (
 );
 
 # 帖子回复表
+create table t_article_reply (
+    id bigint primary key auto_increment comment '编号，主键自增',
+    articleId bigint not null comment '关联帖子编号',
+    postUserId bigint not null comment '楼主用户，关联用户编号',
+    replyId bigint not null comment '关联回复编号，支持楼中楼',
+    replyUserId bigint not null comment '楼主下的回复用户编号，支持楼',
+    content varchar(500) not null comment '回贴内容',
+    likeCount int not null comment '回贴内容',
+    state tinyint not null default 0 comment '状态 0正常，1禁用',
+    deleteState tinyint not null default 0 comment '是否删除，0否，1是',
+    createTime datetime not null comment '创建时间，精确到秒',
+    updateTime datetime not null comment '更新时间，精确到秒'
+);
+
+# 站内信
 
 
 ```
