@@ -86,3 +86,4 @@ create table t_message (
 
 # 软件开发
 ## 搭建环境
+![](assets/Day1/file-20260523161926078.png)
