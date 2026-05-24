@@ -88,3 +88,10 @@ datasource:
 <javaModelGenerator targetPackage="com.bite.forum.model"  
                     targetProject="src/main/java">
 ```
+**在生成好的mapper文件中在insert后添加
+```xml
+<insert id="insert" parameterType="com.bitejiuyeke.forum.model.User" useGeneratedKeys="true" keyProperty="id">
+
+-- 主要是加下面这个
+useGeneratedKeys="true" keyProperty="id"
+```
