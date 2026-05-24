@@ -95,3 +95,5 @@ datasource:
 -- 主要是加下面这个
 useGeneratedKeys="true" keyProperty="id"
 ```
+
+# 公共代码
