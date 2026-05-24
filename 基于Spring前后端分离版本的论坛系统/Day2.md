@@ -37,4 +37,10 @@
 ```
 
 ## 关于数据库的配置 在application.yml配置
-
+```yml
+datasource:  
+  url: jdbc:mysql://127.0.0.1:3306/forum_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true  
+  username: root  
+  password: 123456  
+  driver-class-name: com.mysql.jdbc.Driver
+```
