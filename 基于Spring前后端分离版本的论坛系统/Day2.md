@@ -44,3 +44,37 @@ datasource:
   password: 123456  
   driver-class-name: com.mysql.jdbc.Driver
 ```
+
+## 数据库表与实体类的映射
+```xml
+
+<!-- mybatis-generator -->  
+<mybatis-generator-plugin-version>1.4.1</mybatis-generator-plugin-version>
+
+<!-- mybatis 生成器插件 -->
+<plugin>
+    <groupId>org.mybatis.generator</groupId>
+    <artifactId>mybatis-generator-maven-plugin</artifactId>
+    <version>${mybatis-generator-plugin-version}</version>
+    <executions>
+        <execution>
+            <id>Generate MyBatis Artifacts</id>
+            <phase>deploy</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+        </execution>
+    </executions>
+    <!-- 相关配置 -->
+    <configuration>
+        <!-- 打开日志 -->
+        <verbose>true</verbose>
+        <!-- 允许覆盖 -->
+        <overwrite>true</overwrite>
+        <!-- 配置文件路径 -->
+        <configurationFile>
+            src/main/resources/mybatis/generatorConfig.xml
+        </configurationFile>
+    </configuration>
+</plugin>
+```
