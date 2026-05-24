@@ -84,4 +84,7 @@ datasource:
 <!-- 驱动包路径，location中路径替换成自己本地路径 -->  
 <classPathEntry location="D:\develop\apache-maven-3.9.11\mvn_repo\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar"/>
 
+<!-- 实体类生成位置 -->  
+<javaModelGenerator targetPackage="com.bite.forum.model"  
+                    targetProject="src/main/java">
 ```
