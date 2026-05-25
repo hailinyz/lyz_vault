@@ -103,3 +103,23 @@ useGeneratedKeys="true" keyProperty="id"
 
 全局异常处理
 ![](assets/Day2/file-20260525215230669.png)
+
+# 集成API自动生成
+```xml
+<!-- spring fox-->  
+<springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
+
+<!-- API⽂档⽣成，基于swagger2 -->  
+<dependency>  
+    <groupId>io.springfox</groupId>  
+    <artifactId>springfox-boot-starter</artifactId>  
+    <version>${springfox-boot-starter.version}</version>  
+</dependency>  
+<!-- SpringBoot健康监控 -->  
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-actuator</artifactId>  
+</dependency>
+```
+
+## 编写配置类
