@@ -123,3 +123,7 @@ useGeneratedKeys="true" keyProperty="id"
 ```
 
 ## 编写配置类
+
+```powershell
+启动程序，浏览器中输⼊地址：http://127.0.0.1:58080/swagger-ui/index.html ，可以正常并 显⽰接⼝信息，说明配置成功
+```
