@@ -97,5 +97,9 @@ useGeneratedKeys="true" keyProperty="id"
 ```
 
 # 公共代码
+
+状态码，返回值
 ![](assets/Day2/file-20260525215225500.png)
+
+全局异常处理
 ![](assets/Day2/file-20260525215230669.png)
