@@ -97,3 +97,5 @@ useGeneratedKeys="true" keyProperty="id"
 ```
 
 # 公共代码
+![](assets/Day2/file-20260525215225500.png)
+![](assets/Day2/file-20260525215230669.png)
