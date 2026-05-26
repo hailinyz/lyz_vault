@@ -162,3 +162,6 @@ public class SwaggerConfig {
 </dependency>
 ```
 
+创建这三个文件
+![](assets/Day2/file-20260526121712608.png)
+
