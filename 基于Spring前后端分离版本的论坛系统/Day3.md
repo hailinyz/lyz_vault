@@ -8,3 +8,6 @@
 ![](assets/Day3/file-20260526122730932.png)
 ![](assets/Day3/file-20260526122948005.png)
 ## 注册Service
+![](assets/Day3/file-20260526132812392.png)
+
+## 注册Controller
