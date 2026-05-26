@@ -124,6 +124,33 @@ useGeneratedKeys="true" keyProperty="id"
 
 ## 编写配置类
 
+```java
+// 配置类  
+@Configuration  
+public class SwaggerConfig {  
+    /**  
+     * SpringDoc OpenAPI基本配置  
+     * @return  
+     */    @Bean  
+    public OpenAPI customOpenAPI() {  
+        return new OpenAPI()  
+                .info(new Info()  
+                        .title("Bite论坛系统API")  
+                        .description("Bite论坛系统前后端分离API测试")  
+                        .version("1.0")  
+                        .contact(new Contact()  
+                                .name("Bit Tech")  
+                                .url("https://hlxpy.hljs.qzz.io")  
+                                .email("hlxpy@qq.com")));  
+    }  
+}
+```
+
 ```powershell
 启动程序，浏览器中输⼊地址：http://127.0.0.1:58080/swagger-ui/index.html ，可以正常并 显⽰接⼝信息，说明配置成功
 ```
+
+## 编写工具类
+
+### MD5加密
+**注册和登录时都会对用户密码进行加密，可以对外提供一个加密的工具类**
