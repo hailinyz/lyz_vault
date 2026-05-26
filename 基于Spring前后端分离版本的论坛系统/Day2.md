@@ -154,3 +154,10 @@ public class SwaggerConfig {
 
 ### MD5加密
 **注册和登录时都会对用户密码进行加密，可以对外提供一个加密的工具类**
+```xml
+<!-- 编码解码加密⼯具包-->  
+<dependency>  
+    <groupId>commons-codec</groupId>  
+    <artifactId>commons-codec</artifactId>  
+</dependency>
+```
