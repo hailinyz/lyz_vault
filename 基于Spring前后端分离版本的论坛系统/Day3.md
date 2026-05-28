@@ -12,3 +12,13 @@
 
 ## 注册Controller
 Controller层一般不处理异常，异常 处理在Servicce 层，直接返回**错误信息**就行
+Controller还是推荐使用改成**标准 JSON + @RequestBody**
+```java
+@PostMapping("/register")
+public AppResult register(@RequestBody User user) {
+     ......
+    // 下面逻辑不变
+}
+```
+
+# 前端--注册
