@@ -11,3 +11,4 @@
 ![](assets/Day3/file-20260526132812392.png)
 
 ## 注册Controller
+Controller层一般不处理异常，异常 处理在Servicce 层，直接返回**错误信息**就行
