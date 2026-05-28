@@ -24,3 +24,4 @@ public AppResult register(@RequestBody User user) {
 # 前端--注册
 导入前端代码**放在static这个目录下**
 ![](assets/Day3/file-20260528235405123.png)
+前端主要是发**AJAX**请求就行
