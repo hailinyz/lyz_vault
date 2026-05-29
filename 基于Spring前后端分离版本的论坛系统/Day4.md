@@ -32,3 +32,4 @@ spring:
  default-property-inclusion: NON_NULL # 不为null时序列化
 
 ```
+![](assets/Day4/file-20260529143203336.png)
