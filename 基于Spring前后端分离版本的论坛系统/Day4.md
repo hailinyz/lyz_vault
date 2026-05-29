@@ -23,3 +23,12 @@
 ![](assets/Day4/file-20260529141610532.png)
 ![](assets/Day4/file-20260529142012980.png)
 **处理日期格式**
+```yml
+# 在spring下加⼊⼦节点
+spring:
+ # JSON序列化配置
+ jackson:
+ date-format: yyyy-MM-dd HH:mm:ss # ⽇期格式
+ default-property-inclusion: NON_NULL # 不为null时序列化
+
+```
