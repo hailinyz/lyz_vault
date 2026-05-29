@@ -41,3 +41,49 @@ spring:
 ![](assets/Day4/file-20260529143924041.png)
 
 # 获取用户信息前端
+```html
+$.ajax({
+      // 请求的方法
+      type : 'get',
+      // 没有参数，表示获取当前登录用户的信息
+      url : 'user/info',
+      // 成功回调
+      success : function(respData) {
+        // 判断响应的状态码
+        if (respData.code == 0) {
+          // 设置页面上用户的信息
+          let user = respData.data;
+          // 判断用户头像是否有效
+          if (!user.avatarUrl) {
+            // 设置默认的头像地址
+            user.avatarUrl = avatarUrl;
+          }
+          // 设置页面上的头像
+          $('#index_nav_avatar').css('background-image', 'url(' + user.avatarUrl + ')');
+          // 用户昵称
+          $('#index_nav_nickname').html(user.nickname);
+          // 设置用户组
+          let subName = user.isAdmin == 1 ? '管理员' : '普通用户';
+          $('#index_nav_name_sub').html(subName);
+          currentUserId = user.id;
+
+        } else {
+          // 提示信息
+          $.toast({
+              heading: '警告',
+              text: respData.message,
+              icon: 'warning'
+          });
+        }
+      },
+      // 失败回调
+      error : function () {
+        // 提示信息
+        $.toast({
+            heading: '错误',
+            text: '访问出现问题，请与管理员联系.',
+            icon: 'error'
+        });
+      }
+```
+
