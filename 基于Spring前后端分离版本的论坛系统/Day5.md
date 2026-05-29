@@ -1,1 +1,46 @@
-# 退出登录
+# 退出登录后端
+**只需要在Controller中加一个退出登陆的接口几口即可
+```java
+/*  
+* 退出登录  
+ */@Operation(summary = "退出登录")  
+@GetMapping("/logout")  
+public AppResult logout(HttpServletRequest request) {  
+    //1. 获取Session对象  
+    HttpSession session = request.getSession(false);  
+    //2. 判断Session对象是否存在  
+    if (session == null) {  
+        //Session对象不存在，返回错误信息  
+        return AppResult.failed(ResultCode.FAILED_FORBIDDEN);  
+    }  
+    //3. 删除Session对象  
+    session.invalidate();  
+    log.info("用户退出登录成功");  
+    //4. 返回结果  
+    return AppResult.success();  
+}
+```
+
+# 退出登陆前端
+
+**不用像之前的请求一样分success还是error，只需要complete
+complete：当请求完成时，不论成功还是失败，都跳转到登录页面
+**
+```html
+    // ============================ 处理退出登录点击事件 ===========================
+    // 成功后，跳转到sign-in.html
+    $('#index_user_logout').click(function () {
+      $.ajax({
+        type: 'GET',
+        url: 'user/logout',
+        complete: function () {
+          //当请求完成时，不论成功还是失败，都跳转到登录页面
+          location.assign('/sign-in.html');
+        }
+      });
+    });
+```
+
+# 登录拦截器
+
+**所有
