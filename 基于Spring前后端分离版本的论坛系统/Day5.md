@@ -124,3 +124,4 @@ selectByBoardId(Long boardId)
 
 
 # 板块帖子列表前端
+![](assets/Day5/file-20260530201706414.png)
