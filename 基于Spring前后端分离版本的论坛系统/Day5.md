@@ -119,3 +119,4 @@ selectByBoardId(Long boardId)
 #####                  ########上面是首页的列表，下面是板块的列表######### #####
 
 ![](assets/Day5/file-20260530192349991.png)
+![](assets/Day5/file-20260530200804198.png)
