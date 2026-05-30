@@ -57,3 +57,32 @@ complete：当请求完成时，不论成功还是失败，都跳转到登录页
 
 现在就可以把这些代码干掉了
 ![](assets/Day5/file-20260530091237331.png)
+
+# 导航栏板块列表后端
+
+```java
+// 从配置⽂件中获取主⻚中显⽰的版块个数，默认为9  
+@Value("${bit-forum.index.board-num:9}")  
+private Integer indexBoardNum;  
+  
+@Resource  
+private IBoradService boardService;  
+  
+/*  
+获取首页板块列表  
+ */@GetMapping("/topList")  
+@Operation(summary = "获取首页板块列表")  
+public AppResult<List<Board>> topList() {  
+    //调用Service查询结果  
+    List<Board> boards = boardService.selectByNum(indexBoardNum);  
+    //判断是否为空  
+    if (boards == null) {  
+        boards = new ArrayList<>();  
+    }  
+    //返回结果  
+    return AppResult.success(boards);  
+}
+```
+
+
+# 导航栏板块列表前端
