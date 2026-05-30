@@ -52,3 +52,5 @@ complete：当请求完成时，不论成功还是失败，都跳转到登录页
 通过继续我们后面的流程**
 
 **以上就是拦截器的功能**
+
+拦截器（LoginInterceptor）定义好之后还要加到全局的注册器（addInterceptors）
