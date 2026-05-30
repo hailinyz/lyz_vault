@@ -97,4 +97,17 @@ public AppResult<List<Board>> topList() {
 可以只引用mapper**
 
 # 发布帖子前端
+![](assets/Day5/file-20260530175918226.png)
+
+# 帖子列表
+![](assets/Day5/file-20260530180031343.png)
+## 板块帖子列表
+![](assets/Day5/file-20260530180132892.png)
+## 实现逻辑
+![](assets/Day5/file-20260530180151842.png)
+## 参数要求
+![](assets/Day5/file-20260530180207275.png)
+**根据传入的boardId来执行不同的查询
+selectAll()
+selectByBoardId(Long boardId)
 
