@@ -86,3 +86,6 @@ public AppResult<List<Board>> topList() {
 
 
 # 导航栏板块列表前端
+![](assets/Day5/file-20260530101905517.png)
+
+# 发布帖子
