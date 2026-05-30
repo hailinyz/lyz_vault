@@ -92,3 +92,4 @@ public AppResult<List<Board>> topList() {
 ## 实现逻辑
 ![](assets/Day5/file-20260530102545288.png)
 ![](assets/Day5/file-20260530122333802.png)
+![](assets/Day5/file-20260530143235032.png)
