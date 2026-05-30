@@ -115,3 +115,7 @@ selectByBoardId(Long boardId)
 **这里是为了返回的时候是个标准的json**
 
 ![](assets/Day5/file-20260530185443354.png)
+
+#####                  ########上面是首页的列表，下面是板块的列表######### #####
+
+![](assets/Day5/file-20260530192349991.png)
