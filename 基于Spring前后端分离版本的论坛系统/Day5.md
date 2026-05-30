@@ -89,3 +89,5 @@ public AppResult<List<Board>> topList() {
 ![](assets/Day5/file-20260530101905517.png)
 
 # 发布帖子
+## 实现逻辑
+![](assets/Day5/file-20260530102545288.png)
