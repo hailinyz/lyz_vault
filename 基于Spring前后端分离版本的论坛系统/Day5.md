@@ -93,3 +93,6 @@ public AppResult<List<Board>> topList() {
 ![](assets/Day5/file-20260530102545288.png)
 ![](assets/Day5/file-20260530122333802.png)
 ![](assets/Day5/file-20260530143235032.png)
+**避免循环引用（两个互相引用）
+可以只引用mapper**
+
