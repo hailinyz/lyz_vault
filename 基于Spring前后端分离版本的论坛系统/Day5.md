@@ -111,3 +111,4 @@ public AppResult<List<Board>> topList() {
 selectAll()
 selectByBoardId(Long boardId)
 
+![](assets/Day5/file-20260530181856472.png)
