@@ -125,3 +125,11 @@ selectByBoardId(Long boardId)
 
 # 板块帖子列表前端
 ![](assets/Day5/file-20260530201706414.png)
+
+
+# 获取指定板块信息
+## 实现逻辑
+客户端发送请求传入板块Id，服务器响应对应版本的详情
+
+## 参数要求
+![](assets/Day5/file-20260530205732590.png)
