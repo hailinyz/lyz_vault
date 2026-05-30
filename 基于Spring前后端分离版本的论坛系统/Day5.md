@@ -112,3 +112,6 @@ selectAll()
 selectByBoardId(Long boardId)
 
 ![](assets/Day5/file-20260530181856472.png)
+**这里是为了返回的时候是个标准的json**
+
+![](assets/Day5/file-20260530185443354.png)
