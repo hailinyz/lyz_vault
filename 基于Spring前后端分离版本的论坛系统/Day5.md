@@ -88,11 +88,13 @@ public AppResult<List<Board>> topList() {
 # 导航栏板块列表前端
 ![](assets/Day5/file-20260530101905517.png)
 
-# 发布帖子
+# 发布帖子后端
 ## 实现逻辑
 ![](assets/Day5/file-20260530102545288.png)
 ![](assets/Day5/file-20260530122333802.png)
 ![](assets/Day5/file-20260530143235032.png)
 **避免循环引用（两个互相引用）
 可以只引用mapper**
+
+# 发布帖子前端
 
