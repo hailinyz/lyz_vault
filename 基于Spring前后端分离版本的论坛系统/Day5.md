@@ -120,3 +120,4 @@ selectByBoardId(Long boardId)
 
 ![](assets/Day5/file-20260530192349991.png)
 ![](assets/Day5/file-20260530200804198.png)
+![](assets/Day5/file-20260530201119238.png)
