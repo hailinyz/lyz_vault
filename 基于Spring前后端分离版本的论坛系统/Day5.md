@@ -133,3 +133,6 @@ selectByBoardId(Long boardId)
 
 ## 参数要求
 ![](assets/Day5/file-20260530205732590.png)
+
+
+# 帖子详情
