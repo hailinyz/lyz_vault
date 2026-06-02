@@ -43,3 +43,5 @@ public AppResult modify(HttpServletRequest request,
     return AppResult.success();  
 }
   ```
+## 前端
+![](assets/Day7/file-20260602174415373.png)
