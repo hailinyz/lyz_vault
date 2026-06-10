@@ -46,4 +46,7 @@ public AppResult modify(HttpServletRequest request,
 ## 前端
 ![](assets/Day7/file-20260602174415373.png)
 
-# 点赞
+# 点赞和
+# 帖子回复
+# 根据帖子id查询帖子列表
+
