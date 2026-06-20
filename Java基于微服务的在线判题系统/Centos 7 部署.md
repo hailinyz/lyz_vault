@@ -7,3 +7,5 @@ systemctl restart network
 # 查看ip
 ip addr
 ```
+![](assets/Centos%207%20部署/file-20260620110122474.png)
+
