@@ -66,3 +66,4 @@ yum install -y docker-ce docker-ce-cli containerd.io
 docker --version
 ```
 
+# 修改配置打开远程访问docker，因为judge服务需要用到docker的代码沙箱
