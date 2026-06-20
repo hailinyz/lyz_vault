@@ -65,3 +65,4 @@ yum install -y docker-ce docker-ce-cli containerd.io
 # 验证docker
 docker --version
 ```
+
