@@ -52,3 +52,8 @@ yum makecache
 ```powershell
 yum install yum-utils -y
 ```
+
+# 添加阿里云源
+```powershell
+yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+```
