@@ -81,3 +81,6 @@ RestartSec=2
 Restart=always
 ```
 ![](assets/Centos%207%20部署/file-20260620121030534.png)
+
+**到这里我们的项目部署的准备工作就已经完成了**
+
