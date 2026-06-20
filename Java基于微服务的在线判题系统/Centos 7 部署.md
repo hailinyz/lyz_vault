@@ -33,4 +33,5 @@ firewall-cmd --query-port=22/tcp
 ![](assets/Centos%207%20部署/file-20260620110823803.png)
 yes表示开放成功
 
-# 允许root远程密码登录
+**然后就可以用MobaXterm_Personal_23.2.exe进行远程连接了**
+
