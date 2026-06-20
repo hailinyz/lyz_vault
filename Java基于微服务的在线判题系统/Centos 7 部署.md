@@ -16,3 +16,17 @@ systemctl status sshd
 ```
 ![](assets/Centos%207%20部署/file-20260620110408664.png)
 绿色已经安装
+
+# 防火墙放行22端口（ssh默认端口）
+先验证有没有放行
+![](assets/Centos%207%20部署/file-20260620110638095.png)
+no表示没有开
+**开放**
+```powershell
+# 永久开放22端口
+firewall-cmd --zone=public --add-port=22/tcp --permanent
+# 重载防火墙生效
+firewall-cmd --reload
+# 验证是否开放成功
+firewall-cmd --query-port=22/tcp
+```
