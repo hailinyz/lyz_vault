@@ -35,3 +35,20 @@ yes表示开放成功
 
 **然后就可以用MobaXterm_Personal_23.2.exe进行远程连接了**
 
+# 接下来都用MobaXterm_Personal_23.2.exe进行操作
+
+# 下载阿里云 CentOS7 国内镜像源
+```powershell
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+```
+
+# 清理旧缓存、生成新缓存
+```powershell
+yum clean all 
+yum makecache
+```
+
+# 安装 yum-utils
+```powershell
+yum install yum-utils -y
+```
